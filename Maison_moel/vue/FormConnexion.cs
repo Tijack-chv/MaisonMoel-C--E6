@@ -1,5 +1,6 @@
 using Maison_moel.Entities;
 using Maison_moel.Model;
+using Maison_moel.vue;
 
 namespace Maison_moel
 {
@@ -61,8 +62,12 @@ namespace Maison_moel
 
                 if (ModConnexion.ConnexionAdmin(txt_id.Text, txt_mdp.Text))
                 {
-                    Admin administrateur = new();
-                    administrateur = ModConnexion.RecupererAdmin(txt_id.Text);
+                    Personne personne = new();
+                    personne = ModConnexion.RecupererPersonne(txt_id.Text);
+
+                    Accueil formaccueil = new();
+                    formaccueil.Show();
+
                     this.Hide();
                 }
             }

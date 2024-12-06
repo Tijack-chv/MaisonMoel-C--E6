@@ -5,9 +5,9 @@ namespace Maison_moel.Entities;
 
 public partial class CategoriePlat
 {
-    public int Idcategorieplat { get; set; }
+    public int IdCategoriePlat { get; set; }
 
-    public string Libellecategorieplat { get; set; } = null!;
+    public string LibelleCategoriePlat { get; set; } = null!;
 
     public virtual ICollection<Plat> Plats { get; set; } = new List<Plat>();
 }

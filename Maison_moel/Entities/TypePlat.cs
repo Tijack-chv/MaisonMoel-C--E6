@@ -5,9 +5,9 @@ namespace Maison_moel.Entities;
 
 public partial class TypePlat
 {
-    public int Idtypeplat { get; set; }
+    public int IdTypePlat { get; set; }
 
-    public string Libelletypeplat { get; set; } = null!;
+    public string LibelleTypePlat { get; set; } = null!;
 
     public virtual ICollection<Plat> Plats { get; set; } = new List<Plat>();
 }

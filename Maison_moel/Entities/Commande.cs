@@ -5,21 +5,17 @@ namespace Maison_moel.Entities;
 
 public partial class Commande
 {
-    public int Idetat { get; set; }
+    public int IdEtat { get; set; }
 
-    public int Idtable { get; set; }
+    public int IdReservation { get; set; }
 
-    public int Idpersonne { get; set; }
+    public int IdPersonne { get; set; }
 
-    public DateTime Datecommande { get; set; }
+    public DateTime DateCommande { get; set; }
 
-    public int Idcommande { get; set; }
+    public int IdCommande { get; set; }
 
-    public virtual ICollection<Comporter> Comporters { get; set; } = new List<Comporter>();
+    public virtual Etat IdEtatNavigation { get; set; } = null!;
 
-    public virtual Etat IdetatNavigation { get; set; } = null!;
-
-    public virtual Serveur IdpersonneNavigation { get; set; } = null!;
-
-    public virtual Table IdtableNavigation { get; set; } = null!;
+    public virtual Client IdPersonneNavigation { get; set; } = null!;
 }

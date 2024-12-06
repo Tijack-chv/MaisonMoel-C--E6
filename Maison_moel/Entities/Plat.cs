@@ -5,23 +5,21 @@ namespace Maison_moel.Entities;
 
 public partial class Plat
 {
-    public int Idplat { get; set; }
+    public int IdPlat { get; set; }
 
-    public int Idcategorieplat { get; set; }
+    public int IdCategoriePlat { get; set; }
 
-    public int Idtypeplat { get; set; }
+    public int IdTypePlat { get; set; }
 
-    public string Nomplat { get; set; } = null!;
+    public string NomPlat { get; set; } = null!;
 
-    public virtual ICollection<Comporter> Comporters { get; set; } = new List<Comporter>();
+    public int Quantite { get; set; }
 
-    public virtual CategoriePlat IdcategorieplatNavigation { get; set; } = null!;
+    public string DescriptionPlat { get; set; } = null!;
 
-    public virtual TypePlat IdtypeplatNavigation { get; set; } = null!;
+    public decimal PrixHt { get; set; }
 
-    public virtual ICollection<PromoPlat> PromoPlats { get; set; } = new List<PromoPlat>();
+    public virtual CategoriePlat IdCategoriePlatNavigation { get; set; } = null!;
 
-    public virtual ICollection<Menu> Idmenus { get; set; } = new List<Menu>();
-
-    public virtual ICollection<Produit> Idproduits { get; set; } = new List<Produit>();
+    public virtual TypePlat IdTypePlatNavigation { get; set; } = null!;
 }

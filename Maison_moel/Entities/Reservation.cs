@@ -5,15 +5,17 @@ namespace Maison_moel.Entities;
 
 public partial class Reservation
 {
-    public int Idpersonne { get; set; }
+    public int IdTable { get; set; }
 
-    public DateTime Dateheureres { get; set; }
+    public int? IdPersonne { get; set; }
 
-    public int Idtable { get; set; }
+    public int NbPersonnes { get; set; }
 
-    public int Nbpersonnes { get; set; }
+    public DateTime? DateMoment { get; set; }
 
-    public virtual Client IdpersonneNavigation { get; set; } = null!;
+    public int IdReservation { get; set; }
 
-    public virtual Table IdtableNavigation { get; set; } = null!;
+    public DateTime DateReservation { get; set; }
+
+    public virtual Table IdTableNavigation { get; set; } = null!;
 }

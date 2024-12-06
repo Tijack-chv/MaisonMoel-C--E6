@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Maison_moel.Entities;
 
-public partial class Alergene
+public partial class Restreindre
 {
     public int IdAlergenes { get; set; }
 
-    public string DescriptionAlergenes { get; set; } = null!;
+    public int IdPlat { get; set; }
 }

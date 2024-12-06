@@ -15,18 +15,18 @@ namespace Maison_moel.Model
     {
         
 
-        public static Admin RecupererAdmin(string login)
+        public static Personne RecupererPersonne(string login)
         {
-            Admin admin = new();
+            Personne personne = new();
             try
             {
-                admin = Model.MonModel.Admins.First(a => a.Email == login);
+                personne = Model.MonModel.Personnes.First(a => a.Email == login);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("L'adresse mail saisie n'est pas reconnu !");
             }
-            return admin;
+            return personne;
         }
 
 
@@ -34,15 +34,15 @@ namespace Maison_moel.Model
         {
             bool connexion = true;
 
-            Admin admin = new();
+            Personne personne = new();
 
-            admin = RecupererAdmin(mail);
+            personne = RecupererPersonne(mail);
 
-            if (admin.Idpersonne == 0)
+            if (personne.IdPersonne == 0)
             {
                 connexion = false;
             }
-            else if (!BC.Verify(mdp, admin.Password))
+            else if (!BC.Verify(mdp, personne.Password))
             {
                 MessageBox.Show("Le mot de passe est incorrect !");
                 connexion = false;

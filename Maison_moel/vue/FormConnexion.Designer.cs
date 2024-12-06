@@ -49,12 +49,12 @@
             label1.FlatStyle = FlatStyle.Flat;
             label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(182, 156);
+            label1.Location = new Point(279, 151);
             label1.Name = "label1";
             label1.Padding = new Padding(1);
-            label1.Size = new Size(224, 56);
+            label1.Size = new Size(127, 56);
             label1.TabIndex = 0;
-            label1.Text = "Identifiant";
+            label1.Text = "Email";
             // 
             // label2
             // 
