@@ -1,3 +1,6 @@
+using Maison_moel.Entities;
+using Maison_moel.Model;
+
 namespace Maison_moel
 {
     public partial class FormConnexion : Form
@@ -29,7 +32,8 @@ namespace Maison_moel
             pictureBox1.SendToBack();
         }
 
-        private void buttonConnecter_Click(object sender, EventArgs e)
+
+        private void buttonConnecter_Click_1(object sender, EventArgs e)
         {
             if (txt_id.Text == "" || txt_mdp.Text == "" || txt_id.Text == "email" || txt_mdp.Text == "password") //revoir si verif de l'adresse mail et du nombre de caractère dans le mdp
             {
@@ -55,18 +59,16 @@ namespace Maison_moel
                 labelErreurEmail.Visible = false;
                 labelErreurMdp.Visible = false;
 
-                //if (ModeleAdministrateur.ConnexionAdmin(textBoxMail.Text, textBoxMdp.Text))
-                //{
-                //    Administrateur administrateur = new();
-                //    administrateur = ModeleAdministrateur.RecupererAdmin(textBoxMail.Text);
-
-                //    Form2FATest form2FA = new(administrateur);
-                //    form2FA.Show();
-                //    this.Hide();
-                //}
+                if (ModConnexion.ConnexionAdmin(txt_id.Text, txt_mdp.Text))
+                {
+                    Admin administrateur = new();
+                    administrateur = ModConnexion.RecupererAdmin(txt_id.Text);
+                    this.Hide();
+                }
             }
+
         }
 
-
+      
     }
 }

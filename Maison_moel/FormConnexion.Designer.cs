@@ -37,6 +37,7 @@
             pictureBox2 = new PictureBox();
             labelErreurEmail = new Label();
             labelErreurMdp = new Label();
+            buttonConnecter = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -125,9 +126,9 @@
             labelErreurEmail.ForeColor = Color.Red;
             labelErreurEmail.Location = new Point(480, 227);
             labelErreurEmail.Name = "labelErreurEmail";
-            labelErreurEmail.Size = new Size(284, 23);
+            labelErreurEmail.Size = new Size(243, 23);
             labelErreurEmail.TabIndex = 28;
-            labelErreurEmail.Text = "Erreur : l'identifiant est manquant";
+            labelErreurEmail.Text = "Erreur : l'email est manquant";
             // 
             // labelErreurMdp
             // 
@@ -141,11 +142,27 @@
             labelErreurMdp.TabIndex = 29;
             labelErreurMdp.Text = "Erreur : le mot de passe est manquant";
             // 
+            // buttonConnecter
+            // 
+            buttonConnecter.BackColor = Color.FromArgb(255, 235, 153);
+            buttonConnecter.FlatStyle = FlatStyle.Popup;
+            buttonConnecter.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonConnecter.ForeColor = Color.Black;
+            buttonConnecter.Location = new Point(682, 422);
+            buttonConnecter.Margin = new Padding(5);
+            buttonConnecter.Name = "buttonConnecter";
+            buttonConnecter.Size = new Size(152, 57);
+            buttonConnecter.TabIndex = 30;
+            buttonConnecter.Text = "Se connecter";
+            buttonConnecter.UseVisualStyleBackColor = false;
+            buttonConnecter.Click += buttonConnecter_Click_1;
+            // 
             // FormConnexion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1076, 530);
+            Controls.Add(buttonConnecter);
             Controls.Add(labelErreurMdp);
             Controls.Add(labelErreurEmail);
             Controls.Add(pictureBox2);
@@ -175,5 +192,6 @@
         private PictureBox pictureBox2;
         private Label labelErreurEmail;
         private Label labelErreurMdp;
+        private Button buttonConnecter;
     }
 }
