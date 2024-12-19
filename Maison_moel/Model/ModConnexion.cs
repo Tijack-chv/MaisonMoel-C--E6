@@ -29,6 +29,36 @@ namespace Maison_moel.Model
             return personne;
         }
 
+        public static List<Admin> RecupererAdmins()
+        {
+            
+            List<Admin> personne = new();
+            try
+            {
+                personne = Model.MonModel.Admins.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Probleme recup admin");
+            }
+            return personne;
+        }
+
+        public static List<Cuisinier> RecupererCuisiniers()
+        {
+            
+            List<Cuisinier> personne = new();
+            try
+            {
+                personne = Model.MonModel.Cuisiniers.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Probleme recup cuisinier");
+            }
+            return personne;
+        }
+
 
         public static bool ConnexionAdmin(string mail, string mdp)
         {

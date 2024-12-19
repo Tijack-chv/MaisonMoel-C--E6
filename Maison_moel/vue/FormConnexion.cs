@@ -1,3 +1,4 @@
+
 using Maison_moel.Entities;
 using Maison_moel.Model;
 using Maison_moel.vue;
@@ -22,8 +23,8 @@ namespace Maison_moel
             pictureBox2.Parent = pictureBox1;
 
             //Charger les images
-            pictureBox1.Load("http://192.168.143.9/images/FOND_ACCUEIL.png");
-            pictureBox2.Load("http://192.168.143.9/images/LOGO_TRANS.png");
+            pictureBox1.Load("http://192.168.143.9:8080/images/FOND_ACCUEIL.png");
+            pictureBox2.Load("http://192.168.143.9:8080/images/LOGO_TRANS.png");
 
             //Adapter l'image à la taille de la PictureBox
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -62,11 +63,19 @@ namespace Maison_moel
 
                 if (ModConnexion.ConnexionAdmin(txt_id.Text, txt_mdp.Text))
                 {
+                    bool est_admin = false;
                     Personne personne = new();
                     personne = ModConnexion.RecupererPersonne(txt_id.Text);
-
-                    Accueil formaccueil = new();
-                    formaccueil.Show();
+                    List<Admin> lesadmins = ModConnexion.RecupererAdmins();
+                    foreach (Admin unadmin in lesadmins)
+                    {
+                        if(unadmin.IdPersonne == personne.IdPersonne)
+                        {
+                            est_admin = true;
+                        }
+                    }
+                    FormHome formHome = new(est_admin);
+                    formHome.Show();
 
                     this.Hide();
                 }
