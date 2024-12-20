@@ -27,7 +27,7 @@ namespace Maison_moel.vue
             comboEtat.SelectedIndex = -1;
 
             comboBoxServeur.ValueMember = "idPersonne";
-            comboBoxServeur.DisplayMember = "nom";
+            comboBoxServeur.DisplayMember = "NomComplet";
 
             bindingSourceServeur.DataSource = (ModelPersonne.ListeServeur());
             comboBoxServeur.DataSource = bindingSourceServeur;
@@ -54,6 +54,7 @@ namespace Maison_moel.vue
 
             DataGridCuisine.DataSource = bindingSourceCuisine;
 
+
             // Configuration des colonnes
             DataGridCuisine.Columns[0].HeaderText = "Commande";
             DataGridCuisine.Columns[1].HeaderText = "État";
@@ -73,6 +74,7 @@ namespace Maison_moel.vue
             });
 
             DataGridCuisine.DataSource = bindingSourceCuisine;
+          
 
             // Configuration des colonnes
             DataGridCuisine.Columns[0].HeaderText = "Commande";
@@ -84,36 +86,79 @@ namespace Maison_moel.vue
 
         private void comboEtat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboEtat.SelectedIndex != -1)
-            {
-                int etatSelectionne = (int)comboEtat.SelectedValue;
-                List<Commande> commandes = ModelCommande.ListeCommande();
 
-                var commandesFiltrees = commandes
-                .Where(c => c.IdEtat == etatSelectionne)
-                .ToList();
+            AppliquerFiltres();
+        }
 
-                if (commandesFiltrees.Any())
-                {
-                    FormCuisine_Load(commandesFiltrees);
-                }
-                else
-                {
-                    // Si la liste est vide, vide le DataGridView et affiche un message
-                    DataGridCuisine.DataSource = null;
-                    MessageBox.Show("Aucun résultat!", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
+        private void comboBoxTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
-
+            AppliquerFiltres();
         }
 
         private void buttonRenitialiserFiltre_Click(object sender, EventArgs e)
         {
             FormCuisine_Load(sender, EventArgs.Empty);
         }
+
+        private void AppliquerFiltres()
+        {
+            // Récupérer la liste de base des commandes
+            List<Commande> query = ModelCommande.ListeCommande();
+
+            // Filtrer par état si un état est sélectionné
+            if (comboEtat.SelectedIndex != -1)
+            {
+                int etatSelectionne = Convert.ToInt32(comboEtat.SelectedValue);
+                List<Commande> commandesParEtat = ModelEtat.ListeCommandeParEtat(etatSelectionne);
+                query = query.Intersect(commandesParEtat).ToList();  // Applique le filtre par état
+            }
+
+            // Filtrer par table si une table est sélectionnée
+            if (comboBoxTable.SelectedIndex != -1)
+            {
+                int tableSelectionnee = Convert.ToInt32(comboBoxTable.SelectedValue);
+                List<Commande> commandesParTable = ModelTable.ListeCommandeParTable(tableSelectionnee);
+                query = query.Intersect(commandesParTable).ToList();  // Applique le filtre par table
+            }
+
+            // Vérifier si la liste filtrée contient des résultats
+            if (query.Any())
+            {
+                FormCuisine_Load(query);  // Recharger les données dans le DataGridView
+            }
+            else
+            {
+                // Si la liste est vide, vider le DataGridView et afficher un message
+                DataGridCuisine.DataSource = null;
+                MessageBox.Show("Aucune commande ne correspond aux critères des filtres !", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+
+        //private void bindingSourceEtat_CurrentChanged(object sender, EventArgs e)
+        //{
+        //    if (comboEtat.SelectedIndex != -1)
+        //    {
+        //        int etatSelectionne = (int)comboEtat.SelectedValue;
+        //        List<Commande> commandes = ModelEtat.ListeCommandeParEtat(etatSelectionne);
+
+
+        //        if (commandes.Any())
+        //        {
+        //            FormCuisine_Load(commandes);
+        //        }
+        //        else
+        //        {
+        //            // Si la liste est vide, vide le DataGridView et affiche un message
+        //            DataGridCuisine.DataSource = null;
+        //            MessageBox.Show("Aucun résultat!", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //    }
+        //}
     }
 
 
-}
+    }
 

@@ -210,6 +210,7 @@
             comboBoxTable.Name = "comboBoxTable";
             comboBoxTable.Size = new Size(228, 28);
             comboBoxTable.TabIndex = 49;
+            comboBoxTable.SelectedIndexChanged += comboBoxTable_SelectedIndexChanged;
             // 
             // buttonRenitialiserFiltre
             // 

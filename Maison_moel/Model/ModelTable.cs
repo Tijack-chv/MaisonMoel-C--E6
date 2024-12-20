@@ -13,5 +13,10 @@ namespace Maison_moel.Model
         {
             return Model.MonModel.Tables.ToList();
         }
+
+        public static List<Commande> ListeCommandeParTable(int idtable)
+        {
+            return Model.MonModel.Commandes.Where(c => c.IdReservationNavigation.IdTable == idtable).ToList();
+        }
     }
 }
