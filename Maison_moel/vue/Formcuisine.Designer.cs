@@ -43,9 +43,18 @@
             label1 = new Label();
             comboEtat = new ComboBox();
             bindingSourceEtat = new BindingSource(components);
+            label2 = new Label();
+            comboBoxServeur = new ComboBox();
+            bindingSourceServeur = new BindingSource(components);
+            label3 = new Label();
+            comboBoxTable = new ComboBox();
+            bindingSourceTable = new BindingSource(components);
+            buttonRenitialiserFiltre = new Button();
             ((System.ComponentModel.ISupportInitialize)DataGridCuisine).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceCuisine).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceEtat).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceServeur).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceTable).BeginInit();
             SuspendLayout();
             // 
             // DataGridCuisine
@@ -160,6 +169,62 @@
             comboEtat.Name = "comboEtat";
             comboEtat.Size = new Size(228, 28);
             comboEtat.TabIndex = 45;
+            comboEtat.SelectedIndexChanged += comboEtat_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(934, 258);
+            label2.Name = "label2";
+            label2.Size = new Size(123, 25);
+            label2.TabIndex = 46;
+            label2.Text = "Par serveur";
+            // 
+            // comboBoxServeur
+            // 
+            comboBoxServeur.FormattingEnabled = true;
+            comboBoxServeur.Location = new Point(879, 297);
+            comboBoxServeur.Margin = new Padding(3, 4, 3, 4);
+            comboBoxServeur.Name = "comboBoxServeur";
+            comboBoxServeur.Size = new Size(228, 28);
+            comboBoxServeur.TabIndex = 47;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(938, 365);
+            label3.Name = "label3";
+            label3.Size = new Size(98, 25);
+            label3.TabIndex = 48;
+            label3.Text = "Par table";
+            // 
+            // comboBoxTable
+            // 
+            comboBoxTable.FormattingEnabled = true;
+            comboBoxTable.Location = new Point(879, 394);
+            comboBoxTable.Margin = new Padding(3, 4, 3, 4);
+            comboBoxTable.Name = "comboBoxTable";
+            comboBoxTable.Size = new Size(228, 28);
+            comboBoxTable.TabIndex = 49;
+            // 
+            // buttonRenitialiserFiltre
+            // 
+            buttonRenitialiserFiltre.BackColor = Color.FromArgb(30, 35, 40);
+            buttonRenitialiserFiltre.FlatStyle = FlatStyle.Popup;
+            buttonRenitialiserFiltre.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonRenitialiserFiltre.ForeColor = Color.White;
+            buttonRenitialiserFiltre.Location = new Point(920, 501);
+            buttonRenitialiserFiltre.Margin = new Padding(3, 4, 3, 4);
+            buttonRenitialiserFiltre.Name = "buttonRenitialiserFiltre";
+            buttonRenitialiserFiltre.Size = new Size(158, 31);
+            buttonRenitialiserFiltre.TabIndex = 50;
+            buttonRenitialiserFiltre.Text = "Rénitialiser Filtre";
+            buttonRenitialiserFiltre.UseVisualStyleBackColor = false;
+            buttonRenitialiserFiltre.Click += buttonRenitialiserFiltre_Click;
             // 
             // Formcuisine
             // 
@@ -167,6 +232,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1172, 795);
+            Controls.Add(buttonRenitialiserFiltre);
+            Controls.Add(comboBoxTable);
+            Controls.Add(label3);
+            Controls.Add(comboBoxServeur);
+            Controls.Add(label2);
             Controls.Add(comboEtat);
             Controls.Add(label1);
             Controls.Add(labelRecherche);
@@ -183,6 +253,8 @@
             ((System.ComponentModel.ISupportInitialize)DataGridCuisine).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceCuisine).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceEtat).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceServeur).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -199,5 +271,12 @@
         private Label label1;
         private ComboBox comboEtat;
         private BindingSource bindingSourceEtat;
+        private Label label2;
+        private ComboBox comboBoxServeur;
+        private BindingSource bindingSourceServeur;
+        private Label label3;
+        private ComboBox comboBoxTable;
+        private BindingSource bindingSourceTable;
+        private Button buttonRenitialiserFiltre;
     }
 }
