@@ -74,8 +74,8 @@ namespace Maison_moel
                             est_admin = true;
                         }
                     }
-                    FormHome formHome = new(est_admin);
-                    formHome.Show();
+                    FormHome Formcuisine = new(est_admin);
+                    Formcuisine.Show();
 
                     this.Hide();
                 }

@@ -77,7 +77,7 @@
             panelWest.Location = new Point(0, 111);
             panelWest.MaximumSize = new Size(255, 653);
             panelWest.Name = "panelWest";
-            panelWest.Size = new Size(255, 499);
+            panelWest.Size = new Size(255, 637);
             panelWest.TabIndex = 4;
             // 
             // panelJury
@@ -224,6 +224,7 @@
             buttonHome.Text = "       Accueil";
             buttonHome.TextAlign = ContentAlignment.MiddleLeft;
             buttonHome.UseVisualStyleBackColor = false;
+            buttonHome.Click += buttonHome_Click;
             // 
             // buttonHackathon
             // 
@@ -273,7 +274,7 @@
             panelAffichage.Dock = DockStyle.Fill;
             panelAffichage.Location = new Point(0, 111);
             panelAffichage.Name = "panelAffichage";
-            panelAffichage.Size = new Size(1290, 499);
+            panelAffichage.Size = new Size(1167, 411);
             panelAffichage.TabIndex = 5;
             // 
             // panelNorth
@@ -285,7 +286,7 @@
             panelNorth.Dock = DockStyle.Top;
             panelNorth.Location = new Point(0, 0);
             panelNorth.Name = "panelNorth";
-            panelNorth.Size = new Size(1290, 111);
+            panelNorth.Size = new Size(1167, 111);
             panelNorth.TabIndex = 3;
             // 
             // buttonMenu
@@ -300,6 +301,7 @@
             buttonMenu.TabIndex = 5;
             buttonMenu.TextAlign = ContentAlignment.MiddleRight;
             buttonMenu.UseVisualStyleBackColor = false;
+            buttonMenu.Click += buttonMenu_Click;
             // 
             // labelOrganisation
             // 
@@ -325,7 +327,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1290, 610);
+            ClientSize = new Size(1167, 522);
             Controls.Add(panelWest);
             Controls.Add(panelAffichage);
             Controls.Add(panelNorth);

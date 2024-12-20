@@ -9,9 +9,11 @@ public partial class Evenement
 
     public int IdTypeEvenement { get; set; }
 
-    public string DescritionEvenement { get; set; } = null!;
+    public string DescriptionEvenement { get; set; } = null!;
 
     public string? ImageEvenement { get; set; }
 
     public virtual TypeEvenement IdTypeEvenementNavigation { get; set; } = null!;
+
+    public virtual ICollection<PromoPlat> PromoPlats { get; set; } = new List<PromoPlat>();
 }

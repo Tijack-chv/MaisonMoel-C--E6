@@ -10,4 +10,6 @@ public partial class Notification
     public int IdTypeNotification { get; set; }
 
     public string DescriptionNotification { get; set; } = null!;
+
+    public virtual TypeNotification IdTypeNotificationNavigation { get; set; } = null!;
 }

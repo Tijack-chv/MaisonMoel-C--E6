@@ -19,7 +19,11 @@ public partial class Personne
 
     public virtual Admin? Admin { get; set; }
 
+    public virtual ICollection<Avi> Avis { get; set; } = new List<Avi>();
+
     public virtual Cuisinier? Cuisinier { get; set; }
 
     public virtual Serveur? Serveur { get; set; }
+
+    public virtual ICollection<TokenUserApi> TokenUserApis { get; set; } = new List<TokenUserApi>();
 }

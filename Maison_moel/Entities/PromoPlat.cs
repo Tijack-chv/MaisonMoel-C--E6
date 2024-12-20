@@ -12,4 +12,8 @@ public partial class PromoPlat
     public DateTime DateDebut { get; set; }
 
     public DateTime DateFin { get; set; }
+
+    public virtual Evenement IdEvenementNavigation { get; set; } = null!;
+
+    public virtual Plat IdPlatNavigation { get; set; } = null!;
 }

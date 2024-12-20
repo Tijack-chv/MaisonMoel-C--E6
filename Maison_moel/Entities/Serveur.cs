@@ -11,5 +11,7 @@ public partial class Serveur
 
     public int Salaires { get; set; }
 
+    public virtual ICollection<Commande> Commandes { get; set; } = new List<Commande>();
+
     public virtual Personne IdPersonneNavigation { get; set; } = null!;
 }

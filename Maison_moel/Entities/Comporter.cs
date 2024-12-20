@@ -12,4 +12,8 @@ public partial class Comporter
     public int Prix { get; set; }
 
     public int NbCommander { get; set; }
+
+    public virtual Commande IdCommandeNavigation { get; set; } = null!;
+
+    public virtual Plat IdPlatNavigation { get; set; } = null!;
 }

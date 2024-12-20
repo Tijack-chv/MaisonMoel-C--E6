@@ -20,6 +20,8 @@ public partial class BddMaisonMoelContext : DbContext
 
     public virtual DbSet<Alergene> Alergenes { get; set; }
 
+    public virtual DbSet<Avi> Avis { get; set; }
+
     public virtual DbSet<CategoriePlat> CategoriePlats { get; set; }
 
     public virtual DbSet<Client> Clients { get; set; }
@@ -50,8 +52,6 @@ public partial class BddMaisonMoelContext : DbContext
 
     public virtual DbSet<Reservation> Reservations { get; set; }
 
-    public virtual DbSet<Restreindre> Restreindres { get; set; }
-
     public virtual DbSet<RoleCuisinier> RoleCuisiniers { get; set; }
 
     public virtual DbSet<Serveur> Serveurs { get; set; }
@@ -59,6 +59,8 @@ public partial class BddMaisonMoelContext : DbContext
     public virtual DbSet<Table> Tables { get; set; }
 
     public virtual DbSet<TokenApi> TokenApis { get; set; }
+
+    public virtual DbSet<TokenUserApi> TokenUserApis { get; set; }
 
     public virtual DbSet<TypeEvenement> TypeEvenements { get; set; }
 
@@ -105,6 +107,54 @@ public partial class BddMaisonMoelContext : DbContext
             entity.Property(e => e.DescriptionAlergenes)
                 .HasMaxLength(128)
                 .HasColumnName("descriptionAlergenes");
+
+            entity.HasMany(d => d.IdPlats).WithMany(p => p.IdAlergenes)
+                .UsingEntity<Dictionary<string, object>>(
+                    "Restreindre",
+                    r => r.HasOne<Plat>().WithMany()
+                        .HasForeignKey("IdPlat")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("plat_ibfk_22"),
+                    l => l.HasOne<Alergene>().WithMany()
+                        .HasForeignKey("IdAlergenes")
+                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .HasConstraintName("aler_ibfk_1"),
+                    j =>
+                    {
+                        j.HasKey("IdAlergenes", "IdPlat")
+                            .HasName("PRIMARY")
+                            .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
+                        j.ToTable("restreindre");
+                        j.HasIndex(new[] { "IdAlergenes" }, "I_FK_restreindre_alergenes");
+                        j.HasIndex(new[] { "IdPlat" }, "I_FK_restreindre_plat");
+                        j.IndexerProperty<int>("IdAlergenes").HasColumnName("idAlergenes");
+                        j.IndexerProperty<int>("IdPlat").HasColumnName("idPlat");
+                    });
+        });
+
+        modelBuilder.Entity<Avi>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("avis");
+
+            entity.HasIndex(e => e.IdPersonne, "FK_IDPERSONNE");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Date).HasColumnName("date");
+            entity.Property(e => e.Description)
+                .HasMaxLength(2047)
+                .HasColumnName("description");
+            entity.Property(e => e.IdPersonne).HasColumnName("idPersonne");
+            entity.Property(e => e.Note).HasColumnName("note");
+            entity.Property(e => e.Titre)
+                .HasMaxLength(127)
+                .HasColumnName("titre");
+
+            entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.Avis)
+                .HasForeignKey(d => d.IdPersonne)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_IDPERSONNE");
         });
 
         modelBuilder.Entity<CategoriePlat>(entity =>
@@ -128,6 +178,9 @@ public partial class BddMaisonMoelContext : DbContext
             entity.Property(e => e.IdPersonne)
                 .ValueGeneratedNever()
                 .HasColumnName("idPersonne");
+            entity.Property(e => e.ImageClient)
+                .HasMaxLength(127)
+                .HasColumnName("imageClient");
             entity.Property(e => e.PointFidelite).HasColumnName("pointFidelite");
         });
 
@@ -159,7 +212,12 @@ public partial class BddMaisonMoelContext : DbContext
             entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.Commandes)
                 .HasForeignKey(d => d.IdPersonne)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("client_ibfk_1");
+                .HasConstraintName("serv_ibfk_1");
+
+            entity.HasOne(d => d.IdReservationNavigation).WithMany(p => p.Commandes)
+                .HasForeignKey(d => d.IdReservation)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("reserv_ibfk_1");
         });
 
         modelBuilder.Entity<Comporter>(entity =>
@@ -178,6 +236,15 @@ public partial class BddMaisonMoelContext : DbContext
             entity.Property(e => e.IdPlat).HasColumnName("idPlat");
             entity.Property(e => e.NbCommander).HasColumnName("nbCommander");
             entity.Property(e => e.Prix).HasColumnName("prix");
+
+            entity.HasOne(d => d.IdCommandeNavigation).WithMany(p => p.Comporters)
+                .HasForeignKey(d => d.IdCommande)
+                .HasConstraintName("comm_ibfk_1");
+
+            entity.HasOne(d => d.IdPlatNavigation).WithMany(p => p.Comporters)
+                .HasForeignKey(d => d.IdPlat)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("pla_ibfk_1");
         });
 
         modelBuilder.Entity<Cuisinier>(entity =>
@@ -201,7 +268,6 @@ public partial class BddMaisonMoelContext : DbContext
 
             entity.HasOne(d => d.IdRoleNavigation).WithMany(p => p.Cuisiniers)
                 .HasForeignKey(d => d.IdRole)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("cuisinier_ibfk_1");
         });
 
@@ -239,9 +305,9 @@ public partial class BddMaisonMoelContext : DbContext
             entity.HasIndex(e => e.IdTypeEvenement, "I_FK_evenement_type_evenement");
 
             entity.Property(e => e.IdEvenement).HasColumnName("idEvenement");
-            entity.Property(e => e.DescritionEvenement)
+            entity.Property(e => e.DescriptionEvenement)
                 .HasMaxLength(128)
-                .HasColumnName("descritionEvenement");
+                .HasColumnName("descriptionEvenement");
             entity.Property(e => e.IdTypeEvenement).HasColumnName("idTypeEvenement");
             entity.Property(e => e.ImageEvenement)
                 .HasMaxLength(128)
@@ -278,6 +344,11 @@ public partial class BddMaisonMoelContext : DbContext
                 .HasMaxLength(128)
                 .HasColumnName("descriptionNotification");
             entity.Property(e => e.IdTypeNotification).HasColumnName("idTypeNotification");
+
+            entity.HasOne(d => d.IdTypeNotificationNavigation).WithMany(p => p.Notifications)
+                .HasForeignKey(d => d.IdTypeNotification)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("typnotif_ibfk_1");
         });
 
         modelBuilder.Entity<Personne>(entity =>
@@ -285,6 +356,8 @@ public partial class BddMaisonMoelContext : DbContext
             entity.HasKey(e => e.IdPersonne).HasName("PRIMARY");
 
             entity.ToTable("personne");
+
+            entity.HasIndex(e => e.Email, "uniq_email").IsUnique();
 
             entity.Property(e => e.IdPersonne).HasColumnName("idPersonne");
             entity.Property(e => e.DateNaiss).HasColumnName("dateNaiss");
@@ -312,12 +385,17 @@ public partial class BddMaisonMoelContext : DbContext
 
             entity.HasIndex(e => e.IdTypePlat, "I_FK_plat_type_plat");
 
+            entity.HasIndex(e => e.ImagePlat, "imageUniqPlat").IsUnique();
+
             entity.Property(e => e.IdPlat).HasColumnName("idPlat");
             entity.Property(e => e.DescriptionPlat)
                 .HasMaxLength(128)
                 .HasColumnName("descriptionPlat");
             entity.Property(e => e.IdCategoriePlat).HasColumnName("idCategoriePlat");
             entity.Property(e => e.IdTypePlat).HasColumnName("idTypePlat");
+            entity.Property(e => e.ImagePlat)
+                .HasMaxLength(128)
+                .HasColumnName("imagePlat");
             entity.Property(e => e.NomPlat)
                 .HasMaxLength(128)
                 .HasColumnName("nomPlat");
@@ -357,6 +435,16 @@ public partial class BddMaisonMoelContext : DbContext
             entity.Property(e => e.DateFin)
                 .HasColumnType("datetime")
                 .HasColumnName("dateFin");
+
+            entity.HasOne(d => d.IdEvenementNavigation).WithMany(p => p.PromoPlats)
+                .HasForeignKey(d => d.IdEvenement)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("even_ibfk_1");
+
+            entity.HasOne(d => d.IdPlatNavigation).WithMany(p => p.PromoPlats)
+                .HasForeignKey(d => d.IdPlat)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("plat_ibfk_20");
         });
 
         modelBuilder.Entity<Reapprovisionnement>(entity =>
@@ -374,6 +462,11 @@ public partial class BddMaisonMoelContext : DbContext
                 .HasColumnName("dateHeureReapro");
             entity.Property(e => e.IdPlat).HasColumnName("idPlat");
             entity.Property(e => e.QuantiteReapro).HasColumnName("quantiteReapro");
+
+            entity.HasOne(d => d.IdPlatNavigation).WithMany(p => p.Reapprovisionnements)
+                .HasForeignKey(d => d.IdPlat)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("plat_ibfk_21");
         });
 
         modelBuilder.Entity<Reservation>(entity =>
@@ -397,26 +490,14 @@ public partial class BddMaisonMoelContext : DbContext
             entity.Property(e => e.IdTable).HasColumnName("idTable");
             entity.Property(e => e.NbPersonnes).HasColumnName("nbPersonnes");
 
+            entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.Reservations)
+                .HasForeignKey(d => d.IdPersonne)
+                .HasConstraintName("cli_ibfk_1");
+
             entity.HasOne(d => d.IdTableNavigation).WithMany(p => p.Reservations)
                 .HasForeignKey(d => d.IdTable)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("reservation_ibfk_1");
-        });
-
-        modelBuilder.Entity<Restreindre>(entity =>
-        {
-            entity.HasKey(e => new { e.IdAlergenes, e.IdPlat })
-                .HasName("PRIMARY")
-                .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-
-            entity.ToTable("restreindre");
-
-            entity.HasIndex(e => e.IdAlergenes, "I_FK_restreindre_alergenes");
-
-            entity.HasIndex(e => e.IdPlat, "I_FK_restreindre_plat");
-
-            entity.Property(e => e.IdAlergenes).HasColumnName("idAlergenes");
-            entity.Property(e => e.IdPlat).HasColumnName("idPlat");
         });
 
         modelBuilder.Entity<RoleCuisinier>(entity =>
@@ -477,6 +558,25 @@ public partial class BddMaisonMoelContext : DbContext
             entity.Property(e => e.Token)
                 .HasMaxLength(255)
                 .HasColumnName("token");
+        });
+
+        modelBuilder.Entity<TokenUserApi>(entity =>
+        {
+            entity.HasKey(e => e.Token).HasName("PRIMARY");
+
+            entity.ToTable("token_user_api");
+
+            entity.HasIndex(e => e.IdUser, "fk _user_token");
+
+            entity.Property(e => e.Token).HasColumnName("token");
+            entity.Property(e => e.Date)
+                .HasColumnType("datetime")
+                .HasColumnName("date");
+            entity.Property(e => e.IdUser).HasColumnName("idUser");
+
+            entity.HasOne(d => d.IdUserNavigation).WithMany(p => p.TokenUserApis)
+                .HasForeignKey(d => d.IdUser)
+                .HasConstraintName("fk _user_token");
         });
 
         modelBuilder.Entity<TypeEvenement>(entity =>

@@ -9,5 +9,7 @@ public partial class Client
 
     public int PointFidelite { get; set; }
 
-    public virtual ICollection<Commande> Commandes { get; set; } = new List<Commande>();
+    public string? ImageClient { get; set; }
+
+    public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
 }
