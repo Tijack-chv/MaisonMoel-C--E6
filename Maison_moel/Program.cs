@@ -1,3 +1,5 @@
+using Maison_moel.vue;
+
 namespace Maison_moel
 {
     internal static class Program
@@ -12,7 +14,8 @@ namespace Maison_moel
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Model.Model.init();
-            Application.Run(new FormConnexion());
+            //Application.Run(new FormConnexion());
+            Application.Run(new FormHome(true));
         }
     }
 }

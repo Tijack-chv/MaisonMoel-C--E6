@@ -10,4 +10,6 @@ public partial class Reapprovisionnement
     public int IdPlat { get; set; }
 
     public int QuantiteReapro { get; set; }
+
+    public virtual Plat IdPlatNavigation { get; set; } = null!;
 }
