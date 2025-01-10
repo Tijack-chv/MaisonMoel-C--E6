@@ -17,7 +17,7 @@ namespace Maison_moel.vue
     {
 
         bool sideBarExpend;
-        SFormulaire sousF;
+        public SFormulaire sousF;
 
         public FormHome(bool est_admin)
         {

@@ -40,12 +40,13 @@
             panel5 = new Panel();
             panel2 = new Panel();
             titre = new Label();
+            buttonModifier = new Button();
             SuspendLayout();
             // 
             // comboBoxTable
             // 
             comboBoxTable.FormattingEnabled = true;
-            comboBoxTable.Location = new Point(126, 403);
+            comboBoxTable.Location = new Point(712, 224);
             comboBoxTable.Margin = new Padding(3, 4, 3, 4);
             comboBoxTable.Name = "comboBoxTable";
             comboBoxTable.Size = new Size(228, 28);
@@ -56,7 +57,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(191, 147);
+            label1.Location = new Point(208, 167);
             label1.Name = "label1";
             label1.Size = new Size(50, 25);
             label1.TabIndex = 51;
@@ -65,7 +66,7 @@
             // comboEtat
             // 
             comboEtat.FormattingEnabled = true;
-            comboEtat.Location = new Point(126, 197);
+            comboEtat.Location = new Point(126, 224);
             comboEtat.Margin = new Padding(3, 4, 3, 4);
             comboEtat.Name = "comboEtat";
             comboEtat.Size = new Size(228, 28);
@@ -76,7 +77,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(191, 256);
+            label2.Location = new Point(487, 167);
             label2.Name = "label2";
             label2.Size = new Size(88, 25);
             label2.TabIndex = 53;
@@ -85,7 +86,7 @@
             // comboBoxServeur
             // 
             comboBoxServeur.FormattingEnabled = true;
-            comboBoxServeur.Location = new Point(126, 299);
+            comboBoxServeur.Location = new Point(426, 224);
             comboBoxServeur.Margin = new Padding(3, 4, 3, 4);
             comboBoxServeur.Name = "comboBoxServeur";
             comboBoxServeur.Size = new Size(228, 28);
@@ -96,7 +97,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(191, 357);
+            label3.Location = new Point(779, 167);
             label3.Name = "label3";
             label3.Size = new Size(67, 25);
             label3.TabIndex = 55;
@@ -107,7 +108,7 @@
             panel3.BackColor = Color.FromArgb(30, 35, 40);
             panel3.Location = new Point(12, 83);
             panel3.Name = "panel3";
-            panel3.Size = new Size(462, 33);
+            panel3.Size = new Size(1051, 33);
             panel3.TabIndex = 57;
             // 
             // panel1
@@ -115,13 +116,13 @@
             panel1.BackColor = Color.FromArgb(30, 35, 40);
             panel1.Location = new Point(12, 479);
             panel1.Name = "panel1";
-            panel1.Size = new Size(462, 33);
+            panel1.Size = new Size(1029, 33);
             panel1.TabIndex = 58;
             // 
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(30, 35, 40);
-            panel5.Location = new Point(470, 83);
+            panel5.Location = new Point(1034, 83);
             panel5.Name = "panel5";
             panel5.Size = new Size(29, 429);
             panel5.TabIndex = 59;
@@ -139,11 +140,25 @@
             titre.AutoSize = true;
             titre.BackColor = Color.Transparent;
             titre.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            titre.Location = new Point(667, 73);
+            titre.Location = new Point(402, 26);
             titre.Name = "titre";
             titre.Size = new Size(292, 25);
             titre.TabIndex = 61;
             titre.Text = "Modification de la commande";
+            // 
+            // buttonModifier
+            // 
+            buttonModifier.BackColor = Color.FromArgb(30, 35, 40);
+            buttonModifier.FlatStyle = FlatStyle.Popup;
+            buttonModifier.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonModifier.ForeColor = Color.White;
+            buttonModifier.Location = new Point(487, 357);
+            buttonModifier.Margin = new Padding(3, 4, 3, 4);
+            buttonModifier.Name = "buttonModifier";
+            buttonModifier.Size = new Size(158, 31);
+            buttonModifier.TabIndex = 62;
+            buttonModifier.Text = "Modifier";
+            buttonModifier.UseVisualStyleBackColor = false;
             // 
             // FormGestionCommande
             // 
@@ -151,6 +166,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1154, 748);
+            Controls.Add(buttonModifier);
             Controls.Add(titre);
             Controls.Add(panel2);
             Controls.Add(panel5);
@@ -162,7 +178,6 @@
             Controls.Add(label2);
             Controls.Add(comboEtat);
             Controls.Add(label1);
-            Cursor = Cursors.Default;
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormGestionCommande";
             Text = "FormGestionCommande";
@@ -183,5 +198,6 @@
         private Panel panel5;
         private Panel panel2;
         private Label titre;
+        private Button buttonModifier;
     }
 }

@@ -1,4 +1,5 @@
-﻿using Maison_moel.Entities;
+﻿using ApplicationC.Controller;
+using Maison_moel.Entities;
 using Maison_moel.Model;
 using System;
 using System.Collections.Generic;
@@ -74,7 +75,7 @@ namespace Maison_moel.vue
             });
 
             DataGridCuisine.DataSource = bindingSourceCuisine;
-          
+
 
             // Configuration des colonnes
             DataGridCuisine.Columns[0].HeaderText = "Commande";
@@ -137,28 +138,33 @@ namespace Maison_moel.vue
 
 
 
-        //private void bindingSourceEtat_CurrentChanged(object sender, EventArgs e)
-        //{
-        //    if (comboEtat.SelectedIndex != -1)
-        //    {
-        //        int etatSelectionne = (int)comboEtat.SelectedValue;
-        //        List<Commande> commandes = ModelEtat.ListeCommandeParEtat(etatSelectionne);
 
 
-        //        if (commandes.Any())
-        //        {
-        //            FormCuisine_Load(commandes);
-        //        }
-        //        else
-        //        {
-        //            // Si la liste est vide, vide le DataGridView et affiche un message
-        //            DataGridCuisine.DataSource = null;
-        //            MessageBox.Show("Aucun résultat!", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //    }
-        //}
+        private void DataGridCuisine_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Vérifie qu'une ligne a été sélectionnée
+            {
+                DataGridViewRow selectedRow = DataGridCuisine.Rows[e.RowIndex];
+
+                int idCommande = Convert.ToInt32(selectedRow.Cells[0].Value);
+                string etat = selectedRow.Cells[1].Value?.ToString() ?? "Inconnu";
+                string numeroTable = selectedRow.Cells[2].Value?.ToString() ?? "Non spécifié";
+                string serveur = selectedRow.Cells[3].Value?.ToString() ?? "Non spécifié";
+
+                // Ouvrir un formulaire de gestion de commande
+                FormHome fhome = (FormHome)Application.OpenForms["FormHome"];
+                if (fhome != null)
+                {
+                    fhome.sousF.closeChildForm(); // pas obligatoire mais mieux
+                    fhome.sousF.openChildForm(new FormGestionCommande(idCommande, etat, serveur, numeroTable));
+                }
+            }
+        }
+
+        private void comboEtat_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
-
-
-    }
+}
 

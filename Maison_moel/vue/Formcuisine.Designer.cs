@@ -89,7 +89,7 @@
             DataGridCuisine.DefaultCellStyle = dataGridViewCellStyle2;
             DataGridCuisine.EnableHeadersVisualStyles = false;
             DataGridCuisine.GridColor = Color.FromArgb(255, 235, 153);
-            DataGridCuisine.Location = new Point(73, 55);
+            DataGridCuisine.Location = new Point(73, 48);
             DataGridCuisine.Margin = new Padding(6, 7, 6, 7);
             DataGridCuisine.MultiSelect = false;
             DataGridCuisine.Name = "DataGridCuisine";
@@ -107,8 +107,9 @@
             DataGridCuisine.RowHeadersWidth = 55;
             DataGridCuisine.ScrollBars = ScrollBars.Horizontal;
             DataGridCuisine.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DataGridCuisine.Size = new Size(656, 477);
+            DataGridCuisine.Size = new Size(650, 484);
             DataGridCuisine.TabIndex = 2;
+            DataGridCuisine.CellMouseDoubleClick += DataGridCuisine_CellMouseDoubleClick;
             // 
             // panel3
             // 
@@ -166,6 +167,7 @@
             // 
             // comboEtat
             // 
+            comboEtat.DropDownStyle = ComboBoxStyle.DropDownList;
             comboEtat.FormattingEnabled = true;
             comboEtat.Location = new Point(879, 193);
             comboEtat.Margin = new Padding(3, 4, 3, 4);
@@ -187,6 +189,7 @@
             // 
             // comboBoxServeur
             // 
+            comboBoxServeur.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxServeur.FormattingEnabled = true;
             comboBoxServeur.Location = new Point(879, 297);
             comboBoxServeur.Margin = new Padding(3, 4, 3, 4);
@@ -207,6 +210,7 @@
             // 
             // comboBoxTable
             // 
+            comboBoxTable.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTable.FormattingEnabled = true;
             comboBoxTable.Location = new Point(879, 394);
             comboBoxTable.Margin = new Padding(3, 4, 3, 4);
@@ -249,6 +253,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1172, 795);
+            Controls.Add(DataGridCuisine);
             Controls.Add(buttonRenitialiserFiltre);
             Controls.Add(comboBoxTable);
             Controls.Add(label3);
@@ -261,7 +266,6 @@
             Controls.Add(panel1);
             Controls.Add(panel5);
             Controls.Add(panel3);
-            Controls.Add(DataGridCuisine);
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.None;
             Name = "Formcuisine";

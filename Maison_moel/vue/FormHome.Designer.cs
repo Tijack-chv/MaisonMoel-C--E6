@@ -360,10 +360,10 @@
         private Button buttonHackathon;
         public Panel panelHome;
         private Button buttonEquipe;
-        private Panel panelAffichage;
         private Panel panelNorth;
         private Button buttonMenu;
         private Label labelOrganisation;
         private PictureBox pictureBoxLogo;
+        public Panel panelAffichage;
     }
 }
