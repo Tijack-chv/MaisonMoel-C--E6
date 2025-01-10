@@ -12,7 +12,13 @@ namespace Maison_moel.Model
     {
         public static List<Etat> ListeEtat()
         {
+            
             return Model.MonModel.Etats.ToList();
+        }
+
+        public static List<Commande> ListeCommandeParEtat(int idEtat)
+        {
+            return Model.MonModel.Commandes.Where(c => c.IdEtat == idEtat).ToList();
         }
     }
 }

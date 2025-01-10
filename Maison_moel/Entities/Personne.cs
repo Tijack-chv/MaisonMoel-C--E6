@@ -26,4 +26,10 @@ public partial class Personne
     public virtual Serveur? Serveur { get; set; }
 
     public virtual ICollection<TokenUserApi> TokenUserApis { get; set; } = new List<TokenUserApi>();
+
+    public string NomComplet
+    {
+        get { return Nom + " " + Prenom; }
+
+    }
 }

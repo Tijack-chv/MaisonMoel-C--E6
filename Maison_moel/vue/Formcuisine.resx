@@ -121,16 +121,25 @@
     <value>17, 17</value>
   </metadata>
   <metadata name="bindingSourceEtat.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>220, 1</value>
+    <value>216, 21</value>
+  </metadata>
+  <metadata name="bindingSourceServeur.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>410, 20</value>
+  </metadata>
+  <metadata name="bindingSourceTable.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>622, 24</value>
+  </metadata>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>813, 24</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>25</value>
+    <value>87</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABdwAAAXcCAYAAAA4NUxkAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vQAADr0BR/uQrQAA/7JJREFUeF7s2OeibNmSlud1O3jvXeO9nXgO0JhKJj4BuUQggVIYqVSA0O4NjSkV
+        vAAADrwBlbxySQAA/7JJREFUeF7s2OeibNmSlud1O3jvXeO9nXgO0JhKJj4BuUQggVIYqVSA0O4NjSkV
         jTmNN0K6vdIYe43YKzLGF3PErFNmm/fHcxPP06v//Y98qfxf5n9Tfjj1972/Xfd/Kn+r+8NLf0/5m2t/
         d/KHXvyN3N9Z+V+1zx78wdz90f9xxv/y4tO3vlf317/35f/+A/jf/tof+Er+dvc/n/H73/hb3v9U9ze9
         v7ry+976G9FfWftfj/yP0e99617xl2f/S9Xt9zz462f9D8/+WsnvfvTfP/ufv6L/6b878rtSf7X7b8/7
