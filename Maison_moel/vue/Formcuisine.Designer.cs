@@ -50,11 +50,14 @@
             comboBoxTable = new ComboBox();
             bindingSourceTable = new BindingSource(components);
             buttonRenitialiserFiltre = new Button();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            modifierLaCommandeToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)DataGridCuisine).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceCuisine).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceEtat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceServeur).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceTable).BeginInit();
+            contextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // DataGridCuisine
@@ -227,6 +230,19 @@
             buttonRenitialiserFiltre.UseVisualStyleBackColor = false;
             buttonRenitialiserFiltre.Click += buttonRenitialiserFiltre_Click;
             // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { modifierLaCommandeToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(231, 28);
+            // 
+            // modifierLaCommandeToolStripMenuItem
+            // 
+            modifierLaCommandeToolStripMenuItem.Name = "modifierLaCommandeToolStripMenuItem";
+            modifierLaCommandeToolStripMenuItem.Size = new Size(230, 24);
+            modifierLaCommandeToolStripMenuItem.Text = "Modifier la commande";
+            // 
             // Formcuisine
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -256,6 +272,7 @@
             ((System.ComponentModel.ISupportInitialize)bindingSourceEtat).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceServeur).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceTable).EndInit();
+            contextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -279,5 +296,7 @@
         private ComboBox comboBoxTable;
         private BindingSource bindingSourceTable;
         private Button buttonRenitialiserFiltre;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem modifierLaCommandeToolStripMenuItem;
     }
 }
