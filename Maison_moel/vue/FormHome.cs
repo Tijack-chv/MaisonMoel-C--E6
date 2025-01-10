@@ -71,5 +71,14 @@ namespace Maison_moel.vue
             panelVisible();
             panelHome.Visible = true;
         }
+
+        private void buttonJury_Click(object sender, EventArgs e)
+        {
+            buttonAffiche(!buttonSettings.Visible);
+
+            sousF.openChildForm(new FormAdministration());
+            panelVisible();
+            panelHome.Visible = true;
+        }
     }
 }

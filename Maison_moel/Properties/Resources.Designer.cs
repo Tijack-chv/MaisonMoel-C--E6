@@ -59,5 +59,15 @@ namespace Maison_moel.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gradient_1500_1500_1_ {
+            get {
+                object obj = ResourceManager.GetObject("gradient_1500_1500_1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

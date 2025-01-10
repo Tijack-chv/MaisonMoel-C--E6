@@ -74,18 +74,20 @@
             panelWest.Controls.Add(panelHome);
             panelWest.Controls.Add(buttonEquipe);
             panelWest.Dock = DockStyle.Left;
-            panelWest.Location = new Point(0, 111);
-            panelWest.MaximumSize = new Size(255, 653);
+            panelWest.Location = new Point(0, 83);
+            panelWest.Margin = new Padding(3, 2, 3, 2);
+            panelWest.MaximumSize = new Size(223, 490);
             panelWest.Name = "panelWest";
-            panelWest.Size = new Size(255, 637);
+            panelWest.Size = new Size(223, 490);
             panelWest.TabIndex = 4;
             // 
             // panelJury
             // 
             panelJury.BackColor = Color.SeaGreen;
-            panelJury.Location = new Point(1, 319);
+            panelJury.Location = new Point(1, 239);
+            panelJury.Margin = new Padding(3, 2, 3, 2);
             panelJury.Name = "panelJury";
-            panelJury.Size = new Size(3, 79);
+            panelJury.Size = new Size(3, 59);
             panelJury.TabIndex = 4;
             // 
             // buttonJury
@@ -97,36 +99,41 @@
             buttonJury.ForeColor = Color.FromArgb(255, 235, 153);
             buttonJury.Image = (Image)resources.GetObject("buttonJury.Image");
             buttonJury.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonJury.Location = new Point(5, 317);
+            buttonJury.Location = new Point(4, 238);
+            buttonJury.Margin = new Padding(3, 2, 3, 2);
             buttonJury.Name = "buttonJury";
-            buttonJury.Size = new Size(249, 79);
+            buttonJury.Size = new Size(218, 59);
             buttonJury.TabIndex = 2;
             buttonJury.Text = "       Jury";
             buttonJury.TextAlign = ContentAlignment.MiddleLeft;
             buttonJury.UseVisualStyleBackColor = false;
+            buttonJury.Click += buttonJury_Click;
             // 
             // panelAbout
             // 
             panelAbout.BackColor = Color.SeaGreen;
-            panelAbout.Location = new Point(1, 485);
+            panelAbout.Location = new Point(1, 364);
+            panelAbout.Margin = new Padding(3, 2, 3, 2);
             panelAbout.Name = "panelAbout";
-            panelAbout.Size = new Size(3, 79);
+            panelAbout.Size = new Size(3, 59);
             panelAbout.TabIndex = 5;
             // 
             // panelHackathon
             // 
             panelHackathon.BackColor = Color.SeaGreen;
-            panelHackathon.Location = new Point(1, 151);
+            panelHackathon.Location = new Point(1, 113);
+            panelHackathon.Margin = new Padding(3, 2, 3, 2);
             panelHackathon.Name = "panelHackathon";
-            panelHackathon.Size = new Size(3, 79);
+            panelHackathon.Size = new Size(3, 59);
             panelHackathon.TabIndex = 1;
             // 
             // panelMembreEquipe
             // 
             panelMembreEquipe.BackColor = Color.SeaGreen;
-            panelMembreEquipe.Location = new Point(1, 235);
+            panelMembreEquipe.Location = new Point(1, 176);
+            panelMembreEquipe.Margin = new Padding(3, 2, 3, 2);
             panelMembreEquipe.Name = "panelMembreEquipe";
-            panelMembreEquipe.Size = new Size(3, 79);
+            panelMembreEquipe.Size = new Size(3, 59);
             panelMembreEquipe.TabIndex = 3;
             // 
             // buttonAbout
@@ -138,9 +145,10 @@
             buttonAbout.ForeColor = Color.White;
             buttonAbout.Image = (Image)resources.GetObject("buttonAbout.Image");
             buttonAbout.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonAbout.Location = new Point(3, 485);
+            buttonAbout.Location = new Point(3, 364);
+            buttonAbout.Margin = new Padding(3, 2, 3, 2);
             buttonAbout.Name = "buttonAbout";
-            buttonAbout.Size = new Size(249, 79);
+            buttonAbout.Size = new Size(218, 59);
             buttonAbout.TabIndex = 2;
             buttonAbout.Text = "       Information";
             buttonAbout.TextAlign = ContentAlignment.MiddleLeft;
@@ -149,9 +157,10 @@
             // panelQuitter
             // 
             panelQuitter.BackColor = Color.SeaGreen;
-            panelQuitter.Location = new Point(1, 569);
+            panelQuitter.Location = new Point(1, 427);
+            panelQuitter.Margin = new Padding(3, 2, 3, 2);
             panelQuitter.Name = "panelQuitter";
-            panelQuitter.Size = new Size(3, 79);
+            panelQuitter.Size = new Size(3, 59);
             panelQuitter.TabIndex = 6;
             // 
             // labelAdmin
@@ -159,10 +168,10 @@
             labelAdmin.AutoSize = true;
             labelAdmin.Font = new Font("SimSun-ExtB", 18F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             labelAdmin.ForeColor = Color.FromArgb(255, 235, 153);
-            labelAdmin.Location = new Point(3, 19);
+            labelAdmin.Location = new Point(3, 14);
             labelAdmin.Name = "labelAdmin";
             labelAdmin.RightToLeft = RightToLeft.Yes;
-            labelAdmin.Size = new Size(173, 30);
+            labelAdmin.Size = new Size(140, 24);
             labelAdmin.TabIndex = 4;
             labelAdmin.Text = "Nom Prenom";
             // 
@@ -175,9 +184,10 @@
             buttonQuitter.ForeColor = Color.White;
             buttonQuitter.Image = (Image)resources.GetObject("buttonQuitter.Image");
             buttonQuitter.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonQuitter.Location = new Point(3, 569);
+            buttonQuitter.Location = new Point(3, 427);
+            buttonQuitter.Margin = new Padding(3, 2, 3, 2);
             buttonQuitter.Name = "buttonQuitter";
-            buttonQuitter.Size = new Size(249, 79);
+            buttonQuitter.Size = new Size(218, 59);
             buttonQuitter.TabIndex = 2;
             buttonQuitter.Text = "       Quitter";
             buttonQuitter.TextAlign = ContentAlignment.MiddleLeft;
@@ -186,9 +196,10 @@
             // panelSettings
             // 
             panelSettings.BackColor = Color.SeaGreen;
-            panelSettings.Location = new Point(1, 403);
+            panelSettings.Location = new Point(1, 302);
+            panelSettings.Margin = new Padding(3, 2, 3, 2);
             panelSettings.Name = "panelSettings";
-            panelSettings.Size = new Size(3, 79);
+            panelSettings.Size = new Size(3, 59);
             panelSettings.TabIndex = 4;
             // 
             // buttonSettings
@@ -200,9 +211,10 @@
             buttonSettings.ForeColor = Color.White;
             buttonSettings.Image = (Image)resources.GetObject("buttonSettings.Image");
             buttonSettings.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonSettings.Location = new Point(3, 401);
+            buttonSettings.Location = new Point(3, 301);
+            buttonSettings.Margin = new Padding(3, 2, 3, 2);
             buttonSettings.Name = "buttonSettings";
-            buttonSettings.Size = new Size(249, 79);
+            buttonSettings.Size = new Size(218, 59);
             buttonSettings.TabIndex = 2;
             buttonSettings.Text = "       Paramètre";
             buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
@@ -217,9 +229,10 @@
             buttonHome.ForeColor = Color.FromArgb(255, 235, 153);
             buttonHome.Image = (Image)resources.GetObject("buttonHome.Image");
             buttonHome.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonHome.Location = new Point(3, 67);
+            buttonHome.Location = new Point(3, 50);
+            buttonHome.Margin = new Padding(3, 2, 3, 2);
             buttonHome.Name = "buttonHome";
-            buttonHome.Size = new Size(249, 79);
+            buttonHome.Size = new Size(218, 59);
             buttonHome.TabIndex = 0;
             buttonHome.Text = "       Accueil";
             buttonHome.TextAlign = ContentAlignment.MiddleLeft;
@@ -235,9 +248,10 @@
             buttonHackathon.ForeColor = Color.FromArgb(255, 235, 153);
             buttonHackathon.Image = (Image)resources.GetObject("buttonHackathon.Image");
             buttonHackathon.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonHackathon.Location = new Point(3, 151);
+            buttonHackathon.Location = new Point(3, 113);
+            buttonHackathon.Margin = new Padding(3, 2, 3, 2);
             buttonHackathon.Name = "buttonHackathon";
-            buttonHackathon.Size = new Size(249, 79);
+            buttonHackathon.Size = new Size(218, 59);
             buttonHackathon.TabIndex = 1;
             buttonHackathon.Text = "       Hackathon";
             buttonHackathon.TextAlign = ContentAlignment.MiddleLeft;
@@ -246,9 +260,10 @@
             // panelHome
             // 
             panelHome.BackColor = Color.SeaGreen;
-            panelHome.Location = new Point(0, 67);
+            panelHome.Location = new Point(0, 50);
+            panelHome.Margin = new Padding(3, 2, 3, 2);
             panelHome.Name = "panelHome";
-            panelHome.Size = new Size(3, 79);
+            panelHome.Size = new Size(3, 59);
             panelHome.TabIndex = 0;
             // 
             // buttonEquipe
@@ -260,9 +275,10 @@
             buttonEquipe.ForeColor = Color.FromArgb(255, 235, 153);
             buttonEquipe.Image = (Image)resources.GetObject("buttonEquipe.Image");
             buttonEquipe.ImageAlign = ContentAlignment.MiddleLeft;
-            buttonEquipe.Location = new Point(3, 235);
+            buttonEquipe.Location = new Point(3, 176);
+            buttonEquipe.Margin = new Padding(3, 2, 3, 2);
             buttonEquipe.Name = "buttonEquipe";
-            buttonEquipe.Size = new Size(249, 79);
+            buttonEquipe.Size = new Size(218, 59);
             buttonEquipe.TabIndex = 1;
             buttonEquipe.Text = "       Cuisinier";
             buttonEquipe.TextAlign = ContentAlignment.MiddleLeft;
@@ -272,9 +288,10 @@
             // 
             panelAffichage.BackColor = Color.Transparent;
             panelAffichage.Dock = DockStyle.Fill;
-            panelAffichage.Location = new Point(0, 111);
+            panelAffichage.Location = new Point(0, 83);
+            panelAffichage.Margin = new Padding(3, 2, 3, 2);
             panelAffichage.Name = "panelAffichage";
-            panelAffichage.Size = new Size(1167, 411);
+            panelAffichage.Size = new Size(1021, 493);
             panelAffichage.TabIndex = 5;
             // 
             // panelNorth
@@ -285,8 +302,9 @@
             panelNorth.Controls.Add(pictureBoxLogo);
             panelNorth.Dock = DockStyle.Top;
             panelNorth.Location = new Point(0, 0);
+            panelNorth.Margin = new Padding(3, 2, 3, 2);
             panelNorth.Name = "panelNorth";
-            panelNorth.Size = new Size(1167, 111);
+            panelNorth.Size = new Size(1021, 83);
             panelNorth.TabIndex = 3;
             // 
             // buttonMenu
@@ -296,8 +314,9 @@
             buttonMenu.BackgroundImageLayout = ImageLayout.Center;
             buttonMenu.FlatStyle = FlatStyle.Popup;
             buttonMenu.Location = new Point(0, 0);
+            buttonMenu.Margin = new Padding(3, 2, 3, 2);
             buttonMenu.Name = "buttonMenu";
-            buttonMenu.Size = new Size(99, 111);
+            buttonMenu.Size = new Size(87, 83);
             buttonMenu.TabIndex = 5;
             buttonMenu.TextAlign = ContentAlignment.MiddleRight;
             buttonMenu.UseVisualStyleBackColor = false;
@@ -308,29 +327,31 @@
             labelOrganisation.AutoSize = true;
             labelOrganisation.Font = new Font("SimSun-ExtB", 28F, FontStyle.Bold | FontStyle.Italic);
             labelOrganisation.ForeColor = Color.FromArgb(255, 235, 153);
-            labelOrganisation.Location = new Point(486, 31);
+            labelOrganisation.Location = new Point(425, 23);
             labelOrganisation.Name = "labelOrganisation";
-            labelOrganisation.Size = new Size(296, 47);
+            labelOrganisation.Size = new Size(237, 38);
             labelOrganisation.TabIndex = 3;
             labelOrganisation.Text = "MAISON MOËL";
             // 
             // pictureBoxLogo
             // 
-            pictureBoxLogo.Location = new Point(1014, 1);
+            pictureBoxLogo.Location = new Point(887, 1);
+            pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(141, 105);
+            pictureBoxLogo.Size = new Size(123, 79);
             pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLogo.TabIndex = 2;
             pictureBoxLogo.TabStop = false;
             // 
             // FormHome
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1167, 522);
+            ClientSize = new Size(1021, 576);
             Controls.Add(panelWest);
             Controls.Add(panelAffichage);
             Controls.Add(panelNorth);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormHome";
             Text = "FormHome";
             Load += FormHome_Load;

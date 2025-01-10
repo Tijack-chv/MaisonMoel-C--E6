@@ -74,7 +74,7 @@ namespace Maison_moel.vue
             });
 
             DataGridCuisine.DataSource = bindingSourceCuisine;
-          
+
 
             // Configuration des colonnes
             DataGridCuisine.Columns[0].HeaderText = "Commande";
@@ -137,6 +137,8 @@ namespace Maison_moel.vue
 
 
 
+
+
         //private void bindingSourceEtat_CurrentChanged(object sender, EventArgs e)
         //{
         //    if (comboEtat.SelectedIndex != -1)
@@ -160,5 +162,5 @@ namespace Maison_moel.vue
     }
 
 
-    }
+}
 
