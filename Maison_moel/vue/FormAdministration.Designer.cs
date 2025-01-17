@@ -43,6 +43,7 @@
             label_filtrePrenom = new Label();
             label1 = new Label();
             dateTimePicker_DateNaissance = new DateTimePicker();
+            buttonRenitialiserFiltre = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).BeginInit();
             SuspendLayout();
@@ -118,7 +119,7 @@
             label_filtreNom.AutoSize = true;
             label_filtreNom.BackColor = Color.Transparent;
             label_filtreNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtreNom.Location = new Point(41, 169);
+            label_filtreNom.Location = new Point(41, 152);
             label_filtreNom.Name = "label_filtreNom";
             label_filtreNom.Size = new Size(136, 20);
             label_filtreNom.TabIndex = 28;
@@ -126,7 +127,7 @@
             // 
             // txtbx_filtreNom
             // 
-            txtbx_filtreNom.Location = new Point(43, 209);
+            txtbx_filtreNom.Location = new Point(43, 192);
             txtbx_filtreNom.Name = "txtbx_filtreNom";
             txtbx_filtreNom.Size = new Size(211, 23);
             txtbx_filtreNom.TabIndex = 29;
@@ -134,7 +135,7 @@
             // 
             // txtbx_filtrePrenom
             // 
-            txtbx_filtrePrenom.Location = new Point(43, 302);
+            txtbx_filtrePrenom.Location = new Point(43, 279);
             txtbx_filtrePrenom.Name = "txtbx_filtrePrenom";
             txtbx_filtrePrenom.Size = new Size(211, 23);
             txtbx_filtrePrenom.TabIndex = 31;
@@ -145,7 +146,7 @@
             label_filtrePrenom.AutoSize = true;
             label_filtrePrenom.BackColor = Color.Transparent;
             label_filtrePrenom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtrePrenom.Location = new Point(41, 262);
+            label_filtrePrenom.Location = new Point(41, 239);
             label_filtrePrenom.Name = "label_filtrePrenom";
             label_filtrePrenom.Size = new Size(162, 20);
             label_filtrePrenom.TabIndex = 30;
@@ -156,7 +157,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label1.Location = new Point(43, 352);
+            label1.Location = new Point(43, 328);
             label1.Name = "label1";
             label1.Size = new Size(254, 20);
             label1.TabIndex = 32;
@@ -164,7 +165,7 @@
             // 
             // dateTimePicker_DateNaissance
             // 
-            dateTimePicker_DateNaissance.Location = new Point(43, 392);
+            dateTimePicker_DateNaissance.Location = new Point(43, 368);
             dateTimePicker_DateNaissance.MaxDate = new DateTime(2025, 1, 17, 0, 0, 0, 0);
             dateTimePicker_DateNaissance.MinDate = new DateTime(1950, 1, 1, 0, 0, 0, 0);
             dateTimePicker_DateNaissance.Name = "dateTimePicker_DateNaissance";
@@ -173,12 +174,27 @@
             dateTimePicker_DateNaissance.Value = new DateTime(1975, 1, 1, 0, 0, 0, 0);
             dateTimePicker_DateNaissance.ValueChanged += dateTimePicker_DateNaissance_ValueChanged;
             // 
+            // buttonRenitialiserFiltre
+            // 
+            buttonRenitialiserFiltre.BackColor = Color.FromArgb(30, 35, 40);
+            buttonRenitialiserFiltre.FlatStyle = FlatStyle.Popup;
+            buttonRenitialiserFiltre.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonRenitialiserFiltre.ForeColor = Color.White;
+            buttonRenitialiserFiltre.Location = new Point(43, 433);
+            buttonRenitialiserFiltre.Name = "buttonRenitialiserFiltre";
+            buttonRenitialiserFiltre.Size = new Size(138, 23);
+            buttonRenitialiserFiltre.TabIndex = 51;
+            buttonRenitialiserFiltre.Text = "Rénitialiser Filtre";
+            buttonRenitialiserFiltre.UseVisualStyleBackColor = false;
+            buttonRenitialiserFiltre.Click += buttonRenitialiserFiltre_Click;
+            // 
             // FormAdministration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
             ClientSize = new Size(1010, 557);
+            Controls.Add(buttonRenitialiserFiltre);
             Controls.Add(dateTimePicker_DateNaissance);
             Controls.Add(label1);
             Controls.Add(txtbx_filtrePrenom);
@@ -195,6 +211,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormAdministration";
             Text = "Form_Administration";
+            Load += FormAdministration_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).EndInit();
             ResumeLayout(false);
@@ -217,5 +234,6 @@
         private Label label_filtrePrenom;
         private Label label1;
         private DateTimePicker dateTimePicker_DateNaissance;
+        private Button buttonRenitialiserFiltre;
     }
 }

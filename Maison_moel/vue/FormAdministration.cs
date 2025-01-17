@@ -25,7 +25,7 @@ namespace Maison_moel.vue
 
         }
 
-        private void Form_Administration_Load(object sender, EventArgs e)
+        private void FormAdministration_Load(object sender, EventArgs e)
         {
 
             bindingSourcePersonnes.DataSource = ModelPersonne.ListePersonne().Select(static x => new
@@ -144,5 +144,14 @@ namespace Maison_moel.vue
         {
             AppliquerFiltres();
         }
+
+        private void buttonRenitialiserFiltre_Click(object sender, EventArgs e)
+        {
+            comboBox_Metier.SelectedIndex = 0;
+            txtbx_filtreNom.Text = "";
+            txtbx_filtrePrenom.Text = "";
+            dateTimePicker_DateNaissance.Value = Convert.ToDateTime("01/01/1975");
+        }
+
     }
 }
