@@ -63,6 +63,12 @@ namespace Maison_moel.Model
 
         }
 
+        public static List<Personne> ListePersonneNom(string recherche)
+        {
+            return Model.MonModel.Personnes
+                .Where(c => c.Nom == recherche).ToList();
+        }
+
 
 
 

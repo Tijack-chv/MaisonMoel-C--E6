@@ -37,6 +37,12 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
+            label_filtreNom = new Label();
+            txtbx_filtreNom = new TextBox();
+            txtbx_filtrePrenom = new TextBox();
+            label_filtrePrenom = new Label();
+            label1 = new Label();
+            dateTimePicker_DateNaissance = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).BeginInit();
             SuspendLayout();
@@ -67,9 +73,9 @@
             label_filtreMetier.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             label_filtreMetier.Location = new Point(43, 75);
             label_filtreMetier.Name = "label_filtreMetier";
-            label_filtreMetier.Size = new Size(142, 20);
+            label_filtreMetier.Size = new Size(152, 20);
             label_filtreMetier.TabIndex = 2;
-            label_filtreMetier.Text = "Filtrer par métier";
+            label_filtreMetier.Text = "Filtrer par métier :";
             // 
             // panel5
             // 
@@ -107,12 +113,78 @@
             panel3.Size = new Size(612, 20);
             panel3.TabIndex = 27;
             // 
+            // label_filtreNom
+            // 
+            label_filtreNom.AutoSize = true;
+            label_filtreNom.BackColor = Color.Transparent;
+            label_filtreNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label_filtreNom.Location = new Point(41, 169);
+            label_filtreNom.Name = "label_filtreNom";
+            label_filtreNom.Size = new Size(136, 20);
+            label_filtreNom.TabIndex = 28;
+            label_filtreNom.Text = "Filtrer par nom :";
+            // 
+            // txtbx_filtreNom
+            // 
+            txtbx_filtreNom.Location = new Point(43, 209);
+            txtbx_filtreNom.Name = "txtbx_filtreNom";
+            txtbx_filtreNom.Size = new Size(211, 23);
+            txtbx_filtreNom.TabIndex = 29;
+            txtbx_filtreNom.TextChanged += txtbx_filtreNom_TextChanged;
+            // 
+            // txtbx_filtrePrenom
+            // 
+            txtbx_filtrePrenom.Location = new Point(43, 302);
+            txtbx_filtrePrenom.Name = "txtbx_filtrePrenom";
+            txtbx_filtrePrenom.Size = new Size(211, 23);
+            txtbx_filtrePrenom.TabIndex = 31;
+            txtbx_filtrePrenom.TextChanged += txtbx_filtrePrenom_TextChanged;
+            // 
+            // label_filtrePrenom
+            // 
+            label_filtrePrenom.AutoSize = true;
+            label_filtrePrenom.BackColor = Color.Transparent;
+            label_filtrePrenom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label_filtrePrenom.Location = new Point(41, 262);
+            label_filtrePrenom.Name = "label_filtrePrenom";
+            label_filtrePrenom.Size = new Size(162, 20);
+            label_filtrePrenom.TabIndex = 30;
+            label_filtrePrenom.Text = "Filtrer par prénom :";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label1.Location = new Point(43, 352);
+            label1.Name = "label1";
+            label1.Size = new Size(254, 20);
+            label1.TabIndex = 32;
+            label1.Text = "Filtrer par Date de Naissance :";
+            // 
+            // dateTimePicker_DateNaissance
+            // 
+            dateTimePicker_DateNaissance.Location = new Point(43, 392);
+            dateTimePicker_DateNaissance.MaxDate = new DateTime(2025, 1, 17, 0, 0, 0, 0);
+            dateTimePicker_DateNaissance.MinDate = new DateTime(1950, 1, 1, 0, 0, 0, 0);
+            dateTimePicker_DateNaissance.Name = "dateTimePicker_DateNaissance";
+            dateTimePicker_DateNaissance.Size = new Size(211, 23);
+            dateTimePicker_DateNaissance.TabIndex = 33;
+            dateTimePicker_DateNaissance.Value = new DateTime(1975, 1, 1, 0, 0, 0, 0);
+            dateTimePicker_DateNaissance.ValueChanged += dateTimePicker_DateNaissance_ValueChanged;
+            // 
             // FormAdministration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
             ClientSize = new Size(1010, 557);
+            Controls.Add(dateTimePicker_DateNaissance);
+            Controls.Add(label1);
+            Controls.Add(txtbx_filtrePrenom);
+            Controls.Add(label_filtrePrenom);
+            Controls.Add(txtbx_filtreNom);
+            Controls.Add(label_filtreNom);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel5);
@@ -123,7 +195,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormAdministration";
             Text = "Form_Administration";
-            Load += Form_Administration_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).EndInit();
             ResumeLayout(false);
@@ -140,5 +211,11 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
+        private Label label_filtreNom;
+        private TextBox txtbx_filtreNom;
+        private TextBox txtbx_filtrePrenom;
+        private Label label_filtrePrenom;
+        private Label label1;
+        private DateTimePicker dateTimePicker_DateNaissance;
     }
 }

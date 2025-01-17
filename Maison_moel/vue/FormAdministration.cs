@@ -18,96 +18,107 @@ namespace Maison_moel.vue
         {
             InitializeComponent();
 
+            comboBox_Metier.Items.Add("");
             comboBox_Metier.Items.Add("Serveurs");
             comboBox_Metier.Items.Add("Administrateurs");
             comboBox_Metier.Items.Add("Cuisiniers");
-            comboBox_Metier.SelectedIndex = -1;
+
         }
 
         private void Form_Administration_Load(object sender, EventArgs e)
         {
-            
-                bindingSourcePersonnes.DataSource = ModelPersonne.ListePersonne().Select(static x => new
-                {
-                    x.Nom,
-                    x.Prenom,
-                    x.DateNaiss,
-                    x.Email,
-                });
 
-                dataGridPersonne.DataSource = bindingSourcePersonnes;
+            bindingSourcePersonnes.DataSource = ModelPersonne.ListePersonne().Select(static x => new
+            {
+                x.Nom,
+                x.Prenom,
+                x.DateNaiss,
+                x.Email,
+            });
+
+            dataGridPersonne.DataSource = bindingSourcePersonnes;
 
 
-                // Configuration des colonnes
-                dataGridPersonne.Columns[0].HeaderText = "Nom";
-                dataGridPersonne.Columns[1].HeaderText = "Prénom";
-                dataGridPersonne.Columns[2].HeaderText = "Date de Naissance";
-                dataGridPersonne.Columns[3].HeaderText = "Email";
-                dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            // Configuration des colonnes
+            dataGridPersonne.Columns[0].HeaderText = "Nom";
+            dataGridPersonne.Columns[1].HeaderText = "Prénom";
+            dataGridPersonne.Columns[2].HeaderText = "Date de Naissance";
+            dataGridPersonne.Columns[3].HeaderText = "Email";
+            dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }
+
+        private void Form_AdministrationFiltre_Load(List<Personne> personne)
+        {
+            bindingSourcePersonnes.DataSource = personne.Select(static x => new
+            {
+                x.Nom,
+                x.Prenom,
+                x.DateNaiss,
+                x.Email,
+            });
+
+            dataGridPersonne.DataSource = bindingSourcePersonnes;
+
+
+            // Configuration des colonnes
+            dataGridPersonne.Columns[0].HeaderText = "Nom";
+            dataGridPersonne.Columns[1].HeaderText = "Prénom";
+            dataGridPersonne.Columns[2].HeaderText = "Date de Naissance";
+            dataGridPersonne.Columns[3].HeaderText = "Email";
+            dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+
 
         private void AppliquerFiltres()
         {
-            if (comboBox_Metier.SelectedIndex == 0)
+            List<Personne> query = new List<Personne>();
+            List<Personne> query1 = ModelPersonne.ListePersonne().ToList();
+            List<Personne> query2 = new List<Personne>();
+
+            if (!string.IsNullOrEmpty(txtbx_filtreNom.Text))
+                query1 = query1.Where(x => x.Nom.Contains(txtbx_filtreNom.Text)).ToList();
+            if (!string.IsNullOrEmpty(txtbx_filtrePrenom.Text))
+                query1 = query1.Where(x => x.Prenom.Contains(txtbx_filtrePrenom.Text)).ToList();
+            if (dateTimePicker_DateNaissance.Value != dateTimePicker_DateNaissance.MinDate)
+                query1 = query1.Where(x => x.DateNaiss >= DateOnly.FromDateTime(dateTimePicker_DateNaissance.Value)).ToList();
+            if (comboBox_Metier.SelectedIndex != 0)
             {
-                bindingSourcePersonnes.DataSource = ModelPersonne.ListeServeur().Select(static x => new
+                if (comboBox_Metier.SelectedIndex == 1)
                 {
-                    x.Nom,
-                    x.Prenom,
-                    x.DateNaiss,
-                    x.Email,
-                });
-
-                dataGridPersonne.DataSource = bindingSourcePersonnes;
-
-                // Configuration des colonnes
-                dataGridPersonne.Columns[0].HeaderText = "Nom";
-                dataGridPersonne.Columns[1].HeaderText = "Prénom";
-                dataGridPersonne.Columns[2].HeaderText = "Date de Naissance";
-                dataGridPersonne.Columns[3].HeaderText = "Email";
-                dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+                    query2 = ModelPersonne.ListeServeur();
+                    query = query1.Intersect(query2).ToList();
+                }
+                if (comboBox_Metier.SelectedIndex == 2)
+                {
+                    query2 = ModelPersonne.ListeAdmin();
+                    query = query1.Intersect(query2).ToList();
+                }
+                if (comboBox_Metier.SelectedIndex == 3)
+                {
+                    query2 = ModelPersonne.ListeCuisinier();
+                    query = query1.Intersect(query2).ToList();
+                }
             }
-            if (comboBox_Metier.SelectedIndex == 1)
+            else
             {
-                bindingSourcePersonnes.DataSource = ModelPersonne.ListeAdmin().Select(static x => new
-                {
-                    x.Nom,
-                    x.Prenom,
-                    x.DateNaiss,
-                    x.Email,
-                });
-
-                dataGridPersonne.DataSource = bindingSourcePersonnes;
-
-                // Configuration des colonnes
-                dataGridPersonne.Columns[0].HeaderText = "Nom";
-                dataGridPersonne.Columns[1].HeaderText = "Prénom";
-                dataGridPersonne.Columns[2].HeaderText = "Date de Naissance";
-                dataGridPersonne.Columns[3].HeaderText = "Email";
-                dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                query = query1;
             }
-            if (comboBox_Metier.SelectedIndex == 2)
+
+            if (query.Any())
             {
-                bindingSourcePersonnes.DataSource = ModelPersonne.ListeCuisinier().Select(static x => new
-                {
-                    x.Nom,
-                    x.Prenom,
-                    x.DateNaiss,
-                    x.Email,
-                });
-
-                dataGridPersonne.DataSource = bindingSourcePersonnes;
-
-                // Configuration des colonnes
-                dataGridPersonne.Columns[0].HeaderText = "Nom";
-                dataGridPersonne.Columns[1].HeaderText = "Prénom";
-                dataGridPersonne.Columns[2].HeaderText = "Date de Naissance";
-                dataGridPersonne.Columns[3].HeaderText = "Email";
-                dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                Form_AdministrationFiltre_Load(query);
             }
+            else
+            {
+                // Si la liste est vide, vide le DataGridView et affiche un message
+                dataGridPersonne.DataSource = null;
+                MessageBox.Show("Aucun membre ne correspond aux critères des filtres !", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
+
 
         private void comboBox_metier_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -117,6 +128,21 @@ namespace Maison_moel.vue
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtbx_filtreNom_TextChanged(object sender, EventArgs e)
+        {
+            AppliquerFiltres();
+        }
+
+        private void txtbx_filtrePrenom_TextChanged(object sender, EventArgs e)
+        {
+            AppliquerFiltres();
+        }
+
+        private void dateTimePicker_DateNaissance_ValueChanged(object sender, EventArgs e)
+        {
+            AppliquerFiltres();
         }
     }
 }
