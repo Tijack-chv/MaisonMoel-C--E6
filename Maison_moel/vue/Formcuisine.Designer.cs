@@ -167,7 +167,6 @@
             // 
             // comboEtat
             // 
-            comboEtat.DropDownStyle = ComboBoxStyle.DropDownList;
             comboEtat.FormattingEnabled = true;
             comboEtat.Location = new Point(879, 193);
             comboEtat.Margin = new Padding(3, 4, 3, 4);
@@ -175,6 +174,7 @@
             comboEtat.Size = new Size(228, 28);
             comboEtat.TabIndex = 45;
             comboEtat.SelectedIndexChanged += comboEtat_SelectedIndexChanged;
+        
             // 
             // label2
             // 
@@ -189,7 +189,6 @@
             // 
             // comboBoxServeur
             // 
-            comboBoxServeur.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxServeur.FormattingEnabled = true;
             comboBoxServeur.Location = new Point(879, 297);
             comboBoxServeur.Margin = new Padding(3, 4, 3, 4);
@@ -210,7 +209,6 @@
             // 
             // comboBoxTable
             // 
-            comboBoxTable.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxTable.FormattingEnabled = true;
             comboBoxTable.Location = new Point(879, 394);
             comboBoxTable.Margin = new Padding(3, 4, 3, 4);

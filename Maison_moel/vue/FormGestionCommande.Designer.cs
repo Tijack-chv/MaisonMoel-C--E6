@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGestionCommande));
             comboBoxTable = new ComboBox();
             label1 = new Label();
@@ -41,6 +42,12 @@
             panel2 = new Panel();
             titre = new Label();
             buttonModifier = new Button();
+            bindingSourceEtat = new BindingSource(components);
+            bindingSourceServeur = new BindingSource(components);
+            bindingSourceTable = new BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)bindingSourceEtat).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceServeur).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceTable).BeginInit();
             SuspendLayout();
             // 
             // comboBoxTable
@@ -159,6 +166,7 @@
             buttonModifier.TabIndex = 62;
             buttonModifier.Text = "Modifier";
             buttonModifier.UseVisualStyleBackColor = false;
+            buttonModifier.Click += buttonModifier_Click;
             // 
             // FormGestionCommande
             // 
@@ -181,6 +189,9 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormGestionCommande";
             Text = "FormGestionCommande";
+            ((System.ComponentModel.ISupportInitialize)bindingSourceEtat).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceServeur).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceTable).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -199,5 +210,8 @@
         private Panel panel2;
         private Label titre;
         private Button buttonModifier;
+        private BindingSource bindingSourceEtat;
+        private BindingSource bindingSourceServeur;
+        private BindingSource bindingSourceTable;
     }
 }

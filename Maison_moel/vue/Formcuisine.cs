@@ -147,9 +147,9 @@ namespace Maison_moel.vue
                 DataGridViewRow selectedRow = DataGridCuisine.Rows[e.RowIndex];
 
                 int idCommande = Convert.ToInt32(selectedRow.Cells[0].Value);
-                string etat = selectedRow.Cells[1].Value?.ToString() ?? "Inconnu";
-                string numeroTable = selectedRow.Cells[2].Value?.ToString() ?? "Non spécifié";
-                string serveur = selectedRow.Cells[3].Value?.ToString() ?? "Non spécifié";
+                string etat = selectedRow.Cells[1].Value?.ToString() ;
+                string numeroTable = selectedRow.Cells[2].Value?.ToString() ;
+                string serveur = selectedRow.Cells[3].Value?.ToString() ;
 
                 // Ouvrir un formulaire de gestion de commande
                 FormHome fhome = (FormHome)Application.OpenForms["FormHome"];
@@ -161,10 +161,7 @@ namespace Maison_moel.vue
             }
         }
 
-        private void comboEtat_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
+        
     }
 }
 
