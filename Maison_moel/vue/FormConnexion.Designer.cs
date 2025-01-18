@@ -28,170 +28,232 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
-            txt_id = new TextBox();
-            txt_mdp = new TextBox();
-            pictureBox1 = new PictureBox();
-            label3 = new Label();
-            pictureBox2 = new PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConnexion));
+            textBoxEmail = new TextBox();
+            textBoxPassword = new TextBox();
+            labelSeConnecter = new Label();
+            pictureBoxLogo = new PictureBox();
             labelErreurEmail = new Label();
-            labelErreurMdp = new Label();
+            labelErreurPassword = new Label();
             buttonConnecter = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            panelBackground = new Panel();
+            panelExit = new Panel();
+            labelExit = new Label();
+            panelUnderComponent = new Panel();
+            pictureBoxPassword = new PictureBox();
+            pictureBoxEmail = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
+            panelBackground.SuspendLayout();
+            panelExit.SuspendLayout();
+            panelUnderComponent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxPassword).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxEmail).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // textBoxEmail
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.FlatStyle = FlatStyle.Flat;
-            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(279, 151);
-            label1.Name = "label1";
-            label1.Padding = new Padding(1);
-            label1.Size = new Size(127, 56);
-            label1.TabIndex = 0;
-            label1.Text = "Email";
+            textBoxEmail.BackColor = Color.FromArgb(255, 235, 133);
+            textBoxEmail.Font = new Font("Baskerville Old Face", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBoxEmail.ForeColor = Color.Black;
+            textBoxEmail.Location = new Point(90, 102);
+            textBoxEmail.Margin = new Padding(3, 2, 3, 2);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(223, 31);
+            textBoxEmail.TabIndex = 2;
+            textBoxEmail.Text = "Adresse-email";
+            textBoxEmail.Enter += textBoxEmail_Enter;
+            textBoxEmail.Leave += textBoxEmail_Leave;
             // 
-            // label2
+            // textBoxPassword
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.FlatStyle = FlatStyle.Flat;
-            label2.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(129, 256);
-            label2.Name = "label2";
-            label2.Padding = new Padding(1);
-            label2.Size = new Size(277, 56);
-            label2.TabIndex = 1;
-            label2.Text = "Mot de passe";
+            textBoxPassword.BackColor = Color.FromArgb(255, 235, 133);
+            textBoxPassword.Font = new Font("Baskerville Old Face", 15.75F, FontStyle.Bold);
+            textBoxPassword.Location = new Point(90, 192);
+            textBoxPassword.Margin = new Padding(3, 2, 3, 2);
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.Size = new Size(223, 31);
+            textBoxPassword.TabIndex = 3;
+            textBoxPassword.Text = "Mot de passe";
+            textBoxPassword.Enter += textBoxPassword_Enter;
+            textBoxPassword.Leave += textBoxPassword_Leave;
             // 
-            // txt_id
+            // labelSeConnecter
             // 
-            txt_id.BackColor = Color.FromArgb(255, 235, 153);
-            txt_id.Font = new Font("Segoe UI", 12F);
-            txt_id.ForeColor = Color.Black;
-            txt_id.Location = new Point(480, 173);
-            txt_id.Name = "txt_id";
-            txt_id.Size = new Size(254, 34);
-            txt_id.TabIndex = 2;
+            labelSeConnecter.AutoSize = true;
+            labelSeConnecter.BackColor = Color.Transparent;
+            labelSeConnecter.Font = new Font("Baskerville Old Face", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelSeConnecter.ForeColor = Color.Black;
+            labelSeConnecter.Location = new Point(15, 10);
+            labelSeConnecter.Name = "labelSeConnecter";
+            labelSeConnecter.Size = new Size(372, 73);
+            labelSeConnecter.TabIndex = 5;
+            labelSeConnecter.Text = "Se connecter";
             // 
-            // txt_mdp
+            // pictureBoxLogo
             // 
-            txt_mdp.BackColor = Color.FromArgb(255, 235, 153);
-            txt_mdp.Font = new Font("Segoe UI", 12F);
-            txt_mdp.Location = new Point(480, 278);
-            txt_mdp.Name = "txt_mdp";
-            txt_mdp.Size = new Size(254, 34);
-            txt_mdp.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(0, -6);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1081, 546);
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(443, 37);
-            label3.Name = "label3";
-            label3.Size = new Size(309, 62);
-            label3.TabIndex = 5;
-            label3.Text = "Se connecter";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = Color.Transparent;
-            pictureBox2.Location = new Point(31, 12);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(145, 144);
-            pictureBox2.TabIndex = 6;
-            pictureBox2.TabStop = false;
+            pictureBoxLogo.BackColor = Color.Transparent;
+            pictureBoxLogo.BackgroundImageLayout = ImageLayout.Center;
+            pictureBoxLogo.Location = new Point(461, 26);
+            pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(136, 125);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxLogo.TabIndex = 6;
+            pictureBoxLogo.TabStop = false;
             // 
             // labelErreurEmail
             // 
             labelErreurEmail.AutoSize = true;
             labelErreurEmail.BackColor = Color.Transparent;
-            labelErreurEmail.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelErreurEmail.Font = new Font("Baskerville Old Face", 15.75F, FontStyle.Bold);
             labelErreurEmail.ForeColor = Color.Red;
-            labelErreurEmail.Location = new Point(480, 227);
+            labelErreurEmail.Location = new Point(63, 135);
             labelErreurEmail.Name = "labelErreurEmail";
-            labelErreurEmail.Size = new Size(243, 23);
+            labelErreurEmail.Size = new Size(276, 24);
             labelErreurEmail.TabIndex = 28;
             labelErreurEmail.Text = "Erreur : l'email est manquant";
             // 
-            // labelErreurMdp
+            // labelErreurPassword
             // 
-            labelErreurMdp.AutoSize = true;
-            labelErreurMdp.BackColor = Color.Transparent;
-            labelErreurMdp.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelErreurMdp.ForeColor = Color.Red;
-            labelErreurMdp.Location = new Point(480, 327);
-            labelErreurMdp.Name = "labelErreurMdp";
-            labelErreurMdp.Size = new Size(314, 23);
-            labelErreurMdp.TabIndex = 29;
-            labelErreurMdp.Text = "Erreur : le mot de passe est manquant";
+            labelErreurPassword.AutoSize = true;
+            labelErreurPassword.BackColor = Color.Transparent;
+            labelErreurPassword.Font = new Font("Baskerville Old Face", 15.75F, FontStyle.Bold);
+            labelErreurPassword.ForeColor = Color.Red;
+            labelErreurPassword.Location = new Point(23, 229);
+            labelErreurPassword.Name = "labelErreurPassword";
+            labelErreurPassword.Size = new Size(356, 24);
+            labelErreurPassword.TabIndex = 29;
+            labelErreurPassword.Text = "Erreur : le mot de passe est manquant";
             // 
             // buttonConnecter
             // 
-            buttonConnecter.BackColor = Color.FromArgb(255, 235, 153);
+            buttonConnecter.BackColor = Color.FromArgb(255, 235, 133);
             buttonConnecter.FlatStyle = FlatStyle.Popup;
-            buttonConnecter.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonConnecter.Font = new Font("Baskerville Old Face", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonConnecter.ForeColor = Color.Black;
-            buttonConnecter.Location = new Point(682, 422);
-            buttonConnecter.Margin = new Padding(5);
+            buttonConnecter.Location = new Point(85, 291);
+            buttonConnecter.Margin = new Padding(4);
             buttonConnecter.Name = "buttonConnecter";
-            buttonConnecter.Size = new Size(152, 57);
+            buttonConnecter.Size = new Size(232, 48);
             buttonConnecter.TabIndex = 30;
-            buttonConnecter.Text = "Se connecter";
+            buttonConnecter.Text = "Connexion";
             buttonConnecter.UseVisualStyleBackColor = false;
             buttonConnecter.Click += buttonConnecter_Click_1;
+            buttonConnecter.MouseLeave += buttonConnecter_MouseLeave;
+            buttonConnecter.MouseHover += buttonConnecter_MouseHover;
+            // 
+            // panelBackground
+            // 
+            panelBackground.BackColor = Color.FromArgb(40, 45, 50);
+            panelBackground.BackgroundImage = Properties.Resources.FOND_ACCUEIL;
+            panelBackground.BackgroundImageLayout = ImageLayout.Stretch;
+            panelBackground.BorderStyle = BorderStyle.FixedSingle;
+            panelBackground.Controls.Add(panelExit);
+            panelBackground.Controls.Add(panelUnderComponent);
+            panelBackground.Controls.Add(pictureBoxLogo);
+            panelBackground.Dock = DockStyle.Fill;
+            panelBackground.Location = new Point(0, 0);
+            panelBackground.Name = "panelBackground";
+            panelBackground.Size = new Size(1051, 621);
+            panelBackground.TabIndex = 31;
+            // 
+            // panelExit
+            // 
+            panelExit.BackColor = Color.Transparent;
+            panelExit.Controls.Add(labelExit);
+            panelExit.Location = new Point(994, 3);
+            panelExit.Name = "panelExit";
+            panelExit.Size = new Size(52, 57);
+            panelExit.TabIndex = 34;
+            // 
+            // labelExit
+            // 
+            labelExit.AutoSize = true;
+            labelExit.BackColor = Color.Transparent;
+            labelExit.Font = new Font("Cambria", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelExit.ForeColor = Color.White;
+            labelExit.Location = new Point(4, -3);
+            labelExit.Name = "labelExit";
+            labelExit.Size = new Size(52, 57);
+            labelExit.TabIndex = 35;
+            labelExit.Text = "X";
+            labelExit.Click += labelExit_Click;
+            labelExit.MouseLeave += labelExit_MouseLeave;
+            labelExit.MouseHover += labelExit_MouseHover;
+            // 
+            // panelUnderComponent
+            // 
+            panelUnderComponent.Controls.Add(labelSeConnecter);
+            panelUnderComponent.Controls.Add(pictureBoxPassword);
+            panelUnderComponent.Controls.Add(buttonConnecter);
+            panelUnderComponent.Controls.Add(textBoxPassword);
+            panelUnderComponent.Controls.Add(pictureBoxEmail);
+            panelUnderComponent.Controls.Add(textBoxEmail);
+            panelUnderComponent.Controls.Add(labelErreurEmail);
+            panelUnderComponent.Controls.Add(labelErreurPassword);
+            panelUnderComponent.Location = new Point(327, 156);
+            panelUnderComponent.Name = "panelUnderComponent";
+            panelUnderComponent.Size = new Size(404, 365);
+            panelUnderComponent.TabIndex = 33;
+            // 
+            // pictureBoxPassword
+            // 
+            pictureBoxPassword.BackColor = Color.Transparent;
+            pictureBoxPassword.Image = Properties.Resources.passwordW;
+            pictureBoxPassword.Location = new Point(42, 192);
+            pictureBoxPassword.Name = "pictureBoxPassword";
+            pictureBoxPassword.Size = new Size(30, 31);
+            pictureBoxPassword.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxPassword.TabIndex = 32;
+            pictureBoxPassword.TabStop = false;
+            // 
+            // pictureBoxEmail
+            // 
+            pictureBoxEmail.BackColor = Color.Transparent;
+            pictureBoxEmail.Image = Properties.Resources.emailW;
+            pictureBoxEmail.Location = new Point(42, 101);
+            pictureBoxEmail.Name = "pictureBoxEmail";
+            pictureBoxEmail.Size = new Size(30, 31);
+            pictureBoxEmail.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxEmail.TabIndex = 31;
+            pictureBoxEmail.TabStop = false;
             // 
             // FormConnexion
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1076, 530);
-            Controls.Add(buttonConnecter);
-            Controls.Add(labelErreurMdp);
-            Controls.Add(labelErreurEmail);
-            Controls.Add(pictureBox2);
-            Controls.Add(label3);
-            Controls.Add(txt_mdp);
-            Controls.Add(txt_id);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(pictureBox1);
+            ClientSize = new Size(1051, 621);
+            Controls.Add(panelBackground);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormConnexion";
-            Text = "Form1";
+            Text = "Maison Moël";
             Load += FormConnexion_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
+            panelBackground.ResumeLayout(false);
+            panelExit.ResumeLayout(false);
+            panelExit.PerformLayout();
+            panelUnderComponent.ResumeLayout(false);
+            panelUnderComponent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxPassword).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxEmail).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private Label label2;
-        private TextBox txt_id;
-        private TextBox txt_mdp;
-        private PictureBox pictureBox1;
-        private Label label3;
-        private PictureBox pictureBox2;
+        private TextBox textBoxEmail;
+        private TextBox textBoxPassword;
+        private Label labelSeConnecter;
+        private PictureBox pictureBoxLogo;
         private Label labelErreurEmail;
-        private Label labelErreurMdp;
+        private Label labelErreurPassword;
         private Button buttonConnecter;
+        private Panel panelBackground;
+        private PictureBox pictureBoxEmail;
+        private PictureBox pictureBoxPassword;
+        private Panel panelUnderComponent;
+        private Panel panelExit;
+        private Label labelExit;
     }
 }

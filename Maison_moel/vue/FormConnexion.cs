@@ -11,35 +11,22 @@ namespace Maison_moel
         {
             InitializeComponent();
             labelErreurEmail.Visible = false;
-            labelErreurMdp.Visible = false;
+            labelErreurPassword.Visible = false;
         }
 
         private void FormConnexion_Load(object sender, EventArgs e)
         {
-            //Enlève le fond blanc sur l'image
-            label1.Parent = pictureBox1;
-            label2.Parent = pictureBox1;
-            label3.Parent = pictureBox1;
-            pictureBox2.Parent = pictureBox1;
-
-            //Charger les images
-            pictureBox1.Load("http://192.168.143.9:8080/images/FOND_ACCUEIL.png");
-            pictureBox2.Load("http://192.168.143.9:8080/images/LOGO_TRANS.png");
-
-            //Adapter l'image à la taille de la PictureBox
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            //la PictureBox est en arrière-plan
-            pictureBox1.SendToBack();
+            pictureBoxLogo.Load("http://192.168.143.9:8080/images/LOGO_TRANS.png");
+            panelUnderComponent.BackColor = Color.FromArgb(120, 127, 127, 127);
+            this.ControlBox = false;
         }
 
 
         private void buttonConnecter_Click_1(object sender, EventArgs e)
         {
-            if (txt_id.Text == "" || txt_mdp.Text == "" || txt_id.Text == "email" || txt_mdp.Text == "password") //revoir si verif de l'adresse mail et du nombre de caractère dans le mdp
+            if (textBoxEmail.Text == "" || textBoxPassword.Text == "" || textBoxEmail.Text == "Adresse-email" || textBoxPassword.Text == "Mot de passe") //revoir si verif de l'adresse mail et du nombre de caractère dans le mdp
             {
-                if (txt_id.Text == "" || txt_id.Text == "email")
+                if (textBoxEmail.Text == "" || textBoxEmail.Text == "Adresse-email")
                 {
                     labelErreurEmail.Visible = true;
                 }
@@ -47,29 +34,29 @@ namespace Maison_moel
                 {
                     labelErreurEmail.Visible = false;
                 }
-                if (txt_mdp.Text == "" || txt_mdp.Text == "password")
+                if (textBoxPassword.Text == "" || textBoxPassword.Text == "Mot de passe")
                 {
-                    labelErreurMdp.Visible = true;
+                    labelErreurPassword.Visible = true;
                 }
                 else
                 {
-                    labelErreurMdp.Visible = false;
+                    labelErreurPassword.Visible = false;
                 }
             }
             else
             {
                 labelErreurEmail.Visible = false;
-                labelErreurMdp.Visible = false;
+                labelErreurPassword.Visible = false;
 
-                if (ModConnexion.ConnexionAdmin(txt_id.Text, txt_mdp.Text))
+                if (ModConnexion.ConnexionAdmin(textBoxEmail.Text, textBoxPassword.Text))
                 {
                     bool est_admin = false;
                     Personne personne = new();
-                    personne = ModConnexion.RecupererPersonne(txt_id.Text);
+                    personne = ModConnexion.RecupererPersonne(textBoxEmail.Text);
                     List<Admin> lesadmins = ModConnexion.RecupererAdmins();
                     foreach (Admin unadmin in lesadmins)
                     {
-                        if(unadmin.IdPersonne == personne.IdPersonne)
+                        if (unadmin.IdPersonne == personne.IdPersonne)
                         {
                             est_admin = true;
                         }
@@ -83,6 +70,66 @@ namespace Maison_moel
 
         }
 
-      
+        #region Placeholder
+        private void textBoxEmail_Enter(object sender, EventArgs e)
+        {
+            if (textBoxEmail.Text == "Adresse-email")
+            {
+                textBoxEmail.Text = "";
+            }
+        }
+
+        private void textBoxEmail_Leave(object sender, EventArgs e)
+        {
+            if (textBoxEmail.Text == "")
+            {
+                textBoxEmail.Text = "Adresse-email";
+            }
+        }
+
+        private void textBoxPassword_Enter(object sender, EventArgs e)
+        {
+            if (textBoxPassword.Text == "Mot de passe")
+            {
+                textBoxPassword.Text = "";
+            }
+        }
+
+        private void textBoxPassword_Leave(object sender, EventArgs e)
+        {
+            if (textBoxPassword.Text == "")
+            {
+                textBoxPassword.Text = "Mot de passe";
+            }
+        }
+
+        #endregion
+
+        private void labelExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void labelExit_MouseHover(object sender, EventArgs e)
+        {
+            panelExit.BackColor = Color.FromArgb(120, 127, 127, 127);
+            labelExit.ForeColor = Color.Black;
+        }
+
+        private void labelExit_MouseLeave(object sender, EventArgs e)
+        {
+            panelExit.BackColor = Color.Transparent;
+            labelExit.ForeColor = Color.White;
+        }
+
+        private void buttonConnecter_MouseHover(object sender, EventArgs e)
+        {
+            buttonConnecter.BackColor = Color.FromArgb(255, 255, 235, 113);
+        }
+
+        private void buttonConnecter_MouseLeave(object sender, EventArgs e)
+        {
+            buttonConnecter.BackColor = Color.FromArgb(255, 255, 235, 133);
+        }
     }
 }

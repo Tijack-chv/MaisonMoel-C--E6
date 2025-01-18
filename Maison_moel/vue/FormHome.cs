@@ -15,41 +15,52 @@ namespace Maison_moel.vue
 {
     public partial class FormHome : Form
     {
-
-        bool sideBarExpend;
         SFormulaire sousF;
+        public enum EtatDroit
+        {
+            Admin,
+            Cuisinier
+        }
+        EtatDroit etatDroit;
 
         public FormHome(bool est_admin)
         {
             InitializeComponent();
-            bool admin = est_admin;
-
+            est_admin = true;
+            etatDroit = est_admin ? EtatDroit.Admin : EtatDroit.Cuisinier;
             sousF = new(panelAffichage);
-            sousF.openChildForm(new Formcuisine());
-
-            buttonAffiche(false);
-            panelVisible();
         }
 
         private void FormHome_Load(object sender, EventArgs e)
         {
             pictureBoxLogo.Load("http://192.168.143.9:8080/images/LOGO_TRANS.png");
+
+            this.ControlBox = false;
+
+            buttonAffiche(false);
+
+            if (etatDroit == EtatDroit.Cuisinier)
+            {
+                buttonQuitter.Location = buttonAbout.Location;
+                buttonAbout.Location = buttonSettings.Location;
+                buttonSettings.Location = buttonPersonnel.Location;
+                panelWest.Size = new(223, 428);
+            }
+
+            panelVisible();
         }
 
-        private void buttonMenu_Click(object sender, EventArgs e)
-        {
-            buttonAffiche(!buttonSettings.Visible);
-        }
-
+        #region Affichage MenuBar
         private void buttonAffiche(bool test)
         {
             panelWest.Visible = test;
             buttonAbout.Visible = test;
-            buttonEquipe.Visible = test;
-            buttonHackathon.Visible = test;
+            buttonCuisine.Visible = test;
+            buttonCommande.Visible = test;
             buttonQuitter.Visible = test;
             buttonSettings.Visible = test;
-            buttonJury.Visible = test;
+
+            buttonPersonnel.Visible = etatDroit == EtatDroit.Admin ? test : false;
         }
 
         private void panelVisible()
@@ -58,18 +69,66 @@ namespace Maison_moel.vue
             panelSettings.Visible = false;
             panelQuitter.Visible = false;
             panelHome.Visible = false;
-            panelHackathon.Visible = false;
-            panelMembreEquipe.Visible = false;
-            panelJury.Visible = false;
+            panelCommande.Visible = false;
+            panelCuisine.Visible = false;
+            panelPersonnel.Visible = false;
+        }
+        #endregion
+
+        private void buttonMenu_Click(object sender, EventArgs e)
+        {
+            buttonAffiche(!buttonSettings.Visible);
         }
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
             buttonAffiche(!buttonSettings.Visible);
-
-            sousF.openChildForm(new Formcuisine());
             panelVisible();
             panelHome.Visible = true;
+        }
+
+        private void buttonCommande_Click(object sender, EventArgs e)
+        {
+            buttonAffiche(!buttonSettings.Visible);
+            panelVisible();
+            panelCommande.Visible = true;
+        }
+
+        private void buttonCuisine_Click(object sender, EventArgs e)
+        {
+            buttonAffiche(!buttonSettings.Visible);
+            panelVisible();
+            panelCuisine.Visible = true;
+            sousF.openChildForm(new Formcuisine());
+        }
+
+        private void buttonPersonnel_Click(object sender, EventArgs e)
+        {
+            buttonAffiche(!buttonSettings.Visible);
+            panelVisible();
+            panelPersonnel.Visible = true;
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            buttonAffiche(!buttonSettings.Visible);
+            panelVisible();
+            panelSettings.Visible = true;
+        }
+
+        private void buttonAbout_Click(object sender, EventArgs e)
+        {
+            buttonAffiche(!buttonSettings.Visible);
+            panelVisible();
+            panelAbout.Visible = true;
+        }
+
+        private void buttonQuitter_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            //buttonAffiche(!buttonSettings.Visible);
+            //panelVisible();
+            //panelQuitter.Visible = true;
         }
     }
 }
