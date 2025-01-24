@@ -17,7 +17,5 @@ namespace Maison_moel.Model
             .Include(c => c.IdPersonneNavigation).ThenInclude(p => p.IdPersonneNavigation)
             .ToList();
         }
-
-
     }
 }

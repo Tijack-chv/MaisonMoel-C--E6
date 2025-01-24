@@ -56,6 +56,14 @@ namespace Maison_moel.vue
             comboBoxTable.Text = table;
         }
 
+        public FormGestionCommande()
+        {
+            // Initialiser les champs non-nullables avec des valeurs par défaut
+            this.etat = string.Empty;
+            this.serveur = string.Empty;
+            this.table = string.Empty;
+        }
+
         private void buttonModifier_Click(object sender, EventArgs e)
         {
             try
