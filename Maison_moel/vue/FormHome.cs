@@ -92,6 +92,7 @@ namespace Maison_moel.vue
             buttonAffiche(!buttonSettings.Visible);
             panelVisible();
             panelCommande.Visible = true;
+            sousF.openChildForm(new FormGestionCommande());
         }
 
         private void buttonCuisine_Click(object sender, EventArgs e)
