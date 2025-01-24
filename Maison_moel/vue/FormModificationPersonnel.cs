@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Maison_moel.vue
 {
-    public partial class FormModificationServeur : Form
+    public partial class FormModificationPersonnel : Form
     {
-        public FormModificationServeur()
+        public FormModificationPersonnel()
         {
             InitializeComponent();
         }

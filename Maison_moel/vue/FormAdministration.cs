@@ -1,4 +1,5 @@
-﻿using Maison_moel.Entities;
+﻿using ApplicationC.Controller;
+using Maison_moel.Entities;
 using Maison_moel.Model;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,11 @@ namespace Maison_moel.vue
 {
     public partial class FormAdministration : Form
     {
+        SFormulaire sousF;
         public FormAdministration()
         {
             InitializeComponent();
+            
 
             comboBox_Metier.Items.Add("");
             comboBox_Metier.Items.Add("Serveurs");
@@ -30,6 +33,7 @@ namespace Maison_moel.vue
 
             bindingSourcePersonnes.DataSource = ModelPersonne.ListePersonne().Select(static x => new
             {
+                x.IdPersonne,
                 x.Nom,
                 x.Prenom,
                 x.DateNaiss,
@@ -51,7 +55,8 @@ namespace Maison_moel.vue
         private void Form_AdministrationFiltre_Load(List<Personne> personne)
         {
             bindingSourcePersonnes.DataSource = personne.Select(static x => new
-            {
+            {   
+                x.IdPersonne,
                 x.Nom,
                 x.Prenom,
                 x.DateNaiss,
@@ -125,10 +130,6 @@ namespace Maison_moel.vue
             AppliquerFiltres();
         }
 
-        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void txtbx_filtreNom_TextChanged(object sender, EventArgs e)
         {
@@ -153,5 +154,38 @@ namespace Maison_moel.vue
             dateTimePicker_DateNaissance.Value = Convert.ToDateTime("01/01/1975");
         }
 
+        private void ModifierPersonnelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sousF = new(panel_filtre);
+            sousF.openChildForm(new FormModificationPersonnel());
+
+            System.Type type = bindingSourcePersonnes.Current.GetType();
+            int idP = (int)type.GetProperty("IdPersonne").GetValue(bindingSourcePersonnes.Current, null);
+
+            Cuisinier cuisinier = Model.ModelPersonne.GetCuisinierById(idP);
+            Admin admin = Model.ModelPersonne.GetAdminById(idP);
+            Serveur serveur = Model.ModelPersonne.GetServeurById(idP);
+
+            if (cuisinier != null || admin != null || serveur != null)
+            {
+                if (cuisinier != null)
+                {
+
+                }
+                if (admin != null)
+                {
+
+                }
+                if (serveur != null)
+                {
+
+                }
+            }
+            else
+            {
+
+            }
+
+        }
     }
 }

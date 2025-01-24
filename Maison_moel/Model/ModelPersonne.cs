@@ -69,6 +69,47 @@ namespace Maison_moel.Model
                 .Where(c => c.Nom == recherche).ToList();
         }
 
+        public static Cuisinier GetCuisinierById(int id)
+        {
+            Cuisinier cuisiner = new Cuisinier();
+            try
+            {
+                cuisiner = Model.MonModel.Cuisiniers.Include(c => c.IdPersonneNavigation).Include(c => c.IdRoleNavigation).First(x => x.IdPersonne == id);
+            } catch
+            {
+                cuisiner = null;
+            }
+            
+            return cuisiner;
+        }
+
+        public static Admin GetAdminById(int id)
+        {
+            Admin admin = new Admin();
+            try
+            {
+                admin = Model.MonModel.Admins.Include(c => c.IdPersonneNavigation).First(x => x.IdPersonne == id);
+            } catch
+            {
+                admin = null;
+            }
+            
+            return admin;
+        }
+
+        public static Serveur GetServeurById(int id)
+        {
+            Serveur serveur = new Serveur();
+            try
+            {
+                serveur = Model.MonModel.Serveurs.Include(c => c.IdPersonneNavigation).First(x => x.IdPersonne == id);
+            } catch
+            {
+                serveur = null;
+            }
+            
+            return serveur;
+        }
 
 
 
