@@ -63,9 +63,29 @@ namespace Maison_moel.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Arrow_Right_I01_watermarked_2k {
+            get {
+                object obj = ResourceManager.GetObject("Arrow Right.I01.watermarked.2k", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FOND_ACCUEIL {
             get {
                 object obj = ResourceManager.GetObject("FOND_ACCUEIL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FOND_ACCUEIL_modified {
+            get {
+                object obj = ResourceManager.GetObject("FOND_ACCUEIL-modified", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +106,26 @@ namespace Maison_moel.Properties {
         internal static System.Drawing.Bitmap GoldIconNotif {
             get {
                 object obj = ResourceManager.GetObject("GoldIconNotif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gradient_1920_1080 {
+            get {
+                object obj = ResourceManager.GetObject("gradient_1920_1080", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gradient_1920_1080V2 {
+            get {
+                object obj = ResourceManager.GetObject("gradient_1920_1080V2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
