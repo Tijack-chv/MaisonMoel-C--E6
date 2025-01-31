@@ -34,7 +34,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1026, 566);
+            BackgroundImage = Properties.Resources.FOND_ACCUEIL;
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(1024, 460);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormGestionDechets";
             Text = "FormGestionDechets";

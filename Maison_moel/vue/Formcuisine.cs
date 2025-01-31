@@ -160,12 +160,14 @@ namespace Maison_moel.vue
                 string serveur = selectedRow.Cells[3].Value?.ToString() ;
 
                 // Ouvrir un formulaire de gestion de commande
+                /*
                 FormHome fhome = (FormHome)Application.OpenForms["FormHome"];
                 if (fhome != null)
                 {
                     fhome.sousF.closeChildForm(); // pas obligatoire mais mieux
                     fhome.sousF.openChildForm(new FormGestionCommande(idCommande, etat, serveur, numeroTable));
                 }
+                */
             }
         }
 

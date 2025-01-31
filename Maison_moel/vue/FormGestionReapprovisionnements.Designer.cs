@@ -129,7 +129,7 @@
             dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView.RowHeadersVisible = false;
             dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView.Size = new Size(581, 466);
+            dataGridView.Size = new Size(581, 356);
             dataGridView.TabIndex = 9;
             dataGridView.DoubleClick += dataGridView_DoubleClick;
             // 
@@ -261,7 +261,7 @@
             panelPage.Controls.Add(buttonPrec);
             panelPage.Controls.Add(buttonSuiv);
             panelPage.Controls.Add(textBoxPage);
-            panelPage.Location = new Point(208, 520);
+            panelPage.Location = new Point(208, 410);
             panelPage.Name = "panelPage";
             panelPage.Size = new Size(581, 30);
             panelPage.TabIndex = 8;
@@ -314,7 +314,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.FOND_ACCUEIL_modified1;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1026, 566);
+            ClientSize = new Size(1024, 460);
             Controls.Add(dataGridView);
             Controls.Add(panelReappro);
             Controls.Add(panelPage);

@@ -173,7 +173,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1026, 566);
+            ClientSize = new Size(1024, 460);
             Controls.Add(buttonModifier);
             Controls.Add(titre);
             Controls.Add(panel2);

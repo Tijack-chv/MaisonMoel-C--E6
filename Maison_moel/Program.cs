@@ -15,8 +15,8 @@ namespace Maison_moel
             ApplicationConfiguration.Initialize();
             Model.Model.init();
             //Application.Run(new FormConnexion());
-            //Application.Run(new FormHome(true));
-            Application.Run(new FormMenuCuisinier());
+            Application.Run(new FormHome(true,5));
+            //Application.Run(new FormMenuCuisinier());
         }
     }
 }

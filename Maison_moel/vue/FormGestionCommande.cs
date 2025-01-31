@@ -92,21 +92,25 @@ namespace Maison_moel.vue
 
                 MessageBox.Show("La commande a été modifiée avec succès.", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormHome fhome = (FormHome)Application.OpenForms["FormHome"];
+                /*
                 if (fhome != null)
                 {
                     fhome.sousF.closeChildForm(); // pas obligatoire mais mieux
                     fhome.sousF.openChildForm(new Formcuisine());
                 }
+                */
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Erreur lors de la modification : {ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 FormHome fhome = (FormHome)Application.OpenForms["FormHome"];
+                /*
                 if (fhome != null)
                 {
                     fhome.sousF.closeChildForm(); // pas obligatoire mais mieux
                     fhome.sousF.openChildForm(new Formcuisine());
                 }
+                */
             }
         }
 

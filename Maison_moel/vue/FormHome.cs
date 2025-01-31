@@ -1,4 +1,6 @@
 ﻿using ApplicationC.Controller;
+using Maison_moel.controller;
+using Maison_moel.Model;
 using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
@@ -21,8 +23,9 @@ namespace Maison_moel.vue
             Cuisinier
         }
         EtatDroit etatDroit;
+        DateTime dateMessages;
 
-        public FormHome(bool est_admin)
+        public FormHome(bool est_admin, int id)
         {
             InitializeComponent();
             est_admin = true;
@@ -47,6 +50,17 @@ namespace Maison_moel.vue
             }
 
             panelVisible();
+
+            ComponentStyle componentStyle = new();
+            componentStyle.arrondirBordureObjet(pictureBoxNotification);
+            afficheCountNotif();
+            timerCountNotif.Start();
+        }
+
+        private void afficheCountNotif()
+        {
+            labelNotification.Text = ModelMessage.getUnreadMessagesCount().ToString();
+            labelNotification.Text = Convert.ToInt32(labelNotification.Text) > 9 ? "9+" : labelNotification.Text;
         }
 
         #region Affichage MenuBar
@@ -71,6 +85,9 @@ namespace Maison_moel.vue
             panelCommande.Visible = false;
             panelCuisine.Visible = false;
             panelPersonnel.Visible = false;
+
+            panelMessages.Visible = false;
+            timerCountNotif.Stop();
         }
         #endregion
 
@@ -81,6 +98,7 @@ namespace Maison_moel.vue
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
+            sousF.closeChildForm();
             buttonAffiche(!buttonSettings.Visible);
             panelVisible();
             panelHome.Visible = true;
@@ -99,7 +117,7 @@ namespace Maison_moel.vue
             buttonAffiche(!buttonSettings.Visible);
             panelVisible();
             panelCuisine.Visible = true;
-            sousF.openChildForm(new Formcuisine());
+            sousF.openChildForm(new FormMenuCuisinier());
         }
 
         private void buttonPersonnel_Click(object sender, EventArgs e)
@@ -126,9 +144,109 @@ namespace Maison_moel.vue
         private void buttonQuitter_Click(object sender, EventArgs e)
         {
             this.Close();
-            //buttonAffiche(!buttonSettings.Visible);
-            //panelVisible();
-            //panelQuitter.Visible = true;
+        }
+
+        private void timerCountNotif_Tick(object sender, EventArgs e)
+        {
+            afficheCountNotif();
+        }
+
+        private void pictureBoxNotification_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            chargerMessages();
+            Cursor.Current = Cursors.Default;
+            panelMessages.Visible = !panelMessages.Visible;
+            timerCountNotif.Start();
+            dateMessages = DateTime.Now;
+        }
+
+        private void timerMessages_Tick(object sender, EventArgs e)
+        {
+            dateMessages = DateTime.Now;
+        }
+
+        private void chargerMessages()
+        {
+            List<Entities.Message> messages = ModelMessage.getMessages();
+
+            int index = 1;
+
+            int idPersTempo = 0;
+            DateOnly dateAujourdhui = DateOnly.FromDateTime(DateTime.Now);
+            DateOnly dateTempo = new();
+            TimeOnly timeTempo = new(00, 00);
+
+            foreach (Entities.Message message in messages)
+            {
+                // initialisation des variables
+                int idPers = message.IdPersonne;
+                Entities.Personne personne = ModelPersonne.getPersonneById(idPers);
+
+                DateOnly dateonly = DateOnly.FromDateTime(message.Date);
+                TimeOnly timeonly = TimeOnly.FromDateTime(message.Date);
+
+                Label labelDate = new();
+                Label labelPersonne = new();
+                Label labelMessage = new();
+
+                // ajout des infos de la date en fonction de certains cas
+                if (dateAujourdhui != dateonly)
+                {
+                    if (dateTempo != dateonly)
+                    {
+                        dateTempo = dateonly;
+                        labelDate.Text = dateonly.ToString();
+                        panelContenuMessages.Controls.Add(labelDate);
+                        labelDate.Location = new(150, 30 * index);
+                        index++;
+                    }
+                }
+                else
+                {
+                    if (timeTempo.AddMinutes(5) <= timeonly)
+                    {
+                        timeTempo = timeonly;
+                        labelDate.Text = timeonly.ToString();
+                        panelContenuMessages.Controls.Add(labelDate);
+                        labelDate.Location = new(150, 30 * index);
+                        index++;
+                    }
+                }
+
+                // ajout des infos de la personne en fonction d'un cas
+                if (idPersTempo != idPers)
+                {
+                    idPersTempo = idPers;
+                    labelPersonne.Text = $"{personne.Nom} {personne.Prenom} : ";
+                    panelContenuMessages.Controls.Add(labelPersonne);
+                    labelPersonne.Location = new(14, 30 * index);
+                    index++;
+                }
+
+                Panel panelInfo = new();
+                panelContenuMessages.Controls.Add(panelInfo);
+                panelInfo.Location = new(14, 30 * index);
+                panelInfo.BackColor = Color.FromArgb(255, 235, 153);
+
+                labelMessage.Text += message.Message1;
+                panelInfo.Controls.Add(labelMessage);
+                labelMessage.Location = new(0, 0);
+                panelInfo.Size = new(labelMessage.Width, labelMessage.Height);
+
+                labelDate.AccessibleDefaultActionDescription = "SimSun-ExtB; 14pt; style=Bold";
+                labelDate.ForeColor = Color.FromArgb(255, 235, 153);
+
+                labelPersonne.AccessibleDefaultActionDescription = "SimSun-ExtB; 18pt; style=Bold";
+                labelPersonne.Font = new Font(labelPersonne.Font, FontStyle.Underline);
+                labelPersonne.ForeColor = Color.FromArgb(255, 235, 153);
+
+                labelMessage.AccessibleDefaultActionDescription = "SimSun-ExtB; 18pt; style=Bold";
+                labelMessage.ForeColor = Color.FromArgb(0, 0, 0);
+
+                index++;
+            }
+            ModelMessage.updateMessageUnReadToRead();
         }
     }
 }

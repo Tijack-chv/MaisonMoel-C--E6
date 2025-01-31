@@ -15,5 +15,10 @@ namespace Maison_moel.Model
             .Where(p => p.Serveur != null)
             .ToList();
         }
+
+        public static Personne getPersonneById(int id)
+        {
+            return Model.MonModel.Personnes.First(x => x.IdPersonne == id);
+        }
     }
 }

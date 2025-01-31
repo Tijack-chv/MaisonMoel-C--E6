@@ -60,7 +60,7 @@ namespace Maison_moel
                             est_admin = true;
                         }
                     }
-                    FormHome Formcuisine = new(est_admin);
+                    FormHome Formcuisine = new(est_admin,personne.IdPersonne);
                     Formcuisine.Show();
 
                     this.Hide();

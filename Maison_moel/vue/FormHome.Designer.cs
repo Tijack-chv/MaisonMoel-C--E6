@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHome));
             panelWest = new Panel();
             panelPersonnel = new Panel();
@@ -46,18 +47,25 @@
             panelHome = new Panel();
             buttonCuisine = new Button();
             panelAffichage = new Panel();
+            panelMessages = new Panel();
+            panelContenuMessages = new Panel();
+            labelTitreMessage = new Label();
+            pictureBox1 = new PictureBox();
             panelNorth = new Panel();
+            labelNotification = new Label();
+            pictureBoxNotification = new PictureBox();
             buttonMenu = new Button();
             labelOrganisation = new Label();
             pictureBoxLogo = new PictureBox();
-            panelMessages = new Panel();
-            pictureBox1 = new PictureBox();
-            label1 = new Label();
+            timerCountNotif = new System.Windows.Forms.Timer(components);
+            timerMessages = new System.Windows.Forms.Timer(components);
             panelWest.SuspendLayout();
             panelAffichage.SuspendLayout();
-            panelNorth.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
+            panelMessages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelNorth.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxNotification).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             SuspendLayout();
             // 
             // panelWest
@@ -296,7 +304,7 @@
             // panelAffichage
             // 
             panelAffichage.BackColor = Color.Transparent;
-            panelAffichage.BackgroundImage = Properties.Resources.FOND_ACCUEIL;
+            panelAffichage.BackgroundImage = Properties.Resources.FOND_ACCUEIL_modified1;
             panelAffichage.BackgroundImageLayout = ImageLayout.Stretch;
             panelAffichage.Controls.Add(panelMessages);
             panelAffichage.Dock = DockStyle.Fill;
@@ -306,11 +314,55 @@
             panelAffichage.Size = new Size(1024, 490);
             panelAffichage.TabIndex = 5;
             // 
+            // panelMessages
+            // 
+            panelMessages.BackColor = Color.FromArgb(45, 50, 55);
+            panelMessages.Controls.Add(panelContenuMessages);
+            panelMessages.Controls.Add(labelTitreMessage);
+            panelMessages.Controls.Add(pictureBox1);
+            panelMessages.Location = new Point(680, 0);
+            panelMessages.Name = "panelMessages";
+            panelMessages.Size = new Size(343, 490);
+            panelMessages.TabIndex = 0;
+            // 
+            // panelContenuMessages
+            // 
+            panelContenuMessages.AutoScroll = true;
+            panelContenuMessages.BackColor = Color.Transparent;
+            panelContenuMessages.Location = new Point(3, 93);
+            panelContenuMessages.Name = "panelContenuMessages";
+            panelContenuMessages.Size = new Size(337, 393);
+            panelContenuMessages.TabIndex = 9;
+            // 
+            // labelTitreMessage
+            // 
+            labelTitreMessage.AutoSize = true;
+            labelTitreMessage.BackColor = Color.Transparent;
+            labelTitreMessage.Font = new Font("SimSun-ExtB", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelTitreMessage.ForeColor = Color.FromArgb(255, 235, 153);
+            labelTitreMessage.Location = new Point(106, 14);
+            labelTitreMessage.Name = "labelTitreMessage";
+            labelTitreMessage.Size = new Size(231, 48);
+            labelTitreMessage.TabIndex = 8;
+            labelTitreMessage.Text = "Messagerie \r\nServeur-Cuisinier";
+            labelTitreMessage.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.Gold_Icon_Texting_I02_watermarked_2k;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(100, 87);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
+            // 
             // panelNorth
             // 
             panelNorth.BackColor = Color.FromArgb(35, 40, 45);
-            panelNorth.Controls.Add(label1);
-            panelNorth.Controls.Add(pictureBox1);
+            panelNorth.Controls.Add(labelNotification);
+            panelNorth.Controls.Add(pictureBoxNotification);
             panelNorth.Controls.Add(buttonMenu);
             panelNorth.Controls.Add(labelOrganisation);
             panelNorth.Controls.Add(pictureBoxLogo);
@@ -320,6 +372,28 @@
             panelNorth.Name = "panelNorth";
             panelNorth.Size = new Size(1024, 83);
             panelNorth.TabIndex = 3;
+            // 
+            // labelNotification
+            // 
+            labelNotification.AutoSize = true;
+            labelNotification.Font = new Font("SimSun-ExtB", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelNotification.ForeColor = Color.FromArgb(255, 235, 153);
+            labelNotification.Location = new Point(988, 0);
+            labelNotification.Name = "labelNotification";
+            labelNotification.Size = new Size(36, 24);
+            labelNotification.TabIndex = 7;
+            labelNotification.Text = "0+";
+            // 
+            // pictureBoxNotification
+            // 
+            pictureBoxNotification.Image = Properties.Resources.Bell_Notification_I01_watermarked_2k;
+            pictureBoxNotification.Location = new Point(934, 4);
+            pictureBoxNotification.Name = "pictureBoxNotification";
+            pictureBoxNotification.Size = new Size(78, 74);
+            pictureBoxNotification.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBoxNotification.TabIndex = 6;
+            pictureBoxNotification.TabStop = false;
+            pictureBoxNotification.Click += pictureBoxNotification_Click;
             // 
             // buttonMenu
             // 
@@ -349,7 +423,7 @@
             // 
             // pictureBoxLogo
             // 
-            pictureBoxLogo.Location = new Point(296, 2);
+            pictureBoxLogo.Location = new Point(299, 2);
             pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
             pictureBoxLogo.Name = "pictureBoxLogo";
             pictureBoxLogo.Size = new Size(123, 79);
@@ -357,32 +431,15 @@
             pictureBoxLogo.TabIndex = 2;
             pictureBoxLogo.TabStop = false;
             // 
-            // panelMessages
+            // timerCountNotif
             // 
-            panelMessages.BackColor = Color.FromArgb(45, 50, 55);
-            panelMessages.Location = new Point(680, 0);
-            panelMessages.Name = "panelMessages";
-            panelMessages.Size = new Size(343, 490);
-            panelMessages.TabIndex = 0;
+            timerCountNotif.Interval = 20000;
+            timerCountNotif.Tick += timerCountNotif_Tick;
             // 
-            // pictureBox1
+            // timerMessages
             // 
-            pictureBox1.Location = new Point(847, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(78, 74);
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("SimSun-ExtB", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.FromArgb(255, 235, 153);
-            label1.Location = new Point(953, 23);
-            label1.Name = "label1";
-            label1.Size = new Size(61, 15);
-            label1.TabIndex = 7;
-            label1.Text = "label1";
+            timerMessages.Interval = 30000;
+            timerMessages.Tick += timerMessages_Tick;
             // 
             // FormHome
             // 
@@ -400,10 +457,13 @@
             panelWest.ResumeLayout(false);
             panelWest.PerformLayout();
             panelAffichage.ResumeLayout(false);
+            panelMessages.ResumeLayout(false);
+            panelMessages.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelNorth.ResumeLayout(false);
             panelNorth.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxNotification).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -425,14 +485,18 @@
         private Button buttonCommande;
         public Panel panelHome;
         private Button buttonCuisine;
-        private Panel panelAffichage;
         private Panel panelNorth;
         private Button buttonMenu;
         private Label labelOrganisation;
         private PictureBox pictureBoxLogo;
         private Panel panelMessages;
-        private Label label1;
+        private Label labelNotification;
+        private PictureBox pictureBoxNotification;
+        private Panel panelAffichage;
+        private System.Windows.Forms.Timer timerCountNotif;
+        private System.Windows.Forms.Timer timerMessages;
+        private Label labelTitreMessage;
         private PictureBox pictureBox1;
-        public Panel panelAffichage;
+        private Panel panelContenuMessages;
     }
 }

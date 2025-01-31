@@ -1,4 +1,5 @@
 ﻿using ApplicationC.Controller;
+using Maison_moel.controller;
 using Maison_moel.Entities;
 using Maison_moel.Model;
 using System;
@@ -29,7 +30,8 @@ namespace Maison_moel.vue
             quantiteCritiqueReapro = 10;
             minPage = 1;
             nbPages();
-            arrondirBordureObjet(labelNotification);
+            ComponentStyle componentStyle = new();
+            componentStyle.arrondirBordureObjet(labelNotification);
         }
 
         private void nbPages()
@@ -129,14 +131,6 @@ namespace Maison_moel.vue
             dataGridView.ContextMenuStrip = contextMenuStripPlats;
         }
         #endregion
-
-        private void arrondirBordureObjet(Control component)
-        {
-            System.Drawing.Drawing2D.GraphicsPath graphicsPath = new System.Drawing.Drawing2D.GraphicsPath();
-            graphicsPath.AddEllipse(0, 0, component.Width - 3, component.Height - 3);
-            Region rg = new Region(graphicsPath);
-            component.Region = rg;
-        }
 
         private void buttonPlats_Click(object sender, EventArgs e)
         {

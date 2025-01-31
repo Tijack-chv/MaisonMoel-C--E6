@@ -37,8 +37,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="controller\" />
-  </ItemGroup>
-
 </Project>

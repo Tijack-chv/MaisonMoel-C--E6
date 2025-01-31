@@ -63,6 +63,26 @@ namespace Maison_moel.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Arrow_Right_I01_watermarked_2k {
+            get {
+                object obj = ResourceManager.GetObject("Arrow Right.I01.watermarked.2k", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bell_Notification_I01_watermarked_2k {
+            get {
+                object obj = ResourceManager.GetObject("Bell Notification.I01.watermarked.2k", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap email {
             get {
                 object obj = ResourceManager.GetObject("email", resourceCulture);
@@ -76,13 +96,6 @@ namespace Maison_moel.Properties {
         internal static System.Drawing.Bitmap emailW {
             get {
                 object obj = ResourceManager.GetObject("emailW", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
-        internal static System.Drawing.Bitmap Arrow_Right_I01_watermarked_2k {
-            get {
-                object obj = ResourceManager.GetObject("Arrow Right.I01.watermarked.2k", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -100,13 +113,6 @@ namespace Maison_moel.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap passwordW {
-            get {
-                object obj = ResourceManager.GetObject("passwordW", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-
         internal static System.Drawing.Bitmap FOND_ACCUEIL_modified {
             get {
                 object obj = ResourceManager.GetObject("FOND_ACCUEIL-modified", resourceCulture);
@@ -114,19 +120,22 @@ namespace Maison_moel.Properties {
             }
         }
         
-
-        internal static System.Drawing.Bitmap verrouiller_les_lignes {
-            get {
-                object obj = ResourceManager.GetObject("verrouiller-les-lignes", resourceCulture);
-            }
-        }
-
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap FOND_ACCUEIL_modified1 {
             get {
                 object obj = ResourceManager.GetObject("FOND_ACCUEIL-modified1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gold_Icon_Texting_I02_watermarked_2k {
+            get {
+                object obj = ResourceManager.GetObject("Gold Icon Texting.I02.watermarked.2k", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -167,6 +176,26 @@ namespace Maison_moel.Properties {
         internal static System.Drawing.Bitmap imgNotif_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("imgNotif-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap passwordW {
+            get {
+                object obj = ResourceManager.GetObject("passwordW", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap verrouiller_les_lignes {
+            get {
+                object obj = ResourceManager.GetObject("verrouiller-les-lignes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -118,25 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="email" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="emailW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\emailW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="passwordW" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\passwordW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="verrouiller-les-lignes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\verrouiller-les-lignes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  <data name="GoldIconNotif" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\GoldIconNotif.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FOND_ACCUEIL-modified" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FOND_ACCUEIL-modified.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="gradient_1920_1080" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\gradient_1920_1080.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gradient_1920_1080V2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\gradient_1920_1080V2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="imgNotif-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\imgNotif-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -150,7 +133,31 @@
   <data name="FOND_ACCUEIL-modified1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FOND_ACCUEIL-modified.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gradient_1920_1080V2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\gradient_1920_1080V2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="passwordW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\passwordW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gradient_1920_1080" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\gradient_1920_1080.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FOND_ACCUEIL-modified" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FOND_ACCUEIL-modified.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bell Notification.I01.watermarked.2k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Bell Notification.I01.watermarked.2k.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="verrouiller-les-lignes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\verrouiller-les-lignes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="email" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\email.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GoldIconNotif" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\GoldIconNotif.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emailW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\emailW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Gold Icon Texting.I02.watermarked.2k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\Gold Icon Texting.I02.watermarked.2k.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

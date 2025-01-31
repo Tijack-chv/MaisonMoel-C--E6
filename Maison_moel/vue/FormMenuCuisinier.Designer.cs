@@ -38,11 +38,11 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = Color.FromArgb(35, 40, 45);
+            menuStrip1.BackColor = Color.FromArgb(25, 30, 35);
             menuStrip1.Items.AddRange(new ToolStripItem[] { gestionCommandesToolStripMenuItem, gestionDechetsToolStripMenuItem, gestionReapprovisionnementsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1026, 30);
+            menuStrip1.Size = new Size(1024, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -76,19 +76,20 @@
             // panelSousAffichage
             // 
             panelSousAffichage.BackColor = Color.Transparent;
+            panelSousAffichage.BackgroundImage = Properties.Resources.FOND_ACCUEIL;
+            panelSousAffichage.BackgroundImageLayout = ImageLayout.Stretch;
             panelSousAffichage.Dock = DockStyle.Fill;
             panelSousAffichage.Location = new Point(0, 30);
             panelSousAffichage.Name = "panelSousAffichage";
-            panelSousAffichage.Size = new Size(1026, 566);
+            panelSousAffichage.Size = new Size(1024, 460);
             panelSousAffichage.TabIndex = 1;
             // 
             // FormMenuCuisinier
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.FOND_ACCUEIL;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1026, 596);
+            ClientSize = new Size(1024, 490);
             Controls.Add(panelSousAffichage);
             Controls.Add(menuStrip1);
             DoubleBuffered = true;

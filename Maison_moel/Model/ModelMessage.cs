@@ -15,9 +15,31 @@ namespace Maison_moel.Model
             return Model.MonModel.Messages.ToList();
         }
 
-        public static int getUnreadMessages()
+        public static int getUnreadMessagesCount()
         {
             return Model.MonModel.Messages.Where(m => m.EstVue == false).Count();
+        }
+
+        public static List<Entities.Message> getUnreadMessages(DateTime date)
+        {
+            return Model.MonModel.Messages.Where(m => m.EstVue == false && m.Date >= date).ToList();
+        }
+
+        public static void updateMessageUnReadToRead()
+        {
+            try
+            {
+                List<Entities.Message> unreadMessages = Model.MonModel.Messages.Where(m => m.EstVue == false).ToList();
+                foreach (Entities.Message mess in unreadMessages)
+                {
+                    mess.EstVue = true;
+                }
+                Model.MonModel.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
     }
 }
