@@ -1,4 +1,4 @@
-﻿
+﻿using ApplicationC.Controller;
 using Maison_moel.Entities;
 using Maison_moel.Model;
 using System;
@@ -80,7 +80,7 @@ namespace Maison_moel.vue
             });
 
             DataGridCuisine.DataSource = bindingSourceCuisine;
-          
+
 
             // Configuration des colonnes
             DataGridCuisine.Columns[0].HeaderText = "Commande";
@@ -143,6 +143,33 @@ namespace Maison_moel.vue
             }
             
         }
+
+
+
+
+
+        private void DataGridCuisine_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Vérifie qu'une ligne a été sélectionnée
+            {
+                DataGridViewRow selectedRow = DataGridCuisine.Rows[e.RowIndex];
+
+                int idCommande = Convert.ToInt32(selectedRow.Cells[0].Value);
+                string etat = selectedRow.Cells[1].Value?.ToString() ;
+                string numeroTable = selectedRow.Cells[2].Value?.ToString() ;
+                string serveur = selectedRow.Cells[3].Value?.ToString() ;
+
+                // Ouvrir un formulaire de gestion de commande
+                FormHome fhome = (FormHome)Application.OpenForms["FormHome"];
+                if (fhome != null)
+                {
+                    fhome.sousF.closeChildForm(); // pas obligatoire mais mieux
+                    fhome.sousF.openChildForm(new FormGestionCommande(idCommande, etat, serveur, numeroTable));
+                }
+            }
+        }
+
+        
     }
 }
 

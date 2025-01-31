@@ -79,6 +79,13 @@ namespace Maison_moel.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+
+        internal static System.Drawing.Bitmap Arrow_Right_I01_watermarked_2k {
+            get {
+                object obj = ResourceManager.GetObject("Arrow Right.I01.watermarked.2k", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
         
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
@@ -99,13 +106,67 @@ namespace Maison_moel.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+
+        internal static System.Drawing.Bitmap FOND_ACCUEIL_modified {
+            get {
+                object obj = ResourceManager.GetObject("FOND_ACCUEIL-modified", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+
+        internal static System.Drawing.Bitmap verrouiller_les_lignes {
+            get {
+                object obj = ResourceManager.GetObject("verrouiller-les-lignes", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FOND_ACCUEIL_modified1 {
+            get {
+                object obj = ResourceManager.GetObject("FOND_ACCUEIL-modified1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
         
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap verrouiller_les_lignes {
+        internal static System.Drawing.Bitmap GoldIconNotif {
             get {
-                object obj = ResourceManager.GetObject("verrouiller-les-lignes", resourceCulture);
+                object obj = ResourceManager.GetObject("GoldIconNotif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gradient_1920_1080 {
+            get {
+                object obj = ResourceManager.GetObject("gradient_1920_1080", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gradient_1920_1080V2 {
+            get {
+                object obj = ResourceManager.GetObject("gradient_1920_1080V2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgNotif_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("imgNotif-removebg-preview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

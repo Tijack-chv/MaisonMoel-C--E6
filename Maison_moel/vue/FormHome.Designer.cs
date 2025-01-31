@@ -433,5 +433,6 @@
         private Panel panelMessages;
         private Label label1;
         private PictureBox pictureBox1;
+        public Panel panelAffichage;
     }
 }

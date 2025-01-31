@@ -35,5 +35,13 @@ namespace ApplicationC.Controller
             formEnfant.Show();
         }
         #endregion
+
+        #region closeChildForm
+        public void closeChildForm()
+        {
+            if (activeForm != null)
+                activeForm.Close();
+        }
+        #endregion
     }
 }
