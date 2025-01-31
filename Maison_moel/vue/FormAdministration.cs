@@ -19,7 +19,7 @@ namespace Maison_moel.vue
         public FormAdministration()
         {
             InitializeComponent();
-            
+
 
             comboBox_Metier.Items.Add("");
             comboBox_Metier.Items.Add("Serveurs");
@@ -44,10 +44,11 @@ namespace Maison_moel.vue
 
 
             // Configuration des colonnes
-            dataGridPersonne.Columns[0].HeaderText = "Nom";
-            dataGridPersonne.Columns[1].HeaderText = "Prénom";
-            dataGridPersonne.Columns[2].HeaderText = "Date de Naissance";
-            dataGridPersonne.Columns[3].HeaderText = "Email";
+            dataGridPersonne.Columns[0].HeaderText = "Identifiant";
+            dataGridPersonne.Columns[1].HeaderText = "Nom";
+            dataGridPersonne.Columns[2].HeaderText = "Prénom";
+            dataGridPersonne.Columns[3].HeaderText = "Date de Naissance";
+            dataGridPersonne.Columns[4].HeaderText = "Email";
             dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }
@@ -55,7 +56,7 @@ namespace Maison_moel.vue
         private void Form_AdministrationFiltre_Load(List<Personne> personne)
         {
             bindingSourcePersonnes.DataSource = personne.Select(static x => new
-            {   
+            {
                 x.IdPersonne,
                 x.Nom,
                 x.Prenom,
@@ -67,10 +68,11 @@ namespace Maison_moel.vue
 
 
             // Configuration des colonnes
-            dataGridPersonne.Columns[0].HeaderText = "Nom";
-            dataGridPersonne.Columns[1].HeaderText = "Prénom";
-            dataGridPersonne.Columns[2].HeaderText = "Date de Naissance";
-            dataGridPersonne.Columns[3].HeaderText = "Email";
+            dataGridPersonne.Columns[0].HeaderText = "Identifiant";
+            dataGridPersonne.Columns[1].HeaderText = "Nom";
+            dataGridPersonne.Columns[2].HeaderText = "Prénom";
+            dataGridPersonne.Columns[3].HeaderText = "Date de Naissance";
+            dataGridPersonne.Columns[4].HeaderText = "Email";
             dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
@@ -156,35 +158,29 @@ namespace Maison_moel.vue
 
         private void ModifierPersonnelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            sousF = new(panel_filtre);
-            sousF.openChildForm(new FormModificationPersonnel());
-
-            System.Type type = bindingSourcePersonnes.Current.GetType();
-            int idP = (int)type.GetProperty("IdPersonne").GetValue(bindingSourcePersonnes.Current, null);
-
-            Cuisinier cuisinier = Model.ModelPersonne.GetCuisinierById(idP);
-            Admin admin = Model.ModelPersonne.GetAdminById(idP);
-            Serveur serveur = Model.ModelPersonne.GetServeurById(idP);
-
-            if (cuisinier != null || admin != null || serveur != null)
+            if (dataGridPersonne.SelectedRows.Count > 0)
             {
-                if (cuisinier != null)
-                {
-
+                if (dataGridPersonne.SelectedRows.Count == 1)
+                {   
+                    int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
+                    sousF = new(panel_admin);
+                    sousF.openChildForm(new FormModificationPersonnel(currentId));
                 }
-                if (admin != null)
+                else
                 {
-
-                }
-                if (serveur != null)
-                {
-
+                    MessageBox.Show("Veuillez selectionner un seul et unique membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-
+                MessageBox.Show("Veuillez selectionner un membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
 
         }
     }

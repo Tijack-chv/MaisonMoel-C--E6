@@ -38,20 +38,21 @@
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
-            panel_filtre = new Panel();
-            label_filtreMetier = new Label();
-            comboBox_Metier = new ComboBox();
-            buttonRenitialiserFiltre = new Button();
-            label_filtreNom = new Label();
-            dateTimePicker_DateNaissance = new DateTimePicker();
-            txtbx_filtreNom = new TextBox();
-            label1 = new Label();
-            label_filtrePrenom = new Label();
             txtbx_filtrePrenom = new TextBox();
+            label_filtrePrenom = new Label();
+            label1 = new Label();
+            txtbx_filtreNom = new TextBox();
+            dateTimePicker_DateNaissance = new DateTimePicker();
+            label_filtreNom = new Label();
+            buttonRenitialiserFiltre = new Button();
+            comboBox_Metier = new ComboBox();
+            label_filtreMetier = new Label();
+            button1 = new Button();
+            panel_admin = new Panel();
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).BeginInit();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).BeginInit();
-            panel_filtre.SuspendLayout();
+            panel_admin.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridPersonne
@@ -119,70 +120,45 @@
             panel3.Size = new Size(612, 20);
             panel3.TabIndex = 27;
             // 
-            // panel_filtre
+            // txtbx_filtrePrenom
             // 
-            panel_filtre.BackColor = Color.Transparent;
-            panel_filtre.Controls.Add(label_filtreMetier);
-            panel_filtre.Controls.Add(comboBox_Metier);
-            panel_filtre.Controls.Add(buttonRenitialiserFiltre);
-            panel_filtre.Controls.Add(label_filtreNom);
-            panel_filtre.Controls.Add(dateTimePicker_DateNaissance);
-            panel_filtre.Controls.Add(txtbx_filtreNom);
-            panel_filtre.Controls.Add(label1);
-            panel_filtre.Controls.Add(label_filtrePrenom);
-            panel_filtre.Controls.Add(txtbx_filtrePrenom);
-            panel_filtre.Location = new Point(22, 38);
-            panel_filtre.Name = "panel_filtre";
-            panel_filtre.Size = new Size(312, 468);
-            panel_filtre.TabIndex = 52;
+            txtbx_filtrePrenom.Location = new Point(33, 251);
+            txtbx_filtrePrenom.Name = "txtbx_filtrePrenom";
+            txtbx_filtrePrenom.Size = new Size(211, 23);
+            txtbx_filtrePrenom.TabIndex = 66;
             // 
-            // label_filtreMetier
+            // label_filtrePrenom
             // 
-            label_filtreMetier.AutoSize = true;
-            label_filtreMetier.BackColor = Color.Transparent;
-            label_filtreMetier.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtreMetier.Location = new Point(30, 44);
-            label_filtreMetier.Name = "label_filtreMetier";
-            label_filtreMetier.Size = new Size(152, 20);
-            label_filtreMetier.TabIndex = 62;
-            label_filtreMetier.Text = "Filtrer par métier :";
+            label_filtrePrenom.AutoSize = true;
+            label_filtrePrenom.BackColor = Color.Transparent;
+            label_filtrePrenom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label_filtrePrenom.Location = new Point(31, 211);
+            label_filtrePrenom.Name = "label_filtrePrenom";
+            label_filtrePrenom.Size = new Size(162, 20);
+            label_filtrePrenom.TabIndex = 65;
+            label_filtrePrenom.Text = "Filtrer par prénom :";
             // 
-            // comboBox_Metier
+            // label1
             // 
-            comboBox_Metier.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_Metier.FormattingEnabled = true;
-            comboBox_Metier.Location = new Point(28, 78);
-            comboBox_Metier.Name = "comboBox_Metier";
-            comboBox_Metier.Size = new Size(213, 23);
-            comboBox_Metier.TabIndex = 61;
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label1.Location = new Point(33, 300);
+            label1.Name = "label1";
+            label1.Size = new Size(254, 20);
+            label1.TabIndex = 67;
+            label1.Text = "Filtrer par Date de Naissance :";
             // 
-            // buttonRenitialiserFiltre
+            // txtbx_filtreNom
             // 
-            buttonRenitialiserFiltre.BackColor = Color.FromArgb(30, 35, 40);
-            buttonRenitialiserFiltre.FlatStyle = FlatStyle.Popup;
-            buttonRenitialiserFiltre.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonRenitialiserFiltre.ForeColor = Color.White;
-            buttonRenitialiserFiltre.Location = new Point(30, 402);
-            buttonRenitialiserFiltre.Name = "buttonRenitialiserFiltre";
-            buttonRenitialiserFiltre.Size = new Size(138, 23);
-            buttonRenitialiserFiltre.TabIndex = 69;
-            buttonRenitialiserFiltre.Text = "Rénitialiser Filtre";
-            buttonRenitialiserFiltre.UseVisualStyleBackColor = false;
-            // 
-            // label_filtreNom
-            // 
-            label_filtreNom.AutoSize = true;
-            label_filtreNom.BackColor = Color.Transparent;
-            label_filtreNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtreNom.Location = new Point(28, 121);
-            label_filtreNom.Name = "label_filtreNom";
-            label_filtreNom.Size = new Size(136, 20);
-            label_filtreNom.TabIndex = 63;
-            label_filtreNom.Text = "Filtrer par nom :";
+            txtbx_filtreNom.Location = new Point(33, 164);
+            txtbx_filtreNom.Name = "txtbx_filtreNom";
+            txtbx_filtreNom.Size = new Size(211, 23);
+            txtbx_filtreNom.TabIndex = 64;
             // 
             // dateTimePicker_DateNaissance
             // 
-            dateTimePicker_DateNaissance.Location = new Point(30, 337);
+            dateTimePicker_DateNaissance.Location = new Point(33, 340);
             dateTimePicker_DateNaissance.MaxDate = new DateTime(2025, 1, 17, 0, 0, 0, 0);
             dateTimePicker_DateNaissance.MinDate = new DateTime(1950, 1, 1, 0, 0, 0, 0);
             dateTimePicker_DateNaissance.Name = "dateTimePicker_DateNaissance";
@@ -190,49 +166,86 @@
             dateTimePicker_DateNaissance.TabIndex = 68;
             dateTimePicker_DateNaissance.Value = new DateTime(1975, 1, 1, 0, 0, 0, 0);
             // 
-            // txtbx_filtreNom
+            // label_filtreNom
             // 
-            txtbx_filtreNom.Location = new Point(30, 161);
-            txtbx_filtreNom.Name = "txtbx_filtreNom";
-            txtbx_filtreNom.Size = new Size(211, 23);
-            txtbx_filtreNom.TabIndex = 64;
+            label_filtreNom.AutoSize = true;
+            label_filtreNom.BackColor = Color.Transparent;
+            label_filtreNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label_filtreNom.Location = new Point(31, 124);
+            label_filtreNom.Name = "label_filtreNom";
+            label_filtreNom.Size = new Size(136, 20);
+            label_filtreNom.TabIndex = 63;
+            label_filtreNom.Text = "Filtrer par nom :";
             // 
-            // label1
+            // buttonRenitialiserFiltre
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label1.Location = new Point(30, 297);
-            label1.Name = "label1";
-            label1.Size = new Size(254, 20);
-            label1.TabIndex = 67;
-            label1.Text = "Filtrer par Date de Naissance :";
+            buttonRenitialiserFiltre.BackColor = Color.FromArgb(30, 35, 40);
+            buttonRenitialiserFiltre.FlatStyle = FlatStyle.Popup;
+            buttonRenitialiserFiltre.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            buttonRenitialiserFiltre.ForeColor = Color.White;
+            buttonRenitialiserFiltre.Location = new Point(33, 405);
+            buttonRenitialiserFiltre.Name = "buttonRenitialiserFiltre";
+            buttonRenitialiserFiltre.Size = new Size(138, 23);
+            buttonRenitialiserFiltre.TabIndex = 69;
+            buttonRenitialiserFiltre.Text = "Rénitialiser Filtre";
+            buttonRenitialiserFiltre.UseVisualStyleBackColor = false;
             // 
-            // label_filtrePrenom
+            // comboBox_Metier
             // 
-            label_filtrePrenom.AutoSize = true;
-            label_filtrePrenom.BackColor = Color.Transparent;
-            label_filtrePrenom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtrePrenom.Location = new Point(28, 208);
-            label_filtrePrenom.Name = "label_filtrePrenom";
-            label_filtrePrenom.Size = new Size(162, 20);
-            label_filtrePrenom.TabIndex = 65;
-            label_filtrePrenom.Text = "Filtrer par prénom :";
+            comboBox_Metier.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_Metier.FormattingEnabled = true;
+            comboBox_Metier.Location = new Point(31, 81);
+            comboBox_Metier.Name = "comboBox_Metier";
+            comboBox_Metier.Size = new Size(213, 23);
+            comboBox_Metier.TabIndex = 61;
             // 
-            // txtbx_filtrePrenom
+            // label_filtreMetier
             // 
-            txtbx_filtrePrenom.Location = new Point(30, 248);
-            txtbx_filtrePrenom.Name = "txtbx_filtrePrenom";
-            txtbx_filtrePrenom.Size = new Size(211, 23);
-            txtbx_filtrePrenom.TabIndex = 66;
+            label_filtreMetier.AutoSize = true;
+            label_filtreMetier.BackColor = Color.Transparent;
+            label_filtreMetier.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label_filtreMetier.Location = new Point(33, 47);
+            label_filtreMetier.Name = "label_filtreMetier";
+            label_filtreMetier.Size = new Size(152, 20);
+            label_filtreMetier.TabIndex = 62;
+            label_filtreMetier.Text = "Filtrer par métier :";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Tomato;
+            button1.Location = new Point(885, 493);
+            button1.Name = "button1";
+            button1.Size = new Size(90, 34);
+            button1.TabIndex = 70;
+            button1.Text = "ARCHIVER";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // panel_admin
+            // 
+            panel_admin.BackColor = Color.Transparent;
+            panel_admin.Controls.Add(label_filtreMetier);
+            panel_admin.Controls.Add(txtbx_filtrePrenom);
+            panel_admin.Controls.Add(label_filtrePrenom);
+            panel_admin.Controls.Add(label1);
+            panel_admin.Controls.Add(comboBox_Metier);
+            panel_admin.Controls.Add(txtbx_filtreNom);
+            panel_admin.Controls.Add(buttonRenitialiserFiltre);
+            panel_admin.Controls.Add(dateTimePicker_DateNaissance);
+            panel_admin.Controls.Add(label_filtreNom);
+            panel_admin.Location = new Point(28, 43);
+            panel_admin.Name = "panel_admin";
+            panel_admin.Size = new Size(312, 468);
+            panel_admin.TabIndex = 71;
             // 
             // FormAdministration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
-            ClientSize = new Size(1010, 557);
-            Controls.Add(panel_filtre);
+            ClientSize = new Size(1010, 580);
+            Controls.Add(panel_admin);
+            Controls.Add(button1);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel5);
@@ -245,8 +258,8 @@
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).EndInit();
             contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).EndInit();
-            panel_filtre.ResumeLayout(false);
-            panel_filtre.PerformLayout();
+            panel_admin.ResumeLayout(false);
+            panel_admin.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -261,15 +274,16 @@
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem modifierLesInformationsToolStripMenuItem;
         private ToolStripMenuItem archiverToolStripMenuItem;
-        private Panel panel_filtre;
-        private Label label_filtreMetier;
-        private ComboBox comboBox_Metier;
-        private Button buttonRenitialiserFiltre;
-        private Label label_filtreNom;
-        private DateTimePicker dateTimePicker_DateNaissance;
-        private TextBox txtbx_filtreNom;
-        private Label label1;
-        private Label label_filtrePrenom;
         private TextBox txtbx_filtrePrenom;
+        private Label label_filtrePrenom;
+        private Label label1;
+        private TextBox txtbx_filtreNom;
+        private DateTimePicker dateTimePicker_DateNaissance;
+        private Label label_filtreNom;
+        private Button buttonRenitialiserFiltre;
+        private ComboBox comboBox_Metier;
+        private Label label_filtreMetier;
+        private Button button1;
+        private Panel panel_admin;
     }
 }

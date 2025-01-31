@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Maison_moel.Model
 {
     public class ModelPersonne
-    {
+    {   
         public static List<Personne> ListePersonne()
         {
             return Model.MonModel.Personnes.ToList();
@@ -109,6 +109,21 @@ namespace Maison_moel.Model
             }
             
             return serveur;
+        }
+
+        public static Personne GetPersonneById(int id)
+        {
+            Personne personne = new Personne();
+            try
+            {
+                personne = Model.MonModel.Personnes.Include(c => c.Cuisinier).Include(c => c.Admin).Include(c => c.Serveur).First(x => x.IdPersonne == id);
+            }
+            catch
+            {
+                personne = null;
+            }
+
+            return personne;
         }
 
 

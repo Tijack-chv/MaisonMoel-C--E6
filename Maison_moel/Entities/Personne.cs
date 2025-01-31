@@ -15,7 +15,7 @@ public partial class Personne
 
     public string Password { get; set; } = null!;
 
-    public DateOnly? DateNaiss { get; set; }
+    public DateOnly DateNaiss { get; set; }
 
     public virtual Admin? Admin { get; set; }
 

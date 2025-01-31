@@ -158,21 +158,23 @@
             // 
             // button_valider
             // 
-            button_valider.Location = new Point(40, 409);
+            button_valider.Location = new Point(39, 404);
             button_valider.Name = "button_valider";
             button_valider.Size = new Size(95, 31);
             button_valider.TabIndex = 22;
             button_valider.Text = "VALIDER";
             button_valider.UseVisualStyleBackColor = true;
+            button_valider.Click += button_valider_Click;
             // 
             // button_annuler
             // 
-            button_annuler.Location = new Point(147, 409);
+            button_annuler.Location = new Point(146, 404);
             button_annuler.Name = "button_annuler";
             button_annuler.Size = new Size(95, 31);
             button_annuler.TabIndex = 23;
             button_annuler.Text = "ANNULER";
             button_annuler.UseVisualStyleBackColor = true;
+            button_annuler.Click += button_annuler_Click;
             // 
             // FormModificationPersonnel
             // 
