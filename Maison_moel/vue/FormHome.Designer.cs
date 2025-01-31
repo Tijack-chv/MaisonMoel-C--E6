@@ -341,7 +341,7 @@
             // 
             // pictureBoxLogo
             // 
-            pictureBoxLogo.Location = new Point(898, 2);
+            pictureBoxLogo.Location = new Point(296, 2);
             pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
             pictureBoxLogo.Name = "pictureBoxLogo";
             pictureBoxLogo.Size = new Size(123, 79);
