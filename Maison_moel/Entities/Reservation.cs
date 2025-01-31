@@ -22,4 +22,6 @@ public partial class Reservation
     public virtual Client? IdPersonneNavigation { get; set; }
 
     public virtual Table IdTableNavigation { get; set; } = null!;
+
+    public virtual ICollection<Table> Tables { get; set; } = new List<Table>();
 }

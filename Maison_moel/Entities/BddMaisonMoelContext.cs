@@ -40,6 +40,8 @@ public partial class BddMaisonMoelContext : DbContext
 
     public virtual DbSet<Log> Logs { get; set; }
 
+    public virtual DbSet<Message> Messages { get; set; }
+
     public virtual DbSet<Notification> Notifications { get; set; }
 
     public virtual DbSet<Personne> Personnes { get; set; }
@@ -331,6 +333,30 @@ public partial class BddMaisonMoelContext : DbContext
                 .HasColumnName("description");
         });
 
+        modelBuilder.Entity<Message>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("message");
+
+            entity.HasIndex(e => e.IdPersonne, "FK_IDPERSONNE_MESSAGE");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Date)
+                .HasColumnType("datetime")
+                .HasColumnName("date");
+            entity.Property(e => e.EstVue).HasColumnName("estVue");
+            entity.Property(e => e.IdPersonne).HasColumnName("idPersonne");
+            entity.Property(e => e.Message1)
+                .HasMaxLength(512)
+                .HasColumnName("message");
+
+            entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.Messages)
+                .HasForeignKey(d => d.IdPersonne)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_IDPERSONNE_MESSAGE");
+        });
+
         modelBuilder.Entity<Notification>(entity =>
         {
             entity.HasKey(e => e.IdNotification).HasName("PRIMARY");
@@ -373,6 +399,9 @@ public partial class BddMaisonMoelContext : DbContext
             entity.Property(e => e.Prenom)
                 .HasMaxLength(128)
                 .HasColumnName("prenom");
+            entity.Property(e => e.Token)
+                .HasMaxLength(100)
+                .HasColumnName("token");
         });
 
         modelBuilder.Entity<Plat>(entity =>
@@ -538,10 +567,18 @@ public partial class BddMaisonMoelContext : DbContext
 
             entity.HasIndex(e => e.IdTypeTable, "I_FK_tables_type_table");
 
+            entity.HasIndex(e => e.IdReservation, "tables_ibfk_2");
+
             entity.Property(e => e.IdTable).HasColumnName("idTable");
             entity.Property(e => e.Capacite).HasColumnName("capacite");
+            entity.Property(e => e.IdReservation).HasColumnName("idReservation");
             entity.Property(e => e.IdTypeTable).HasColumnName("idTypeTable");
             entity.Property(e => e.NomTable).HasMaxLength(128);
+
+            entity.HasOne(d => d.IdReservationNavigation).WithMany(p => p.Tables)
+                .HasForeignKey(d => d.IdReservation)
+                .OnDelete(DeleteBehavior.SetNull)
+                .HasConstraintName("tables_ibfk_2");
 
             entity.HasOne(d => d.IdTypeTableNavigation).WithMany(p => p.Tables)
                 .HasForeignKey(d => d.IdTypeTable)

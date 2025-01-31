@@ -1,4 +1,3 @@
-
 using Maison_moel.Entities;
 using Maison_moel.Model;
 using Maison_moel.vue;
@@ -47,7 +46,7 @@ namespace Maison_moel
             {
                 labelErreurEmail.Visible = false;
                 labelErreurPassword.Visible = false;
-
+                
                 if (ModConnexion.ConnexionAdmin(textBoxEmail.Text, textBoxPassword.Text))
                 {
                     bool est_admin = false;

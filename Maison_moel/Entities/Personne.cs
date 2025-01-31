@@ -17,19 +17,17 @@ public partial class Personne
 
     public DateOnly? DateNaiss { get; set; }
 
+    public string Token { get; set; } = null!;
+
     public virtual Admin? Admin { get; set; }
 
     public virtual ICollection<Avi> Avis { get; set; } = new List<Avi>();
 
     public virtual Cuisinier? Cuisinier { get; set; }
 
+    public virtual ICollection<Message> Messages { get; set; } = new List<Message>();
+
     public virtual Serveur? Serveur { get; set; }
 
     public virtual ICollection<TokenUserApi> TokenUserApis { get; set; } = new List<TokenUserApi>();
-
-    public string NomComplet
-    {
-        get { return Nom + " " + Prenom; }
-
-    }
 }

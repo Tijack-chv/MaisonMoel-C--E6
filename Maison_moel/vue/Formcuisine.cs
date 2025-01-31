@@ -1,4 +1,5 @@
-﻿using Maison_moel.Entities;
+﻿
+using Maison_moel.Entities;
 using Maison_moel.Model;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Maison_moel.vue
         public Formcuisine()
         {
             InitializeComponent();
-
+            
             comboEtat.ValueMember = "idEtat";
             comboEtat.DisplayMember = "libelleEtat";
 
@@ -39,10 +40,13 @@ namespace Maison_moel.vue
             bindingSourceTable.DataSource = (ModelTable.ListeTable());
             comboBoxTable.DataSource = bindingSourceTable;
             comboBoxTable.SelectedIndex = -1;
+            
         }
+
 
         private void FormCuisine_Load(List<Commande> liste)
         {
+            
             bindingSourceCuisine.DataSource = liste.Select(static x => new
             {
                 x.IdCommande,
@@ -61,9 +65,11 @@ namespace Maison_moel.vue
             DataGridCuisine.Columns[2].HeaderText = "Numéro de table";
             DataGridCuisine.Columns[3].HeaderText = "Serveur";
             DataGridCuisine.Columns[4].HeaderText = "Date de commande";
+            
         }
         private void FormCuisine_Load(object sender, EventArgs e)
         {
+            
             bindingSourceCuisine.DataSource = ModelCommande.ListeCommande().Select(static x => new
             {
                 x.IdCommande,
@@ -82,6 +88,7 @@ namespace Maison_moel.vue
             DataGridCuisine.Columns[2].HeaderText = "Numéro de table";
             DataGridCuisine.Columns[3].HeaderText = "Serveur";
             DataGridCuisine.Columns[4].HeaderText = "Date de commande";
+            
         }
 
         private void comboEtat_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,6 +110,7 @@ namespace Maison_moel.vue
 
         private void AppliquerFiltres()
         {
+            
             // Récupérer la liste de base des commandes
             List<Commande> query = ModelCommande.ListeCommande();
 
@@ -133,32 +141,8 @@ namespace Maison_moel.vue
                 DataGridCuisine.DataSource = null;
                 MessageBox.Show("Aucune commande ne correspond aux critères des filtres !", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            
         }
-
-
-
-        //private void bindingSourceEtat_CurrentChanged(object sender, EventArgs e)
-        //{
-        //    if (comboEtat.SelectedIndex != -1)
-        //    {
-        //        int etatSelectionne = (int)comboEtat.SelectedValue;
-        //        List<Commande> commandes = ModelEtat.ListeCommandeParEtat(etatSelectionne);
-
-
-        //        if (commandes.Any())
-        //        {
-        //            FormCuisine_Load(commandes);
-        //        }
-        //        else
-        //        {
-        //            // Si la liste est vide, vide le DataGridView et affiche un message
-        //            DataGridCuisine.DataSource = null;
-        //            MessageBox.Show("Aucun résultat!", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //    }
-        //}
     }
-
-
-    }
+}
 
