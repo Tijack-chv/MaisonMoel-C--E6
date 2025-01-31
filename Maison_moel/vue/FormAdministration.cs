@@ -181,7 +181,23 @@ namespace Maison_moel.vue
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (dataGridPersonne.SelectedRows.Count > 0)
+            {
+                if (dataGridPersonne.SelectedRows.Count == 1)
+                {
+                    int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
+                    ModelPersonne.ArchiverPersonne(currentId);
+                    MessageBox.Show("La personne sélectionner vient d'être archivée", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez selectionner un seul et unique membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez selectionner un membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

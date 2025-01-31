@@ -33,9 +33,18 @@ namespace Maison_moel.vue
             }
             else
             {
-                if (personne.Cuisinier == null && personne.Admin == null && personne.Cuisinier == null)
+                if (personne.Cuisinier == null && personne.Cuisinier == null)
                 {
-                    MessageBox.Show("La personne sélectionnée n'est pas un membre du personnel", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    textBox_nom.Text = personne.Nom;
+                    textBox_prenom.Text = personne.Prenom;
+                    textBox_email.Text = personne.Email;
+                    dtp_datenaissance.Value = personne.DateNaiss.ToDateTime(TimeOnly.Parse("00:00"));
+                    label_salaire.Visible = false;
+                    numericUpDown_salaire.Visible = false;
+                    label_role.Visible = false;
+                    comboBox_role.Visible = false;
+                    button_valider.Location = new System.Drawing.Point(39, 276);
+                    button_annuler.Location = new System.Drawing.Point(146, 276);
                 }
                 else
                 {
@@ -58,19 +67,6 @@ namespace Maison_moel.vue
                         comboBox_role.Visible = false;
                         button_valider.Location = new System.Drawing.Point(39, 339);
                         button_annuler.Location = new System.Drawing.Point(147, 339);
-                    }
-                    if (personne.Admin != null)
-                    {
-                        textBox_nom.Text = personne.Nom;
-                        textBox_prenom.Text = personne.Prenom;
-                        textBox_email.Text = personne.Email;
-                        dtp_datenaissance.Value = personne.DateNaiss.ToDateTime(TimeOnly.Parse("00:00"));
-                        label_salaire.Visible = false;
-                        numericUpDown_salaire.Visible = false;
-                        label_role.Visible = false;
-                        comboBox_role.Visible = false;
-                        button_valider.Location = new System.Drawing.Point(39, 276);
-                        button_annuler.Location = new System.Drawing.Point(146, 276);
                     }
 
                 }

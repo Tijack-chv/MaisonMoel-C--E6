@@ -10,16 +10,23 @@ using System.Threading.Tasks;
 namespace Maison_moel.Model
 {
     public class ModelPersonne
-    {   
+    {
         public static List<Personne> ListePersonne()
         {
-            return Model.MonModel.Personnes.ToList();
+            List<Personne> personnes = new List<Personne>();
+
+            personnes.AddRange(ListeServeur());
+            personnes.AddRange(ListeCuisinier());
+            personnes.AddRange(ListeAdmin());
+
+            return personnes.OrderBy(p => p.IdPersonne).ToList();
         }
 
         public static List<Personne> ListeServeur()
         {
             return Model.MonModel.Personnes
             .Where(p => p.Serveur != null)
+            .Where(p => p.Archiver == 0)
             .ToList();
         }
 
@@ -27,6 +34,7 @@ namespace Maison_moel.Model
         {
             return Model.MonModel.Personnes
             .Where(p => p.Cuisinier != null)
+            .Where(p => p.Archiver == 0)
             .ToList();
         }
 
@@ -34,6 +42,7 @@ namespace Maison_moel.Model
         {
             return Model.MonModel.Personnes
             .Where(p => p.Admin != null)
+            .Where(p => p.Archiver == 0)
             .ToList();
         }
 
@@ -66,7 +75,7 @@ namespace Maison_moel.Model
         public static List<Personne> ListePersonneNom(string recherche)
         {
             return Model.MonModel.Personnes
-                .Where(c => c.Nom == recherche).ToList();
+                .Where(c => c.Nom == recherche).Where(c => c.Archiver == 0).ToList();
         }
 
         public static Cuisinier GetCuisinierById(int id)
@@ -124,6 +133,13 @@ namespace Maison_moel.Model
             }
 
             return personne;
+        }
+
+        public static void ArchiverPersonne(int id)
+        {
+            Personne personne = GetPersonneById(id);
+            personne.Archiver = 1;
+            Model.MonModel.SaveChanges();
         }
 
 

@@ -32,4 +32,5 @@ public partial class Personne
         get { return Nom + " " + Prenom; }
 
     }
+    public int Archiver { get; set; }
 }
