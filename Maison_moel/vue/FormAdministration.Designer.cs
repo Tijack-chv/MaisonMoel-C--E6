@@ -53,6 +53,7 @@
             radioButton_non = new RadioButton();
             radioButton_oui = new RadioButton();
             label_archiver = new Label();
+            button_ajouter = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).BeginInit();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).BeginInit();
@@ -74,7 +75,7 @@
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { modifierLesInformationsToolStripMenuItem, archiverToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(208, 70);
+            contextMenuStrip1.Size = new Size(208, 48);
             // 
             // modifierLesInformationsToolStripMenuItem
             // 
@@ -295,12 +296,22 @@
             label_archiver.TabIndex = 72;
             label_archiver.Text = "Archiver : ";
             // 
+            // button_ajouter
+            // 
+            button_ajouter.Location = new Point(770, 493);
+            button_ajouter.Name = "button_ajouter";
+            button_ajouter.Size = new Size(90, 34);
+            button_ajouter.TabIndex = 72;
+            button_ajouter.Text = "AJOUTER";
+            button_ajouter.UseVisualStyleBackColor = true;
+            // 
             // FormAdministration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
             ClientSize = new Size(1050, 564);
+            Controls.Add(button_ajouter);
             Controls.Add(panel_admin);
             Controls.Add(button1);
             Controls.Add(panel3);
@@ -348,5 +359,6 @@
         private Label label_archiver;
         private RadioButton radioButton_non;
         private GroupBox groupBox;
+        private Button button_ajouter;
     }
 }
