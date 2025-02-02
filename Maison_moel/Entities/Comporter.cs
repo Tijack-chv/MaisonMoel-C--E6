@@ -9,7 +9,7 @@ public partial class Comporter
 
     public int IdPlat { get; set; }
 
-    public int Prix { get; set; }
+    public decimal Prix { get; set; }
 
     public int NbCommander { get; set; }
 

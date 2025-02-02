@@ -49,10 +49,15 @@
             label_filtreMetier = new Label();
             button1 = new Button();
             panel_admin = new Panel();
+            groupBox = new GroupBox();
+            radioButton_non = new RadioButton();
+            radioButton_oui = new RadioButton();
+            label_archiver = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).BeginInit();
             contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).BeginInit();
             panel_admin.SuspendLayout();
+            groupBox.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridPersonne
@@ -69,7 +74,7 @@
             // 
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { modifierLesInformationsToolStripMenuItem, archiverToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(208, 48);
+            contextMenuStrip1.Size = new Size(208, 70);
             // 
             // modifierLesInformationsToolStripMenuItem
             // 
@@ -82,7 +87,8 @@
             // 
             archiverToolStripMenuItem.Name = "archiverToolStripMenuItem";
             archiverToolStripMenuItem.Size = new Size(207, 22);
-            archiverToolStripMenuItem.Text = "Archiver le salarié";
+            archiverToolStripMenuItem.Text = "Modifier le MDP";
+            archiverToolStripMenuItem.Click += archiverToolStripMenuItem_Click;
             // 
             // panel5
             // 
@@ -122,17 +128,18 @@
             // 
             // txtbx_filtrePrenom
             // 
-            txtbx_filtrePrenom.Location = new Point(33, 251);
+            txtbx_filtrePrenom.Location = new Point(37, 237);
             txtbx_filtrePrenom.Name = "txtbx_filtrePrenom";
             txtbx_filtrePrenom.Size = new Size(211, 23);
             txtbx_filtrePrenom.TabIndex = 66;
+            txtbx_filtrePrenom.TextChanged += txtbx_filtrePrenom_TextChanged;
             // 
             // label_filtrePrenom
             // 
             label_filtrePrenom.AutoSize = true;
             label_filtrePrenom.BackColor = Color.Transparent;
             label_filtrePrenom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtrePrenom.Location = new Point(31, 211);
+            label_filtrePrenom.Location = new Point(35, 197);
             label_filtrePrenom.Name = "label_filtrePrenom";
             label_filtrePrenom.Size = new Size(162, 20);
             label_filtrePrenom.TabIndex = 65;
@@ -143,7 +150,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label1.Location = new Point(33, 300);
+            label1.Location = new Point(37, 286);
             label1.Name = "label1";
             label1.Size = new Size(254, 20);
             label1.TabIndex = 67;
@@ -151,27 +158,29 @@
             // 
             // txtbx_filtreNom
             // 
-            txtbx_filtreNom.Location = new Point(33, 164);
+            txtbx_filtreNom.Location = new Point(37, 150);
             txtbx_filtreNom.Name = "txtbx_filtreNom";
             txtbx_filtreNom.Size = new Size(211, 23);
             txtbx_filtreNom.TabIndex = 64;
+            txtbx_filtreNom.TextChanged += txtbx_filtreNom_TextChanged;
             // 
             // dateTimePicker_DateNaissance
             // 
-            dateTimePicker_DateNaissance.Location = new Point(33, 340);
+            dateTimePicker_DateNaissance.Location = new Point(37, 326);
             dateTimePicker_DateNaissance.MaxDate = new DateTime(2025, 1, 17, 0, 0, 0, 0);
             dateTimePicker_DateNaissance.MinDate = new DateTime(1950, 1, 1, 0, 0, 0, 0);
             dateTimePicker_DateNaissance.Name = "dateTimePicker_DateNaissance";
             dateTimePicker_DateNaissance.Size = new Size(211, 23);
             dateTimePicker_DateNaissance.TabIndex = 68;
             dateTimePicker_DateNaissance.Value = new DateTime(1975, 1, 1, 0, 0, 0, 0);
+            dateTimePicker_DateNaissance.ValueChanged += dateTimePicker_DateNaissance_ValueChanged;
             // 
             // label_filtreNom
             // 
             label_filtreNom.AutoSize = true;
             label_filtreNom.BackColor = Color.Transparent;
             label_filtreNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtreNom.Location = new Point(31, 124);
+            label_filtreNom.Location = new Point(35, 110);
             label_filtreNom.Name = "label_filtreNom";
             label_filtreNom.Size = new Size(136, 20);
             label_filtreNom.TabIndex = 63;
@@ -183,28 +192,30 @@
             buttonRenitialiserFiltre.FlatStyle = FlatStyle.Popup;
             buttonRenitialiserFiltre.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             buttonRenitialiserFiltre.ForeColor = Color.White;
-            buttonRenitialiserFiltre.Location = new Point(33, 405);
+            buttonRenitialiserFiltre.Location = new Point(37, 428);
             buttonRenitialiserFiltre.Name = "buttonRenitialiserFiltre";
             buttonRenitialiserFiltre.Size = new Size(138, 23);
             buttonRenitialiserFiltre.TabIndex = 69;
             buttonRenitialiserFiltre.Text = "Rénitialiser Filtre";
             buttonRenitialiserFiltre.UseVisualStyleBackColor = false;
+            buttonRenitialiserFiltre.Click += buttonRenitialiserFiltre_Click;
             // 
             // comboBox_Metier
             // 
             comboBox_Metier.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_Metier.FormattingEnabled = true;
-            comboBox_Metier.Location = new Point(31, 81);
+            comboBox_Metier.Location = new Point(35, 67);
             comboBox_Metier.Name = "comboBox_Metier";
             comboBox_Metier.Size = new Size(213, 23);
             comboBox_Metier.TabIndex = 61;
+            comboBox_Metier.SelectedIndexChanged += comboBox_Metier_SelectedIndexChanged;
             // 
             // label_filtreMetier
             // 
             label_filtreMetier.AutoSize = true;
             label_filtreMetier.BackColor = Color.Transparent;
             label_filtreMetier.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtreMetier.Location = new Point(33, 47);
+            label_filtreMetier.Location = new Point(37, 33);
             label_filtreMetier.Name = "label_filtreMetier";
             label_filtreMetier.Size = new Size(152, 20);
             label_filtreMetier.TabIndex = 62;
@@ -224,26 +235,72 @@
             // panel_admin
             // 
             panel_admin.BackColor = Color.Transparent;
+            panel_admin.Controls.Add(groupBox);
+            panel_admin.Controls.Add(label_archiver);
             panel_admin.Controls.Add(label_filtreMetier);
-            panel_admin.Controls.Add(txtbx_filtrePrenom);
-            panel_admin.Controls.Add(label_filtrePrenom);
-            panel_admin.Controls.Add(label1);
             panel_admin.Controls.Add(comboBox_Metier);
+            panel_admin.Controls.Add(txtbx_filtrePrenom);
+            panel_admin.Controls.Add(label1);
+            panel_admin.Controls.Add(label_filtreNom);
             panel_admin.Controls.Add(txtbx_filtreNom);
             panel_admin.Controls.Add(buttonRenitialiserFiltre);
+            panel_admin.Controls.Add(label_filtrePrenom);
             panel_admin.Controls.Add(dateTimePicker_DateNaissance);
-            panel_admin.Controls.Add(label_filtreNom);
-            panel_admin.Location = new Point(28, 43);
+            panel_admin.Location = new Point(27, 42);
             panel_admin.Name = "panel_admin";
             panel_admin.Size = new Size(312, 468);
             panel_admin.TabIndex = 71;
+            // 
+            // groupBox
+            // 
+            groupBox.Controls.Add(radioButton_non);
+            groupBox.Controls.Add(radioButton_oui);
+            groupBox.Location = new Point(131, 365);
+            groupBox.Name = "groupBox";
+            groupBox.Size = new Size(117, 39);
+            groupBox.TabIndex = 73;
+            groupBox.TabStop = false;
+            // 
+            // radioButton_non
+            // 
+            radioButton_non.AutoSize = true;
+            radioButton_non.Location = new Point(63, 13);
+            radioButton_non.Name = "radioButton_non";
+            radioButton_non.Size = new Size(48, 19);
+            radioButton_non.TabIndex = 71;
+            radioButton_non.TabStop = true;
+            radioButton_non.Text = "Non";
+            radioButton_non.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_oui
+            // 
+            radioButton_oui.AutoSize = true;
+            radioButton_oui.Location = new Point(8, 13);
+            radioButton_oui.Name = "radioButton_oui";
+            radioButton_oui.Size = new Size(44, 19);
+            radioButton_oui.TabIndex = 70;
+            radioButton_oui.TabStop = true;
+            radioButton_oui.Text = "Oui";
+            radioButton_oui.UseVisualStyleBackColor = true;
+            radioButton_oui.CheckedChanged += radioButton_oui_CheckedChanged;
+            // 
+            // label_archiver
+            // 
+            label_archiver.AutoSize = true;
+            label_archiver.BackColor = Color.Transparent;
+            label_archiver.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label_archiver.Location = new Point(36, 378);
+            label_archiver.Name = "label_archiver";
+            label_archiver.Size = new Size(89, 20);
+            label_archiver.TabIndex = 72;
+            label_archiver.Text = "Archiver : ";
             // 
             // FormAdministration
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
-            ClientSize = new Size(1010, 580);
+            ClientSize = new Size(1050, 564);
             Controls.Add(panel_admin);
             Controls.Add(button1);
             Controls.Add(panel3);
@@ -260,6 +317,8 @@
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).EndInit();
             panel_admin.ResumeLayout(false);
             panel_admin.PerformLayout();
+            groupBox.ResumeLayout(false);
+            groupBox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -285,5 +344,9 @@
         private Label label_filtreMetier;
         private Button button1;
         private Panel panel_admin;
+        private RadioButton radioButton_oui;
+        private Label label_archiver;
+        private RadioButton radioButton_non;
+        private GroupBox groupBox;
     }
 }

@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BC = BCrypt.Net.BCrypt;
 
 namespace Maison_moel.Model
 {
@@ -18,6 +19,17 @@ namespace Maison_moel.Model
             personnes.AddRange(ListeServeur());
             personnes.AddRange(ListeCuisinier());
             personnes.AddRange(ListeAdmin());
+
+            return personnes.OrderBy(p => p.IdPersonne).ToList();
+        }
+
+        public static List<Personne> ListePersonneArchiver()
+        {
+            List<Personne> personnes = new List<Personne>();
+
+            personnes.AddRange(ListeServeurArchiver());
+            personnes.AddRange(ListeCuisinierArchiver());
+            personnes.AddRange(ListeAdminArchiver());
 
             return personnes.OrderBy(p => p.IdPersonne).ToList();
         }
@@ -43,6 +55,30 @@ namespace Maison_moel.Model
             return Model.MonModel.Personnes
             .Where(p => p.Admin != null)
             .Where(p => p.Archiver == 0)
+            .ToList();
+        }
+
+        public static List<Personne> ListeServeurArchiver()
+        {
+            return Model.MonModel.Personnes
+            .Where(p => p.Serveur != null)
+            .Where(p => p.Archiver == 1)
+            .ToList();
+        }
+
+        public static List<Personne> ListeCuisinierArchiver()
+        {
+            return Model.MonModel.Personnes
+            .Where(p => p.Cuisinier != null)
+            .Where(p => p.Archiver == 1)
+            .ToList();
+        }
+
+        public static List<Personne> ListeAdminArchiver()
+        {
+            return Model.MonModel.Personnes
+            .Where(p => p.Admin != null)
+            .Where(p => p.Archiver == 1)
             .ToList();
         }
 
@@ -72,10 +108,18 @@ namespace Maison_moel.Model
 
         }
 
-        public static List<Personne> ListePersonneNom(string recherche)
+        public static List<Personne> ListePersonneNom(string recherche, bool archive)
         {
-            return Model.MonModel.Personnes
-                .Where(c => c.Nom == recherche).Where(c => c.Archiver == 0).ToList();
+            if (archive)
+            {
+                return Model.MonModel.Personnes
+                .Where(c => c.Nom == recherche).Where(c => c.Archiver == 1).ToList();
+            }
+            else
+            {
+                return Model.MonModel.Personnes
+                    .Where(c => c.Nom == recherche).Where(c => c.Archiver == 0).ToList();
+            }
         }
 
         public static Cuisinier GetCuisinierById(int id)
@@ -139,6 +183,21 @@ namespace Maison_moel.Model
         {
             Personne personne = GetPersonneById(id);
             personne.Archiver = 1;
+            Model.MonModel.SaveChanges();
+        }
+
+        public static void DesarchiverPersonne(int id)
+        {
+            Personne personne = GetPersonneById(id);
+            personne.Archiver = 0;
+            Model.MonModel.SaveChanges();
+        }
+
+        public static void ModifierMDP(int id, string mdp)
+        {
+            Personne personne = GetPersonneById(id);
+            string hashMdp = BC.HashPassword(mdp);
+            personne.Password = hashMdp;
             Model.MonModel.SaveChanges();
         }
 

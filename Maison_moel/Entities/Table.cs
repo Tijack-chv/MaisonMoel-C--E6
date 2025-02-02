@@ -13,6 +13,10 @@ public partial class Table
 
     public int Capacite { get; set; }
 
+    public int? IdReservation { get; set; }
+
+    public virtual Reservation? IdReservationNavigation { get; set; }
+
     public virtual TypeTable IdTypeTableNavigation { get; set; } = null!;
 
     public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();

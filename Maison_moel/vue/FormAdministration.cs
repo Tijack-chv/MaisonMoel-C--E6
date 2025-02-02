@@ -15,7 +15,10 @@ namespace Maison_moel.vue
 {
     public partial class FormAdministration : Form
     {
+
+        #region Attributs
         SFormulaire sousF;
+
         public FormAdministration()
         {
             InitializeComponent();
@@ -26,8 +29,11 @@ namespace Maison_moel.vue
             comboBox_Metier.Items.Add("Administrateurs");
             comboBox_Metier.Items.Add("Cuisiniers");
 
-        }
 
+        }
+        #endregion
+
+        #region LoadDataGridView
         private void FormAdministration_Load(object sender, EventArgs e)
         {
 
@@ -51,6 +57,7 @@ namespace Maison_moel.vue
             dataGridPersonne.Columns[4].HeaderText = "Email";
             dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
+            radioButton_non.Checked = true;
         }
 
         private void Form_AdministrationFiltre_Load(List<Personne> personne)
@@ -74,60 +81,132 @@ namespace Maison_moel.vue
             dataGridPersonne.Columns[3].HeaderText = "Date de Naissance";
             dataGridPersonne.Columns[4].HeaderText = "Email";
             dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            radioButton_non.Checked = true;
         }
 
+        #endregion
 
+        #region AppliquerFiltres
 
         private void AppliquerFiltres()
         {
-            List<Personne> query = new List<Personne>();
-            List<Personne> query1 = ModelPersonne.ListePersonne().ToList();
-            List<Personne> query2 = new List<Personne>();
-
-            if (!string.IsNullOrEmpty(txtbx_filtreNom.Text))
-                query1 = query1.Where(x => x.Nom.Contains(txtbx_filtreNom.Text)).ToList();
-            if (!string.IsNullOrEmpty(txtbx_filtrePrenom.Text))
-                query1 = query1.Where(x => x.Prenom.Contains(txtbx_filtrePrenom.Text)).ToList();
-            if (dateTimePicker_DateNaissance.Value != dateTimePicker_DateNaissance.MinDate)
-                query1 = query1.Where(x => x.DateNaiss >= DateOnly.FromDateTime(dateTimePicker_DateNaissance.Value)).ToList();
-            if (comboBox_Metier.SelectedIndex != 0)
+            if (radioButton_oui.Checked == true)
             {
-                if (comboBox_Metier.SelectedIndex == 1)
+                List<Personne> query = new List<Personne>();
+                List<Personne> query1 = ModelPersonne.ListePersonneArchiver().ToList();
+                List<Personne> query2 = new List<Personne>();
+
+                if (!string.IsNullOrEmpty(txtbx_filtreNom.Text))
+                    query1 = query1.Where(x => x.Nom.Contains(txtbx_filtreNom.Text)).ToList();
+                if (!string.IsNullOrEmpty(txtbx_filtrePrenom.Text))
+                    query1 = query1.Where(x => x.Prenom.Contains(txtbx_filtrePrenom.Text)).ToList();
+                if (dateTimePicker_DateNaissance.Value != dateTimePicker_DateNaissance.MinDate)
+                    query1 = query1.Where(x => x.DateNaiss >= DateOnly.FromDateTime(dateTimePicker_DateNaissance.Value)).ToList();
+                if (comboBox_Metier.SelectedIndex != 0)
                 {
-                    query2 = ModelPersonne.ListeServeur();
-                    query = query1.Intersect(query2).ToList();
+                    if (comboBox_Metier.SelectedIndex == 1)
+                    {
+                        query2 = ModelPersonne.ListeServeurArchiver();
+                        query = query1.Intersect(query2).ToList();
+                    }
+                    if (comboBox_Metier.SelectedIndex == 2)
+                    {
+                        query2 = ModelPersonne.ListeAdminArchiver();
+                        query = query1.Intersect(query2).ToList();
+                    }
+                    if (comboBox_Metier.SelectedIndex == 3)
+                    {
+                        query2 = ModelPersonne.ListeCuisinierArchiver();
+                        query = query1.Intersect(query2).ToList();
+                    }
                 }
-                if (comboBox_Metier.SelectedIndex == 2)
+                else
                 {
-                    query2 = ModelPersonne.ListeAdmin();
-                    query = query1.Intersect(query2).ToList();
+                    query = query1;
                 }
-                if (comboBox_Metier.SelectedIndex == 3)
+
+                if (query.Any())
                 {
-                    query2 = ModelPersonne.ListeCuisinier();
-                    query = query1.Intersect(query2).ToList();
+                    Form_AdministrationFiltre_Load(query);
+                }
+                else
+                {
+                    // Si la liste est vide, vide le DataGridView et affiche un message
+                    dataGridPersonne.DataSource = null;
+                    MessageBox.Show("Aucun membre ne correspond aux critères des filtres !", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    reinitialiserFiltre();
                 }
             }
             else
             {
-                query = query1;
+                List<Personne> query = new List<Personne>();
+                List<Personne> query1 = ModelPersonne.ListePersonne().ToList();
+                List<Personne> query2 = new List<Personne>();
+
+                if (!string.IsNullOrEmpty(txtbx_filtreNom.Text))
+                    query1 = query1.Where(x => x.Nom.Contains(txtbx_filtreNom.Text)).ToList();
+                if (!string.IsNullOrEmpty(txtbx_filtrePrenom.Text))
+                    query1 = query1.Where(x => x.Prenom.Contains(txtbx_filtrePrenom.Text)).ToList();
+                if (dateTimePicker_DateNaissance.Value != dateTimePicker_DateNaissance.MinDate)
+                    query1 = query1.Where(x => x.DateNaiss >= DateOnly.FromDateTime(dateTimePicker_DateNaissance.Value)).ToList();
+                if (comboBox_Metier.SelectedIndex != 0)
+                {
+                    if (comboBox_Metier.SelectedIndex == 1)
+                    {
+                        query2 = ModelPersonne.ListeServeur();
+                        query = query1.Intersect(query2).ToList();
+                    }
+                    if (comboBox_Metier.SelectedIndex == 2)
+                    {
+                        query2 = ModelPersonne.ListeAdmin();
+                        query = query1.Intersect(query2).ToList();
+                    }
+                    if (comboBox_Metier.SelectedIndex == 3)
+                    {
+                        query2 = ModelPersonne.ListeCuisinier();
+                        query = query1.Intersect(query2).ToList();
+                    }
+                }
+                else
+                {
+                    query = query1;
+                }
+
+                if (query.Any())
+                {
+                    Form_AdministrationFiltre_Load(query);
+                }
+                else
+                {
+                    // Si la liste est vide, vide le DataGridView et affiche un message
+                    dataGridPersonne.DataSource = null;
+                    MessageBox.Show("Aucun membre ne correspond aux critères des filtres !", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    reinitialiserFiltre();
+                }
             }
 
-            if (query.Any())
-            {
-                Form_AdministrationFiltre_Load(query);
-            }
-            else
-            {
-                // Si la liste est vide, vide le DataGridView et affiche un message
-                dataGridPersonne.DataSource = null;
-                MessageBox.Show("Aucun membre ne correspond aux critères des filtres !", "Aucun résultat", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
 
         }
 
+        #endregion
 
-        private void comboBox_metier_SelectedIndexChanged(object sender, EventArgs e)
+        #region reinitialiserFiltre
+        private void reinitialiserFiltre()
+        {
+            comboBox_Metier.SelectedIndex = 0;
+            txtbx_filtreNom.Text = "";
+            txtbx_filtrePrenom.Text = "";
+            dateTimePicker_DateNaissance.Value = Convert.ToDateTime("01/01/1975");
+            radioButton_oui.Checked = false;
+            radioButton_non.Checked = true;
+        }
+
+        #endregion
+
+        #region Filtres
+
+        private void comboBox_Metier_SelectedIndexChanged(object sender, EventArgs e)
         {
             AppliquerFiltres();
         }
@@ -150,18 +229,24 @@ namespace Maison_moel.vue
 
         private void buttonRenitialiserFiltre_Click(object sender, EventArgs e)
         {
-            comboBox_Metier.SelectedIndex = 0;
-            txtbx_filtreNom.Text = "";
-            txtbx_filtrePrenom.Text = "";
-            dateTimePicker_DateNaissance.Value = Convert.ToDateTime("01/01/1975");
+            reinitialiserFiltre();
         }
+
+        private void radioButton_oui_CheckedChanged(object sender, EventArgs e)
+        {
+            AppliquerFiltres();
+        }
+
+        #endregion
+
+        #region MenuStrip
 
         private void ModifierPersonnelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dataGridPersonne.SelectedRows.Count > 0)
             {
                 if (dataGridPersonne.SelectedRows.Count == 1)
-                {   
+                {
                     int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
                     sousF = new(panel_admin);
                     sousF.openChildForm(new FormModificationPersonnel(currentId));
@@ -179,6 +264,30 @@ namespace Maison_moel.vue
 
         }
 
+        private void archiverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataGridPersonne.SelectedRows.Count > 0)
+            {
+                if (dataGridPersonne.SelectedRows.Count == 1)
+                {
+                    int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
+                    sousF = new(panel_admin);
+                    sousF.openChildForm(new FormModificationMDP(currentId));
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez selectionner un seul et unique membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez selectionner un membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        #endregion
+
+        #region ArchiverPersonne
         private void button1_Click(object sender, EventArgs e)
         {
             if (dataGridPersonne.SelectedRows.Count > 0)
@@ -199,5 +308,10 @@ namespace Maison_moel.vue
                 MessageBox.Show("Veuillez selectionner un membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+        #endregion
+
+
+
+        
     }
 }
