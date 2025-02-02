@@ -58,6 +58,7 @@ namespace Maison_moel.vue
             dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             radioButton_non.Checked = true;
+
         }
 
         private void Form_AdministrationFiltre_Load(List<Personne> personne)
@@ -82,7 +83,6 @@ namespace Maison_moel.vue
             dataGridPersonne.Columns[4].HeaderText = "Email";
             dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            radioButton_non.Checked = true;
         }
 
         #endregion
