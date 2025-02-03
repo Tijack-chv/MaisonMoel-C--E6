@@ -219,6 +219,7 @@
             buttonSettings.Text = "       Paramètre";
             buttonSettings.TextAlign = ContentAlignment.MiddleLeft;
             buttonSettings.UseVisualStyleBackColor = false;
+            buttonSettings.Click += buttonSettings_Click;
             // 
             // buttonHome
             // 

@@ -55,6 +55,7 @@ namespace Maison_moel.vue
                         textBox_email.Text = personne.Email;
                         dtp_datenaissance.Value = personne.DateNaiss.ToDateTime(TimeOnly.Parse("00:00"));
                         numericUpDown_salaire.Value = personne.Cuisinier.Salaires;
+                        comboBox_role.SelectedValue = personne.Cuisinier.IdRole;
                     }
                     if (personne.Serveur != null)
                     {
@@ -72,6 +73,11 @@ namespace Maison_moel.vue
                 }
 
             }
+            bindingSource_role = new BindingSource();
+            bindingSource_role.DataSource = ModelRole.ListeRole();
+            comboBox_role.DataSource = bindingSource_role;
+            comboBox_role.DisplayMember = "libelleRole";
+            comboBox_role.ValueMember = "IdRole";
 
         }
 

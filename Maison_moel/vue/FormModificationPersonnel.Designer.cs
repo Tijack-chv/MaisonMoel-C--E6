@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             textBox_nom = new TextBox();
             textBox_prenom = new TextBox();
             textBox_email = new TextBox();
@@ -42,7 +43,9 @@
             comboBox_role = new ComboBox();
             button_valider = new Button();
             button_annuler = new Button();
+            bindingSource_role = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)numericUpDown_salaire).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource_role).BeginInit();
             SuspendLayout();
             // 
             // textBox_nom
@@ -200,6 +203,7 @@
             Name = "FormModificationPersonnel";
             Text = "FormModificationCuisinier";
             ((System.ComponentModel.ISupportInitialize)numericUpDown_salaire).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource_role).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -220,5 +224,6 @@
         private ComboBox comboBox_role;
         private Button button_valider;
         private Button button_annuler;
+        private BindingSource bindingSource_role;
     }
 }

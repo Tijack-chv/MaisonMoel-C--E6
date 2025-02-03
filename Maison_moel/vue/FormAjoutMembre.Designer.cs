@@ -163,6 +163,7 @@
             button_ajouter.TabIndex = 12;
             button_ajouter.Text = "AJOUTER";
             button_ajouter.UseVisualStyleBackColor = false;
+            button_ajouter.Click += button_ajouter_Click;
             // 
             // button_annuler
             // 
@@ -173,6 +174,7 @@
             button_annuler.TabIndex = 13;
             button_annuler.Text = "ANNULER";
             button_annuler.UseVisualStyleBackColor = false;
+            button_annuler.Click += button_annuler_Click;
             // 
             // comboBox_metier
             // 

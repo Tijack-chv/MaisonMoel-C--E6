@@ -312,6 +312,5 @@ namespace Maison_moel.vue
 
 
 
-        
     }
 }
