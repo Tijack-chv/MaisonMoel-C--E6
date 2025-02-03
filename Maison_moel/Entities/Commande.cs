@@ -15,6 +15,8 @@ public partial class Commande
 
     public DateTime DateCommande { get; set; }
 
+    public bool EstPayer { get; set; }
+
     public virtual ICollection<Comporter> Comporters { get; set; } = new List<Comporter>();
 
     public virtual Etat IdEtatNavigation { get; set; } = null!;

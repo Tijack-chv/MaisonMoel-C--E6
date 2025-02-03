@@ -19,6 +19,8 @@ public partial class Personne
 
     public string Token { get; set; } = null!;
 
+    public sbyte Archiver { get; set; }
+
     public virtual Admin? Admin { get; set; }
 
     public virtual ICollection<Avi> Avis { get; set; } = new List<Avi>();

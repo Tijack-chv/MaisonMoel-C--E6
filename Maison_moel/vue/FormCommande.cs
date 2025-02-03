@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maison_moel.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,31 @@ namespace Maison_moel.vue
         public FormCommande()
         {
             InitializeComponent();
+        }
+
+        private void FormCommande_Load(object sender, EventArgs e)
+        {
+            bindingSourceCommande.DataSource = ModelCommande.ListeComporter().Select(static x => new
+            {
+                x.IdCommande,
+                x.IdPlat,
+                x.IdPlatNavigation.DescriptionPlat,
+                x.Prix,
+                x.NbCommander,
+                x.IdEtat,
+                x.IdEtatNavigation.LibelleEtat,
+
+            }).ToList();
+
+            dataGridViewCommande.DataSource = bindingSourceCommande;
+            dataGridViewCommande.Columns["IdCommande"].Visible = false;
+            dataGridViewCommande.Columns["IdPlat"].Visible = false;
+            dataGridViewCommande.Columns["IdEtat"].Visible = false;
+        }
+
+        private void timerCommande_Tick(object sender, EventArgs e)
+        {
+            FormCommande_Load(sender, e);
         }
     }
 }

@@ -10,4 +10,6 @@ public partial class Etat
     public string LibelleEtat { get; set; } = null!;
 
     public virtual ICollection<Commande> Commandes { get; set; } = new List<Commande>();
+
+    public virtual ICollection<Comporter> Comporters { get; set; } = new List<Comporter>();
 }

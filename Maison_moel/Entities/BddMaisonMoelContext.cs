@@ -74,7 +74,7 @@ public partial class BddMaisonMoelContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=192.168.143.12;port=3306;user=admin-ap4;password=P@ssw0rd;database=BDD_MaisonMoel", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.40-mysql"));
+        => optionsBuilder.UseMySql("server=192.168.143.12;port=3306;user=admin-ap4;password=P@ssw0rd;database=BDD_MaisonMoel", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.4.4-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -202,6 +202,7 @@ public partial class BddMaisonMoelContext : DbContext
             entity.Property(e => e.DateCommande)
                 .HasColumnType("datetime")
                 .HasColumnName("dateCommande");
+            entity.Property(e => e.EstPayer).HasColumnName("est_payer");
             entity.Property(e => e.IdEtat).HasColumnName("idEtat");
             entity.Property(e => e.IdPersonne).HasColumnName("idPersonne");
             entity.Property(e => e.IdReservation).HasColumnName("idReservation");
@@ -234,14 +235,26 @@ public partial class BddMaisonMoelContext : DbContext
 
             entity.HasIndex(e => e.IdPlat, "I_FK_comporter_plat");
 
+            entity.HasIndex(e => e.IdEtat, "idEtat");
+
             entity.Property(e => e.IdCommande).HasColumnName("idCommande");
             entity.Property(e => e.IdPlat).HasColumnName("idPlat");
+            entity.Property(e => e.IdEtat)
+                .HasDefaultValueSql("'1'")
+                .HasColumnName("idEtat");
             entity.Property(e => e.NbCommander).HasColumnName("nbCommander");
-            entity.Property(e => e.Prix).HasColumnName("prix");
+            entity.Property(e => e.Prix)
+                .HasPrecision(10, 2)
+                .HasColumnName("prix");
 
             entity.HasOne(d => d.IdCommandeNavigation).WithMany(p => p.Comporters)
                 .HasForeignKey(d => d.IdCommande)
                 .HasConstraintName("comm_ibfk_1");
+
+            entity.HasOne(d => d.IdEtatNavigation).WithMany(p => p.Comporters)
+                .HasForeignKey(d => d.IdEtat)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("comporter_ibfk_1");
 
             entity.HasOne(d => d.IdPlatNavigation).WithMany(p => p.Comporters)
                 .HasForeignKey(d => d.IdPlat)
@@ -386,6 +399,7 @@ public partial class BddMaisonMoelContext : DbContext
             entity.HasIndex(e => e.Email, "uniq_email").IsUnique();
 
             entity.Property(e => e.IdPersonne).HasColumnName("idPersonne");
+            entity.Property(e => e.Archiver).HasColumnName("archiver");
             entity.Property(e => e.DateNaiss).HasColumnName("dateNaiss");
             entity.Property(e => e.Email)
                 .HasMaxLength(128)
@@ -509,6 +523,7 @@ public partial class BddMaisonMoelContext : DbContext
             entity.HasIndex(e => e.IdTable, "I_FK_reservation_table");
 
             entity.Property(e => e.IdReservation).HasColumnName("idReservation");
+            entity.Property(e => e.Accompte).HasColumnName("accompte");
             entity.Property(e => e.DateMoment)
                 .HasColumnType("datetime")
                 .HasColumnName("dateMoment");
@@ -518,6 +533,9 @@ public partial class BddMaisonMoelContext : DbContext
             entity.Property(e => e.IdPersonne).HasColumnName("idPersonne");
             entity.Property(e => e.IdTable).HasColumnName("idTable");
             entity.Property(e => e.NbPersonnes).HasColumnName("nbPersonnes");
+            entity.Property(e => e.Uuid)
+                .HasMaxLength(256)
+                .HasColumnName("uuid");
 
             entity.HasOne(d => d.IdPersonneNavigation).WithMany(p => p.Reservations)
                 .HasForeignKey(d => d.IdPersonne)

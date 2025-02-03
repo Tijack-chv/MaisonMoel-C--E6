@@ -33,6 +33,11 @@ namespace Maison_moel.vue
         public FormHome(bool est_admin, int id)
         {
             InitializeComponent();
+            
+            this.Controls.Add(panelMessages);
+            panelMessages.BringToFront();
+            panelMessages.Location = new(680, 83);
+
             est_admin = true;
             
             tailleHauteurEnsembleMessage = 10;
@@ -122,7 +127,7 @@ namespace Maison_moel.vue
             buttonAffiche(!buttonSettings.Visible);
             panelVisible();
             panelCommande.Visible = true;
-            sousF.openChildForm(new FormGestionCommande());
+            sousF.openChildForm(new FormCommande());
         }
 
         private void buttonCuisine_Click(object sender, EventArgs e)

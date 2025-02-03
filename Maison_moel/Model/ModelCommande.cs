@@ -17,5 +17,27 @@ namespace Maison_moel.Model
             .Include(c => c.IdPersonneNavigation).ThenInclude(p => p.IdPersonneNavigation)
             .ToList();
         }
+
+        public static List<Comporter> ListeComporter()
+        {
+            return Model.MonModel.Comporters.Include(x => x.IdPlatNavigation)
+                .Include(x => x.IdEtatNavigation)
+                .Include(x => x.IdCommandeNavigation).ToList();
+        }
+
+        public static List<Commande> ListeCommandeNonFini()
+        {
+            return Model.MonModel.Commandes.Where(x=> x.IdEtatNavigation.LibelleEtat == "Terminé").ToList();
+        }
+        
+        public static List<Comporter> ListeCompleteComporterCommandeNonFini()
+        {
+            return Model.MonModel.Comporters.Include(x => x.IdPlatNavigation)
+                .Include(x => x.IdCommandeNavigation)
+                .Include(x => x.IdCommandeNavigation.IdEtatNavigation)
+                .Where(x => x.IdCommandeNavigation.IdEtatNavigation.LibelleEtat == "Terminé")
+                .ToList();
+        }
+        
     }
 }

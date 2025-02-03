@@ -58,8 +58,8 @@ namespace Maison_moel.vue
         private void LoadNotif()
         {
             labelNotification.Text = ModelReaprovisionnement.NombreReaprovisionnement(quantiteCritiqueReapro).ToString();
-            labelNotification.Text = Convert.ToInt32(labelNotification.Text) > 9 ? "9+" : labelNotification.Text;
             pictureBoxNotification.Enabled = Convert.ToInt32(labelNotification.Text) >= 0 ? true : false;
+            labelNotification.Text = Convert.ToInt32(labelNotification.Text) > 9 ? "9+" : labelNotification.Text;
         }
 
         #region DataGridViewDataLoad

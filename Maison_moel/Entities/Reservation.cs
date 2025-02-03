@@ -17,6 +17,10 @@ public partial class Reservation
 
     public DateTime DateReservation { get; set; }
 
+    public string Uuid { get; set; } = null!;
+
+    public int Accompte { get; set; }
+
     public virtual ICollection<Commande> Commandes { get; set; } = new List<Commande>();
 
     public virtual Client? IdPersonneNavigation { get; set; }
