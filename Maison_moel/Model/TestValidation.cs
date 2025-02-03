@@ -10,7 +10,7 @@ namespace Maison_moel.Model
     public class TestValidation
     {
     // Vérifie si l'email est valide
-    public static bool EstEmailValide(string email)
+        public static bool EstEmailValide(string email)
         {
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
@@ -29,6 +29,16 @@ namespace Maison_moel.Model
             bool contientSpecial = Regex.IsMatch(mdp, @"[\W_]"); // \W correspond aux caractères non alphanumériques
 
             return contientMajuscule && contientMinuscule && contientChiffre && contientSpecial;
+        }
+
+        public static bool EstAgeValide(DateTime dateNaissance)
+        {
+            // Calculer la date minimale requise
+            DateTime dateActuelle = DateTime.Today;
+            DateTime dateMinimale = dateActuelle.AddYears(-16);
+
+            // Vérifier si la date de naissance est avant ou égale à la date minimale
+            return dateNaissance <= dateMinimale;
         }
     }
 }

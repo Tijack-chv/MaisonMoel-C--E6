@@ -124,6 +124,7 @@
             // 
             numericUpDown_salaire.DecimalPlaces = 2;
             numericUpDown_salaire.Location = new Point(39, 299);
+            numericUpDown_salaire.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDown_salaire.Name = "numericUpDown_salaire";
             numericUpDown_salaire.Size = new Size(202, 23);
             numericUpDown_salaire.TabIndex = 19;

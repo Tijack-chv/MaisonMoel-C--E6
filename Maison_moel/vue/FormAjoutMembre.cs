@@ -37,6 +37,9 @@ namespace Maison_moel.vue
             label_salaire.Visible = false;
             nud_salaire.Visible = false;
 
+            textBox_mdp.UseSystemPasswordChar = true;
+            textBox_confirmMdp.UseSystemPasswordChar = true;
+
 
 
         }
@@ -51,11 +54,11 @@ namespace Maison_moel.vue
             Personne personne = new Personne();
             // Récupération des valeurs des champs
             string nom = textBox_nom.Text.Trim();
-            string prenom = textBox_nom.Text.Trim();
+            string prenom = textBox_prenom.Text.Trim();
             string email = textBox_email.Text.Trim();
-            string mdp = textBox_email.Text;
+            string mdp = textBox_mdp.Text;
             string confirmMdp = textBox_confirmMdp.Text;
-            string dateNaissance = dateTimePicker_naissance.Text;
+            DateTime dateNaissance = dateTimePicker_naissance.Value;
             string metier = comboBox_metier.Text;
 
             // Vérification des champs obligatoires
@@ -82,6 +85,11 @@ namespace Maison_moel.vue
                 return;
             }
 
+            if (!TestValidation.EstAgeValide(dateNaissance))
+            {
+                MessageBox.Show("La personne doit avoir au minimum 16 ans.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             // Vérification de la sécurité du mot de passe
             if (!TestValidation.EstMotDePasseValide(mdp))
             {
@@ -97,14 +105,13 @@ namespace Maison_moel.vue
                         personne.Nom = nom;
                         personne.Prenom = prenom;
                         personne.Email = email;
-                        personne.DateNaiss = DateOnly.Parse(dateNaissance);
+                        personne.DateNaiss = DateOnly.FromDateTime(dateNaissance);
                         personne.Password = BC.HashPassword(mdp);
                         personne.Token = Guid.NewGuid().ToString();
                         personne.Serveur = new Serveur();
                         personne.Serveur.IdPersonne = personne.IdPersonne;
                         personne.Serveur.Salaires = Convert.ToInt32(nud_salaire.Value);
                         ModelPersonne.ajouterPersonne(personne);
-                        ModelPersonne.ajouterServeur(personne.Serveur);
 
 
                     };
@@ -116,13 +123,12 @@ namespace Maison_moel.vue
                         personne.Nom = nom;
                         personne.Prenom = prenom;
                         personne.Email = email;
-                        personne.DateNaiss = DateOnly.Parse(dateNaissance);
+                        personne.DateNaiss = DateOnly.FromDateTime(dateNaissance); ;
                         personne.Password = BC.HashPassword(mdp);
                         personne.Token = Guid.NewGuid().ToString();
                         personne.Admin = new Admin();
                         personne.Admin.IdPersonne = personne.IdPersonne;
                         ModelPersonne.ajouterPersonne(personne);
-                        ModelPersonne.ajouterAdmin(personne.Admin);
                     };
                     break;
 
@@ -132,7 +138,7 @@ namespace Maison_moel.vue
                         personne.Nom = nom;
                         personne.Prenom = prenom;
                         personne.Email = email;
-                        personne.DateNaiss = DateOnly.Parse(dateNaissance);
+                        personne.DateNaiss = DateOnly.FromDateTime(dateNaissance);
                         personne.Password = BC.HashPassword(mdp);
                         personne.Token = Guid.NewGuid().ToString();
                         personne.Cuisinier = new Cuisinier();
@@ -140,7 +146,6 @@ namespace Maison_moel.vue
                         personne.Cuisinier.Salaires = Convert.ToInt32(nud_salaire.Value);
                         personne.Cuisinier.IdRole = Convert.ToInt32(comboBox_role.SelectedValue);
                         ModelPersonne.ajouterPersonne(personne);
-                        ModelPersonne.ajouterCuisinier(personne.Cuisinier);
                     };
 
                     break;
@@ -150,7 +155,7 @@ namespace Maison_moel.vue
                     personne.Nom = nom;
                     personne.Prenom = prenom;
                     personne.Email = email;
-                    personne.DateNaiss = DateOnly.Parse(dateNaissance);
+                    personne.DateNaiss = DateOnly.FromDateTime(dateNaissance);
                     personne.Password = BC.HashPassword(mdp);
                     personne.Token = Guid.NewGuid().ToString();
                     ModelPersonne.ajouterPersonne(personne);
@@ -160,6 +165,14 @@ namespace Maison_moel.vue
 
             // Si tout est valide
             MessageBox.Show("Utilisateur ajouté avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            textBox_nom.Text = "";
+            textBox_prenom.Text = "";
+            textBox_email.Text = "";
+            textBox_mdp.Text = "";
+            textBox_confirmMdp.Text = "";
+            comboBox_metier.SelectedIndex = 0;
+            nud_salaire.Value = 0;
+            comboBox_role.SelectedIndex = -1;
         }
 
         private void comboBox_metier_SelectedIndexChanged(object sender, EventArgs e)

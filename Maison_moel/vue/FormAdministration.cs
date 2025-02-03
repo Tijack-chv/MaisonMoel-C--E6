@@ -29,6 +29,7 @@ namespace Maison_moel.vue
             comboBox_Metier.Items.Add("Administrateurs");
             comboBox_Metier.Items.Add("Cuisiniers");
 
+            radioButton_non.Checked = true;
 
         }
         #endregion
@@ -57,11 +58,10 @@ namespace Maison_moel.vue
             dataGridPersonne.Columns[4].HeaderText = "Email";
             dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            radioButton_non.Checked = true;
 
         }
 
-        private void Form_AdministrationFiltre_Load(List<Personne> personne)
+        protected void Form_AdministrationFiltre_Load(List<Personne> personne)
         {
             bindingSourcePersonnes.DataSource = personne.Select(static x => new
             {
@@ -96,6 +96,7 @@ namespace Maison_moel.vue
                 List<Personne> query = new List<Personne>();
                 List<Personne> query1 = ModelPersonne.ListePersonneArchiver().ToList();
                 List<Personne> query2 = new List<Personne>();
+                button1.Text = "Désarchiver";
 
                 if (!string.IsNullOrEmpty(txtbx_filtreNom.Text))
                     query1 = query1.Where(x => x.Nom.Contains(txtbx_filtreNom.Text)).ToList();
@@ -138,11 +139,12 @@ namespace Maison_moel.vue
                     reinitialiserFiltre();
                 }
             }
-            else
+            if (radioButton_non.Checked == true)
             {
                 List<Personne> query = new List<Personne>();
                 List<Personne> query1 = ModelPersonne.ListePersonne().ToList();
                 List<Personne> query2 = new List<Personne>();
+                button1.Text = "Archiver";
 
                 if (!string.IsNullOrEmpty(txtbx_filtreNom.Text))
                     query1 = query1.Where(x => x.Nom.Contains(txtbx_filtreNom.Text)).ToList();
@@ -236,6 +238,7 @@ namespace Maison_moel.vue
         {
             AppliquerFiltres();
         }
+        
 
         #endregion
 
@@ -293,10 +296,21 @@ namespace Maison_moel.vue
             if (dataGridPersonne.SelectedRows.Count > 0)
             {
                 if (dataGridPersonne.SelectedRows.Count == 1)
-                {
-                    int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
-                    ModelPersonne.ArchiverPersonne(currentId);
-                    MessageBox.Show("La personne sélectionner vient d'être archivée", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                {   
+                    if(radioButton_non.Checked == true)
+                    {
+                        int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
+                        ModelPersonne.ArchiverPersonne(currentId);
+                        MessageBox.Show("La personne sélectionner vient d'être archivée", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Form_AdministrationFiltre_Load(ModelPersonne.ListePersonne().ToList());
+                    }
+                    if (radioButton_oui.Checked == true)
+                    {
+                        int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
+                        ModelPersonne.DesarchiverPersonne(currentId);
+                        MessageBox.Show("La personne sélectionner vient d'être désarchivée", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Form_AdministrationFiltre_Load(ModelPersonne.ListePersonneArchiver().ToList());
+                    }
                 }
                 else
                 {
@@ -307,10 +321,12 @@ namespace Maison_moel.vue
             {
                 MessageBox.Show("Veuillez selectionner un membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            
         }
         #endregion
 
 
 
+        
     }
 }

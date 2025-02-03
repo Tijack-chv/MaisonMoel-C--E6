@@ -219,6 +219,7 @@
             // nud_salaire
             // 
             nud_salaire.Location = new Point(696, 154);
+            nud_salaire.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             nud_salaire.Name = "nud_salaire";
             nud_salaire.Size = new Size(214, 23);
             nud_salaire.TabIndex = 17;
