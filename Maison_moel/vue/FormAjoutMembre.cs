@@ -23,6 +23,22 @@ namespace Maison_moel.vue
             comboBox_metier.Items.Add("Serveurs");
             comboBox_metier.Items.Add("Administrateurs");
             comboBox_metier.Items.Add("Cuisiniers");
+
+            bindingSource_role = new BindingSource();
+            bindingSource_role.DataSource = ModelRole.ListeRole();
+            comboBox_role.DataSource = bindingSource_role;
+            comboBox_role.DisplayMember = "libelleRole";
+            comboBox_role.ValueMember = "IdRole";
+
+            comboBox_role.SelectedValue = 0;
+
+            label_role.Visible = false;
+            comboBox_role.Visible = false;
+            label_salaire.Visible = false;
+            nud_salaire.Visible = false;
+
+
+
         }
 
         private void button_annuler_Click(object sender, EventArgs e)
@@ -76,13 +92,20 @@ namespace Maison_moel.vue
             switch (metier)
             {
                 case "Serveurs":
-                    
-                    {   
+
+                    {
                         personne.Nom = nom;
                         personne.Prenom = prenom;
                         personne.Email = email;
                         personne.DateNaiss = DateOnly.Parse(dateNaissance);
                         personne.Password = BC.HashPassword(mdp);
+                        personne.Token = Guid.NewGuid().ToString();
+                        personne.Serveur = new Serveur();
+                        personne.Serveur.IdPersonne = personne.IdPersonne;
+                        personne.Serveur.Salaires = Convert.ToInt32(nud_salaire.Value);
+                        ModelPersonne.ajouterPersonne(personne);
+                        ModelPersonne.ajouterServeur(personne.Serveur);
+
 
                     };
                     break;
@@ -95,7 +118,12 @@ namespace Maison_moel.vue
                         personne.Email = email;
                         personne.DateNaiss = DateOnly.Parse(dateNaissance);
                         personne.Password = BC.HashPassword(mdp);
-            };
+                        personne.Token = Guid.NewGuid().ToString();
+                        personne.Admin = new Admin();
+                        personne.Admin.IdPersonne = personne.IdPersonne;
+                        ModelPersonne.ajouterPersonne(personne);
+                        ModelPersonne.ajouterAdmin(personne.Admin);
+                    };
                     break;
 
                 case "Cuisiniers":
@@ -106,7 +134,14 @@ namespace Maison_moel.vue
                         personne.Email = email;
                         personne.DateNaiss = DateOnly.Parse(dateNaissance);
                         personne.Password = BC.HashPassword(mdp);
-            };
+                        personne.Token = Guid.NewGuid().ToString();
+                        personne.Cuisinier = new Cuisinier();
+                        personne.Cuisinier.IdPersonne = personne.IdPersonne;
+                        personne.Cuisinier.Salaires = Convert.ToInt32(nud_salaire.Value);
+                        personne.Cuisinier.IdRole = Convert.ToInt32(comboBox_role.SelectedValue);
+                        ModelPersonne.ajouterPersonne(personne);
+                        ModelPersonne.ajouterCuisinier(personne.Cuisinier);
+                    };
 
                     break;
 
@@ -117,12 +152,47 @@ namespace Maison_moel.vue
                     personne.Email = email;
                     personne.DateNaiss = DateOnly.Parse(dateNaissance);
                     personne.Password = BC.HashPassword(mdp);
+                    personne.Token = Guid.NewGuid().ToString();
+                    ModelPersonne.ajouterPersonne(personne);
 
-                    return;
+                    break;
             }
 
             // Si tout est valide
             MessageBox.Show("Utilisateur ajouté avec succès !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void comboBox_metier_SelectedIndexChanged(object sender, EventArgs e)
+        {   
+            if (comboBox_metier.Text == "")
+            {
+                label_role.Visible = false;
+                comboBox_role.Visible = false;
+                label_salaire.Visible = false;
+                nud_salaire.Visible = false;
+            }
+            if (comboBox_metier.Text == "Serveurs")
+            {
+                label_salaire.Visible = true;
+                nud_salaire.Visible = true;
+                label_role.Visible = false;
+                comboBox_role.Visible = false;
+            }
+            if (comboBox_metier.Text == "Administrateurs")
+            {
+                label_role.Visible = false;
+                comboBox_role.Visible = false;
+                label_salaire.Visible = false;
+                nud_salaire.Visible = false;
+            }
+            if (comboBox_metier.Text == "Cuisiniers")
+            {
+                label_role.Visible = true;
+                comboBox_role.Visible = true;
+                label_salaire.Visible = true;
+                nud_salaire.Visible = true;
+            }
+
         }
     }
 

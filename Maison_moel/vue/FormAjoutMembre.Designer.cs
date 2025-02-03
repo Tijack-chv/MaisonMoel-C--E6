@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -44,6 +45,13 @@
             button_annuler = new Button();
             comboBox_metier = new ComboBox();
             label7 = new Label();
+            label_salaire = new Label();
+            nud_salaire = new NumericUpDown();
+            label_role = new Label();
+            comboBox_role = new ComboBox();
+            bindingSource_role = new BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)nud_salaire).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource_role).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -178,11 +186,13 @@
             // 
             // comboBox_metier
             // 
+            comboBox_metier.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_metier.FormattingEnabled = true;
             comboBox_metier.Location = new Point(693, 102);
             comboBox_metier.Name = "comboBox_metier";
             comboBox_metier.Size = new Size(218, 23);
             comboBox_metier.TabIndex = 14;
+            comboBox_metier.SelectedIndexChanged += comboBox_metier_SelectedIndexChanged;
             // 
             // label7
             // 
@@ -195,12 +205,54 @@
             label7.TabIndex = 15;
             label7.Text = "Métier";
             // 
+            // label_salaire
+            // 
+            label_salaire.AutoSize = true;
+            label_salaire.BackColor = Color.Transparent;
+            label_salaire.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label_salaire.Location = new Point(575, 154);
+            label_salaire.Name = "label_salaire";
+            label_salaire.Size = new Size(65, 20);
+            label_salaire.TabIndex = 16;
+            label_salaire.Text = "Salaire";
+            // 
+            // nud_salaire
+            // 
+            nud_salaire.Location = new Point(696, 154);
+            nud_salaire.Name = "nud_salaire";
+            nud_salaire.Size = new Size(214, 23);
+            nud_salaire.TabIndex = 17;
+            // 
+            // label_role
+            // 
+            label_role.AutoSize = true;
+            label_role.BackColor = Color.Transparent;
+            label_role.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label_role.Location = new Point(575, 205);
+            label_role.Name = "label_role";
+            label_role.Size = new Size(46, 20);
+            label_role.TabIndex = 18;
+            label_role.Text = "Role";
+            // 
+            // comboBox_role
+            // 
+            comboBox_role.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_role.FormattingEnabled = true;
+            comboBox_role.Location = new Point(692, 206);
+            comboBox_role.Name = "comboBox_role";
+            comboBox_role.Size = new Size(218, 23);
+            comboBox_role.TabIndex = 19;
+            // 
             // FormAjoutMembre
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
             ClientSize = new Size(1034, 525);
+            Controls.Add(comboBox_role);
+            Controls.Add(label_role);
+            Controls.Add(nud_salaire);
+            Controls.Add(label_salaire);
             Controls.Add(label7);
             Controls.Add(comboBox_metier);
             Controls.Add(button_annuler);
@@ -220,6 +272,8 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormAjoutMembre";
             Text = "FormAjoutMembre";
+            ((System.ComponentModel.ISupportInitialize)nud_salaire).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource_role).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -242,5 +296,10 @@
         private Button button_annuler;
         private ComboBox comboBox_metier;
         private Label label7;
+        private Label label_salaire;
+        private NumericUpDown nud_salaire;
+        private Label label_role;
+        private ComboBox comboBox_role;
+        private BindingSource bindingSource_role;
     }
 }

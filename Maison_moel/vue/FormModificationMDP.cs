@@ -37,10 +37,19 @@ namespace Maison_moel.vue
         private void button_valider_Click(object sender, EventArgs e)
         {
             if (textBox_mdp.Text == textBox_confirmerMDP.Text)
-            {
-                ModelPersonne.ModifierMDP(id, textBox_mdp.Text);
-                MessageBox.Show("Mot de passe modifié avec succès");
-                this.Close();
+            {   
+                if (TestValidation.EstMotDePasseValide(textBox_mdp.Text))
+                {
+                    ModelPersonne.ModifierMDP(id, textBox_mdp.Text);
+                    MessageBox.Show("Mot de passe modifié avec succès");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Le mot de passe doit contenir au moins 8 caractères");
+                    return;
+                }
+                
             }
             else
             {
