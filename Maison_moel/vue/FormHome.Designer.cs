@@ -48,6 +48,7 @@
             buttonCuisine = new Button();
             panelAffichage = new Panel();
             panelMessages = new Panel();
+            textBoxMessage = new TextBox();
             panelContenuMessages = new Panel();
             labelTitreMessage = new Label();
             pictureBox1 = new PictureBox();
@@ -316,7 +317,8 @@
             // 
             // panelMessages
             // 
-            panelMessages.BackColor = Color.FromArgb(45, 50, 55);
+            panelMessages.BackColor = Color.FromArgb(55, 60, 65);
+            panelMessages.Controls.Add(textBoxMessage);
             panelMessages.Controls.Add(panelContenuMessages);
             panelMessages.Controls.Add(labelTitreMessage);
             panelMessages.Controls.Add(pictureBox1);
@@ -325,13 +327,29 @@
             panelMessages.Size = new Size(343, 490);
             panelMessages.TabIndex = 0;
             // 
+            // textBoxMessage
+            // 
+            textBoxMessage.BackColor = Color.FromArgb(70, 75, 80);
+            textBoxMessage.BorderStyle = BorderStyle.None;
+            textBoxMessage.Font = new Font("SimSun-ExtB", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBoxMessage.ForeColor = Color.FromArgb(255, 235, 135);
+            textBoxMessage.Location = new Point(13, 413);
+            textBoxMessage.Multiline = true;
+            textBoxMessage.Name = "textBoxMessage";
+            textBoxMessage.Size = new Size(319, 73);
+            textBoxMessage.TabIndex = 10;
+            textBoxMessage.Text = "Votre message ici...";
+            textBoxMessage.Enter += textBoxMessage_Enter;
+            textBoxMessage.KeyPress += textBoxMessage_KeyPress;
+            textBoxMessage.Leave += textBoxMessage_Leave;
+            // 
             // panelContenuMessages
             // 
             panelContenuMessages.AutoScroll = true;
             panelContenuMessages.BackColor = Color.Transparent;
             panelContenuMessages.Location = new Point(3, 93);
             panelContenuMessages.Name = "panelContenuMessages";
-            panelContenuMessages.Size = new Size(337, 393);
+            panelContenuMessages.Size = new Size(337, 315);
             panelContenuMessages.TabIndex = 9;
             // 
             // labelTitreMessage
@@ -498,5 +516,6 @@
         private Label labelTitreMessage;
         private PictureBox pictureBox1;
         private Panel panelContenuMessages;
+        private TextBox textBoxMessage;
     }
 }

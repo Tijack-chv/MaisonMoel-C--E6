@@ -22,13 +22,26 @@ namespace Maison_moel.vue
             Admin,
             Cuisinier
         }
-        EtatDroit etatDroit;
-        DateTime dateMessages;
+        private EtatDroit etatDroit;
+        private int idPersonneConnecte;
+        private int tailleHauteurEnsembleMessage;
+        private int premiereOuverture;
+        private int idPersonneDernierMessage;
+        private DateOnly DateOnlyDernierMessage;
+        private TimeOnly TimeOnlyDernierMessage;
 
         public FormHome(bool est_admin, int id)
         {
             InitializeComponent();
             est_admin = true;
+            
+            tailleHauteurEnsembleMessage = 10;
+            
+            idPersonneDernierMessage = 0;
+            DateOnlyDernierMessage = new();
+            TimeOnlyDernierMessage = new();
+
+            idPersonneConnecte = id;
             etatDroit = est_admin ? EtatDroit.Admin : EtatDroit.Cuisinier;
             sousF = new(panelAffichage);
         }
@@ -154,99 +167,179 @@ namespace Maison_moel.vue
         private void pictureBoxNotification_Click(object sender, EventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
-            chargerMessages();
+            if (premiereOuverture == 0)
+            {
+                chargerMessages(ModelMessage.getMessages());
+                premiereOuverture = 1;
+            } else
+            {
+                chargerMessages(ModelMessage.getUnreadMessages());
+            }
             Cursor.Current = Cursors.Default;
             panelMessages.Visible = !panelMessages.Visible;
             timerCountNotif.Start();
-            dateMessages = DateTime.Now;
         }
 
         private void timerMessages_Tick(object sender, EventArgs e)
         {
-            dateMessages = DateTime.Now;
+            chargerMessages(ModelMessage.getUnreadMessages());
         }
 
-        private void chargerMessages()
+        private void chargerMessages(List<Entities.Message> messages)
         {
-            List<Entities.Message> messages = ModelMessage.getMessages();
+             DateOnly dateAujourdhui = DateOnly.FromDateTime(DateTime.Now);
+             foreach (Entities.Message message in messages)
+             {
+                  #region InitialisationVariable
+                  int idPers = message.IdPersonne;
+                  Entities.Personne personne = ModelPersonne.getPersonneById(idPers);
 
-            int index = 1;
+                  DateOnly dateonly = DateOnly.FromDateTime(message.Date);
+                  TimeOnly timeonly = TimeOnly.FromDateTime(message.Date);
 
-            int idPersTempo = 0;
-            DateOnly dateAujourdhui = DateOnly.FromDateTime(DateTime.Now);
-            DateOnly dateTempo = new();
-            TimeOnly timeTempo = new(00, 00);
+                  Label labelDate = new();
+                  Label labelPersonne = new();
+                  Label labelMessage = new();
+                  #endregion
 
-            foreach (Entities.Message message in messages)
-            {
-                // initialisation des variables
-                int idPers = message.IdPersonne;
-                Entities.Personne personne = ModelPersonne.getPersonneById(idPers);
+                  #region information de la date
+                  if (dateAujourdhui != dateonly)
+                  {
+                      if (DateOnlyDernierMessage != dateonly)
+                      {
+                          DateOnlyDernierMessage = dateonly;
+                          labelDate.Text = dateonly.ToString();
+                          panelContenuMessages.Controls.Add(labelDate);
+                          labelDate.Location = new(150, tailleHauteurEnsembleMessage);
+                          tailleHauteurEnsembleMessage += labelDate.Height + 5;
+                      }
+                  }
+                  else
+                  {
+                      if (TimeOnlyDernierMessage.AddMinutes(5) <= timeonly)
+                      {
+                          TimeOnlyDernierMessage = timeonly;
+                          labelDate.Text = timeonly.ToString();
+                          panelContenuMessages.Controls.Add(labelDate);
+                          labelDate.Location = new(150, tailleHauteurEnsembleMessage);
+                          tailleHauteurEnsembleMessage += labelDate.Height + 5;
+                      }
+                  }
+                  #endregion
 
-                DateOnly dateonly = DateOnly.FromDateTime(message.Date);
-                TimeOnly timeonly = TimeOnly.FromDateTime(message.Date);
+                  #region Information de la Personne et de la position du nom de la personne
+                  if (idPersonneDernierMessage != idPers)
+                  {
+                      idPersonneDernierMessage = idPers;
+                      labelPersonne.Text = $"{personne.Nom} {personne.Prenom} : ";
+                      panelContenuMessages.Controls.Add(labelPersonne);
 
-                Label labelDate = new();
-                Label labelPersonne = new();
-                Label labelMessage = new();
+                      if (idPers == idPersonneConnecte)
+                      {
+                          labelPersonne.Location = new(235, tailleHauteurEnsembleMessage);
+                      }
+                      else
+                      {
+                          labelPersonne.Location = new(14, tailleHauteurEnsembleMessage);
+                      }
+                      tailleHauteurEnsembleMessage += labelPersonne.Height + 5;
+                  }
+                  #endregion
 
-                // ajout des infos de la date en fonction de certains cas
-                if (dateAujourdhui != dateonly)
-                {
-                    if (dateTempo != dateonly)
-                    {
-                        dateTempo = dateonly;
-                        labelDate.Text = dateonly.ToString();
-                        panelContenuMessages.Controls.Add(labelDate);
-                        labelDate.Location = new(150, 30 * index);
-                        index++;
-                    }
-                }
-                else
-                {
-                    if (timeTempo.AddMinutes(5) <= timeonly)
-                    {
-                        timeTempo = timeonly;
-                        labelDate.Text = timeonly.ToString();
-                        panelContenuMessages.Controls.Add(labelDate);
-                        labelDate.Location = new(150, 30 * index);
-                        index++;
-                    }
-                }
+                  #region Information du message
+                  // Création du panel contenant le message
+                  Panel panelInfo = new();
+                  panelContenuMessages.Controls.Add(panelInfo);
+                  panelInfo.BackColor = Color.FromArgb(255, 235, 153);
 
-                // ajout des infos de la personne en fonction d'un cas
-                if (idPersTempo != idPers)
-                {
-                    idPersTempo = idPers;
-                    labelPersonne.Text = $"{personne.Nom} {personne.Prenom} : ";
-                    panelContenuMessages.Controls.Add(labelPersonne);
-                    labelPersonne.Location = new(14, 30 * index);
-                    index++;
-                }
+                  // Ajout du message
+                  labelMessage.Text += message.Message1;
+                  panelInfo.Controls.Add(labelMessage);
+                  labelMessage.Location = new(0, 0);
+                  
+                  if (idPers == idPersonneConnecte)
+                  {
+                      panelInfo.Location = new(190, tailleHauteurEnsembleMessage);
+                  }
+                  else
+                  {
+                      panelInfo.Location = new(14, tailleHauteurEnsembleMessage);
+                  }
+                  
+                  labelMessage.AutoSize = true;
+                  labelMessage.MaximumSize = new(120, 10000);
+                  panelInfo.AutoSize = true;
+                  panelInfo.Size = new(labelMessage.Width, labelMessage.Height);
+                  ComponentStyle componentStyle = new();
+                  componentStyle.arrondirBordurObjetSimple(panelInfo, 7);
+                  tailleHauteurEnsembleMessage += panelInfo.Height + 10;
+                  #endregion
 
-                Panel panelInfo = new();
-                panelContenuMessages.Controls.Add(panelInfo);
-                panelInfo.Location = new(14, 30 * index);
-                panelInfo.BackColor = Color.FromArgb(255, 235, 153);
+                  #region TextStyle
+                  labelDate.AccessibleDefaultActionDescription = "SimSun-ExtB; 14pt; style=Bold";
+                  labelDate.ForeColor = Color.FromArgb(255, 235, 153);
 
-                labelMessage.Text += message.Message1;
-                panelInfo.Controls.Add(labelMessage);
-                labelMessage.Location = new(0, 0);
-                panelInfo.Size = new(labelMessage.Width, labelMessage.Height);
+                  labelPersonne.AccessibleDefaultActionDescription = "SimSun-ExtB; 18pt; style=Bold";
+                  labelPersonne.Font = new Font(labelPersonne.Font, FontStyle.Underline);
+                  labelPersonne.ForeColor = Color.FromArgb(255, 235, 153);
 
-                labelDate.AccessibleDefaultActionDescription = "SimSun-ExtB; 14pt; style=Bold";
-                labelDate.ForeColor = Color.FromArgb(255, 235, 153);
+                  labelMessage.AccessibleDefaultActionDescription = "SimSun-ExtB; 18pt; style=Bold";
+                  labelMessage.ForeColor = Color.FromArgb(0, 0, 0);
+                  #endregion
+             }
 
-                labelPersonne.AccessibleDefaultActionDescription = "SimSun-ExtB; 18pt; style=Bold";
-                labelPersonne.Font = new Font(labelPersonne.Font, FontStyle.Underline);
-                labelPersonne.ForeColor = Color.FromArgb(255, 235, 153);
+            #region SpacePanel pour laisser de la place après le dernier message
+            Panel spacerPanel = new();
+            spacerPanel.Size = new Size(panelContenuMessages.Width, 50);
+            panelContenuMessages.Controls.Add(spacerPanel);
+            spacerPanel.Location = new Point(0, tailleHauteurEnsembleMessage - 50);
+            #endregion
 
-                labelMessage.AccessibleDefaultActionDescription = "SimSun-ExtB; 18pt; style=Bold";
-                labelMessage.ForeColor = Color.FromArgb(0, 0, 0);
-
-                index++;
-            }
             ModelMessage.updateMessageUnReadToRead();
+             afficheCountNotif();
+        }
+
+        #region TextBoxMessageEnterLeave
+        private void textBoxMessage_Enter(object sender, EventArgs e)
+        {
+            if (textBoxMessage.Text == "Votre message ici...")
+            {
+                textBoxMessage.Text = "";
+            }
+        }
+
+        private void textBoxMessage_Leave(object sender, EventArgs e)
+        {
+            if (textBoxMessage.Text == "")
+            {
+                textBoxMessage.Text = "Votre message ici...";
+            }
+        }
+        #endregion
+
+        private void textBoxMessage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                string trimmedMessage = textBoxMessage.Text.Trim();
+                if (!string.IsNullOrWhiteSpace(trimmedMessage) && trimmedMessage != "Votre message ici...")
+                {
+                    // Scroll to the bottom before adding the new message
+                    panelContenuMessages.VerticalScroll.Value = panelContenuMessages.VerticalScroll.Minimum;
+
+                    Entities.Message message = new();
+                    message.IdPersonne = idPersonneConnecte;
+                    message.Message1 = textBoxMessage.Text;
+                    message.Date = DateTime.Now;
+                    message.EstVue = false;
+                    ModelMessage.addMessage(message);
+                    textBoxMessage.Text = "";
+                    chargerMessages(ModelMessage.getUnreadMessages());
+
+                    // Scroll to the bottom after adding the new message
+                    panelContenuMessages.VerticalScroll.Value = panelContenuMessages.VerticalScroll.Maximum;
+                }
+            }
         }
     }
 }
