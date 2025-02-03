@@ -32,21 +32,21 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            dataGridViewCommande = new DataGridView();
+            dataGridView = new DataGridView();
             contextMenuStripCommande = new ContextMenuStrip(components);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewCommande).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             SuspendLayout();
             // 
-            // dataGridViewCommande
+            // dataGridView
             // 
-            dataGridViewCommande.AllowUserToAddRows = false;
-            dataGridViewCommande.AllowUserToDeleteRows = false;
-            dataGridViewCommande.AllowUserToOrderColumns = true;
-            dataGridViewCommande.AllowUserToResizeRows = false;
-            dataGridViewCommande.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCommande.BackgroundColor = Color.FromArgb(80, 85, 90);
-            dataGridViewCommande.BorderStyle = BorderStyle.None;
-            dataGridViewCommande.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToOrderColumns = true;
+            dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView.BackgroundColor = Color.FromArgb(80, 85, 90);
+            dataGridView.BorderStyle = BorderStyle.None;
+            dataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopLeft;
             dataGridViewCellStyle1.BackColor = Color.FromArgb(40, 45, 50);
             dataGridViewCellStyle1.Font = new Font("Baskerville Old Face", 14.25F, FontStyle.Bold);
@@ -54,8 +54,8 @@
             dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(10, 15, 20);
             dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(255, 235, 153);
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewCommande.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCommande.ColumnHeadersHeight = 30;
+            dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView.ColumnHeadersHeight = 30;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(40, 45, 50);
             dataGridViewCellStyle2.Font = new Font("Baskerville Old Face", 14.25F, FontStyle.Bold);
@@ -63,14 +63,14 @@
             dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(10, 15, 20);
             dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(255, 235, 153);
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGridViewCommande.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCommande.EnableHeadersVisualStyles = false;
-            dataGridViewCommande.GridColor = Color.Black;
-            dataGridViewCommande.Location = new Point(235, 12);
-            dataGridViewCommande.MultiSelect = false;
-            dataGridViewCommande.Name = "dataGridViewCommande";
-            dataGridViewCommande.ReadOnly = true;
-            dataGridViewCommande.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView.EnableHeadersVisualStyles = false;
+            dataGridView.GridColor = Color.Black;
+            dataGridView.Location = new Point(217, 12);
+            dataGridView.MultiSelect = false;
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(40, 45, 50);
             dataGridViewCellStyle3.Font = new Font("Baskerville Old Face", 14.25F, FontStyle.Bold);
@@ -78,11 +78,11 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(10, 15, 20);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(255, 235, 153);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViewCommande.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCommande.RowHeadersVisible = false;
-            dataGridViewCommande.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewCommande.Size = new Size(557, 436);
-            dataGridViewCommande.TabIndex = 10;
+            dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.Size = new Size(557, 436);
+            dataGridView.TabIndex = 10;
             // 
             // contextMenuStripCommande
             // 
@@ -96,18 +96,18 @@
             BackgroundImage = Properties.Resources.FOND_ACCUEIL;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1024, 460);
-            Controls.Add(dataGridViewCommande);
+            Controls.Add(dataGridView);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormGestionCommandes";
             Text = "FormGestionCommandes";
-            ((System.ComponentModel.ISupportInitialize)dataGridViewCommande).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridViewCommande;
+        private DataGridView dataGridView;
         private ContextMenuStrip contextMenuStripCommande;
     }
 }
