@@ -37,8 +37,6 @@ namespace Maison_moel.vue
             this.Controls.Add(panelMessages);
             panelMessages.BringToFront();
             panelMessages.Location = new(680, 83);
-
-            est_admin = true;
             
             tailleHauteurEnsembleMessage = 10;
             
@@ -61,10 +59,9 @@ namespace Maison_moel.vue
 
             if (etatDroit == EtatDroit.Cuisinier)
             {
-                buttonQuitter.Location = buttonAbout.Location;
-                buttonAbout.Location = buttonSettings.Location;
-                buttonSettings.Location = buttonPersonnel.Location;
-                panelWest.Size = new(223, 428);
+                buttonQuitter.Location = buttonSettings.Location;
+                buttonAbout.Location = buttonPersonnel.Location;
+                panelWest.Size = new(223, 364);
             }
 
             panelVisible();
@@ -91,6 +88,7 @@ namespace Maison_moel.vue
             buttonQuitter.Visible = test;
             buttonSettings.Visible = test;
 
+            buttonSettings.Visible = etatDroit == EtatDroit.Admin ? test : false;
             buttonPersonnel.Visible = etatDroit == EtatDroit.Admin ? test : false;
         }
 
@@ -111,20 +109,20 @@ namespace Maison_moel.vue
 
         private void buttonMenu_Click(object sender, EventArgs e)
         {
-            buttonAffiche(!buttonSettings.Visible);
+            buttonAffiche(!buttonQuitter.Visible);
         }
 
         private void buttonHome_Click(object sender, EventArgs e)
         {
             sousF.closeChildForm();
-            buttonAffiche(!buttonSettings.Visible);
+            buttonAffiche(!buttonQuitter.Visible);
             panelVisible();
             panelHome.Visible = true;
         }
 
         private void buttonCommande_Click(object sender, EventArgs e)
         {
-            buttonAffiche(!buttonSettings.Visible);
+            buttonAffiche(!buttonQuitter.Visible);
             panelVisible();
             panelCommande.Visible = true;
             sousF.openChildForm(new FormCommande());
@@ -132,7 +130,7 @@ namespace Maison_moel.vue
 
         private void buttonCuisine_Click(object sender, EventArgs e)
         {
-            buttonAffiche(!buttonSettings.Visible);
+            buttonAffiche(!buttonQuitter.Visible);
             panelVisible();
             panelCuisine.Visible = true;
             sousF.openChildForm(new FormMenuCuisinier());
@@ -140,7 +138,7 @@ namespace Maison_moel.vue
 
         private void buttonPersonnel_Click(object sender, EventArgs e)
         {
-            buttonAffiche(!buttonSettings.Visible);
+            buttonAffiche(!buttonQuitter.Visible);
             sousF.openChildForm(new FormAdministration());
             panelVisible();
             panelPersonnel.Visible = true;
@@ -148,14 +146,16 @@ namespace Maison_moel.vue
 
         private void buttonSettings_Click(object sender, EventArgs e)
         {
-            buttonAffiche(!buttonSettings.Visible);
+            sousF.openChildForm(new FormAjoutMembre());
+            buttonAffiche(!buttonQuitter.Visible);
             panelVisible();
             panelSettings.Visible = true;
         }
 
         private void buttonAbout_Click(object sender, EventArgs e)
         {
-            buttonAffiche(!buttonSettings.Visible);
+            sousF.openChildForm(new FormAbout());
+            buttonAffiche(!buttonQuitter.Visible);
             panelVisible();
             panelAbout.Visible = true;
         }

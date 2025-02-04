@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Maison_moel.vue
 {
-    public partial class FormGestionCommandes : Form
+    public partial class FormAbout : Form
     {
-        public FormGestionCommandes()
+        public FormAbout()
         {
             InitializeComponent();
         }

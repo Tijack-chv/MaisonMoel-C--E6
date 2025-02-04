@@ -20,8 +20,7 @@ namespace Maison_moel.vue
             InitializeComponent();
             sousForm = new SFormulaire(panelSousAffichage);
 
-            //ouverture par défaut
-            //sousForm.openChildForm(new FormGestionCommande());
+            sousForm.openChildForm(new FormGestionCommandesDechets());
         }
 
         private void gestionReaprovisionnementsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,12 +30,7 @@ namespace Maison_moel.vue
 
         private void gestionDechetsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            sousForm.openChildForm(new FormGestionDechets());
-        }
-
-        private void gestionCommandesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            sousForm.openChildForm(new FormGestionCommandes());
+            sousForm.openChildForm(new FormGestionCommandesDechets());
         }
     }
 }

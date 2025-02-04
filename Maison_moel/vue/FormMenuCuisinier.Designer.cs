@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             menuStrip1 = new MenuStrip();
-            gestionCommandesToolStripMenuItem = new ToolStripMenuItem();
-            gestionDechetsToolStripMenuItem = new ToolStripMenuItem();
+            gestionCommandesDechetsToolStripMenuItem = new ToolStripMenuItem();
             gestionReapprovisionnementsToolStripMenuItem = new ToolStripMenuItem();
             panelSousAffichage = new Panel();
             menuStrip1.SuspendLayout();
@@ -39,30 +38,21 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.FromArgb(25, 30, 35);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gestionCommandesToolStripMenuItem, gestionDechetsToolStripMenuItem, gestionReapprovisionnementsToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gestionCommandesDechetsToolStripMenuItem, gestionReapprovisionnementsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1024, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
-            // gestionCommandesToolStripMenuItem
+            // gestionCommandesDechetsToolStripMenuItem
             // 
-            gestionCommandesToolStripMenuItem.Font = new Font("Baskerville Old Face", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            gestionCommandesToolStripMenuItem.ForeColor = Color.FromArgb(255, 235, 153);
-            gestionCommandesToolStripMenuItem.Name = "gestionCommandesToolStripMenuItem";
-            gestionCommandesToolStripMenuItem.Size = new Size(236, 26);
-            gestionCommandesToolStripMenuItem.Text = "Gestion des Commandes";
-            gestionCommandesToolStripMenuItem.Click += gestionCommandesToolStripMenuItem_Click;
-            // 
-            // gestionDechetsToolStripMenuItem
-            // 
-            gestionDechetsToolStripMenuItem.Font = new Font("Baskerville Old Face", 14.25F, FontStyle.Bold);
-            gestionDechetsToolStripMenuItem.ForeColor = Color.FromArgb(255, 235, 153);
-            gestionDechetsToolStripMenuItem.Name = "gestionDechetsToolStripMenuItem";
-            gestionDechetsToolStripMenuItem.Size = new Size(195, 26);
-            gestionDechetsToolStripMenuItem.Text = "Gestion des déchets";
-            gestionDechetsToolStripMenuItem.Click += gestionDechetsToolStripMenuItem_Click;
+            gestionCommandesDechetsToolStripMenuItem.Font = new Font("Baskerville Old Face", 14.25F, FontStyle.Bold);
+            gestionCommandesDechetsToolStripMenuItem.ForeColor = Color.FromArgb(255, 235, 153);
+            gestionCommandesDechetsToolStripMenuItem.Name = "gestionCommandesDechetsToolStripMenuItem";
+            gestionCommandesDechetsToolStripMenuItem.Size = new Size(369, 26);
+            gestionCommandesDechetsToolStripMenuItem.Text = "Gestion des Commandes et des Déchets";
+            gestionCommandesDechetsToolStripMenuItem.Click += gestionDechetsToolStripMenuItem_Click;
             // 
             // gestionReapprovisionnementsToolStripMenuItem
             // 
@@ -107,7 +97,7 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem gestionCommandesToolStripMenuItem;
-        private ToolStripMenuItem gestionDechetsToolStripMenuItem;
+        private ToolStripMenuItem gestionCommandesDechetsToolStripMenuItem;
         private Panel panelSousAffichage;
         private ToolStripMenuItem gestionReapprovisionnementsToolStripMenuItem;
     }

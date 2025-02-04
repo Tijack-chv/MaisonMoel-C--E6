@@ -193,9 +193,13 @@ namespace Maison_moel.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap verrouiller_les_lignes {
+        internal static System.Drawing.Bitmap verrouiller_les_lignes
+        {
             get {
                 object obj = ResourceManager.GetObject("verrouiller-les-lignes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
         internal static System.Drawing.Bitmap gradient_1500_1500_1_ {
             get {
                 object obj = ResourceManager.GetObject("gradient_1500_1500_1_", resourceCulture);

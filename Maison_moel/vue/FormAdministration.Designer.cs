@@ -65,7 +65,7 @@
             dataGridPersonne.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridPersonne.ContextMenuStrip = contextMenuStrip1;
             dataGridPersonne.GridColor = Color.FromArgb(255, 235, 153);
-            dataGridPersonne.Location = new Point(382, 93);
+            dataGridPersonne.Location = new Point(367, 63);
             dataGridPersonne.Name = "dataGridPersonne";
             dataGridPersonne.Size = new Size(571, 363);
             dataGridPersonne.TabIndex = 0;
@@ -93,7 +93,7 @@
             // panel5
             // 
             panel5.BackColor = Color.FromArgb(30, 35, 40);
-            panel5.Location = new Point(953, 75);
+            panel5.Location = new Point(938, 45);
             panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
             panel5.Size = new Size(22, 404);
@@ -102,7 +102,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(30, 35, 40);
-            panel1.Location = new Point(363, 75);
+            panel1.Location = new Point(348, 45);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
             panel1.Size = new Size(22, 404);
@@ -111,7 +111,7 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(30, 35, 40);
-            panel2.Location = new Point(363, 453);
+            panel2.Location = new Point(348, 423);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
             panel2.Size = new Size(612, 26);
@@ -120,7 +120,7 @@
             // panel3
             // 
             panel3.BackColor = Color.FromArgb(30, 35, 40);
-            panel3.Location = new Point(363, 75);
+            panel3.Location = new Point(348, 45);
             panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
             panel3.Size = new Size(612, 20);
@@ -224,7 +224,7 @@
             // button1
             // 
             button1.BackColor = Color.Tomato;
-            button1.Location = new Point(885, 493);
+            button1.Location = new Point(848, 454);
             button1.Name = "button1";
             button1.Size = new Size(90, 34);
             button1.TabIndex = 70;
@@ -246,7 +246,7 @@
             panel_admin.Controls.Add(buttonRenitialiserFiltre);
             panel_admin.Controls.Add(label_filtrePrenom);
             panel_admin.Controls.Add(dateTimePicker_DateNaissance);
-            panel_admin.Location = new Point(27, 42);
+            panel_admin.Location = new Point(12, 12);
             panel_admin.Name = "panel_admin";
             panel_admin.Size = new Size(312, 468);
             panel_admin.TabIndex = 71;
@@ -300,7 +300,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
-            ClientSize = new Size(1050, 564);
+            ClientSize = new Size(1024, 490);
             Controls.Add(panel_admin);
             Controls.Add(button1);
             Controls.Add(panel3);

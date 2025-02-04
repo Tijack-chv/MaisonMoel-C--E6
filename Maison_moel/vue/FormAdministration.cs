@@ -324,9 +324,5 @@ namespace Maison_moel.vue
             
         }
         #endregion
-
-
-
-        
     }
 }

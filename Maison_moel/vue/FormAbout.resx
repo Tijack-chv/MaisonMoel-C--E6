@@ -117,10 +117,91 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="contextMenuStripDechets.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>163, 15</value>
-  </metadata>
-  <metadata name="bindingSourceDechets.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="labelAbout.Text" xml:space="preserve">
+    <value>Politique de Confidentialité et d'Utilisation des Données
+
+1. Collecte des Données Personnelles
+Nous collectons certaines données personnelles afin d'améliorer votre expérience utilisateur et de vous fournir des services adaptés. Ces données peuvent inclure :
+
+Nom et prénom
+
+Adresse e-mail
+
+Numéro de téléphone
+
+Adresse de livraison
+
+Historique de commandes
+
+Préférences alimentaires
+
+2. Utilisation des Données
+Les données collectées sont utilisées pour :
+
+Traiter vos commandes et assurer la livraison
+
+Gérer votre compte utilisateur
+
+Vous envoyer des offres promotionnelles et des notifications
+
+Améliorer nos services et personnaliser votre expérience
+
+Garantir la sécurité et la prévention des fraudes
+
+3. Partage des Données
+Vos données personnelles ne sont ni vendues ni échangées. Elles peuvent être partagées uniquement avec :
+
+Nos partenaires de livraison
+
+Nos prestataires de services techniques
+
+Les autorités compétentes en cas d'obligation légale
+
+4. Conservation des Données
+Vos données sont conservées aussi longtemps que nécessaire pour les finalités précisées, et conformément aux obligations légales en vigueur.
+
+5. Sécurité des Données
+Nous mettons en place des mesures de sécurité adaptées afin de protéger vos informations contre tout accès, modification, divulgation ou destruction non autorisée.
+
+6. Vos Droits
+Vous disposez des droits suivants concernant vos données personnelles :
+
+Droit d'accès, de rectification et de suppression
+
+Droit d'opposition et de limitation du traitement
+
+Droit à la portabilité des données
+
+Droit de retirer votre consentement à tout moment
+
+Pour toute demande relative à vos droits, contactez-nous à [adresse e-mail de contact].
+
+Charte d'Utilisation de l'Application
+
+1. Respect et Convivialité
+L'application est destinée à un usage respectueux des autres utilisateurs et du personnel du restaurant.
+
+2. Utilisation Responsable
+
+Ne pas publier de commentaires offensants
+
+Ne pas tenter d'exploiter des failles techniques
+
+Ne pas usurper l’identité d’un autre utilisateur
+
+3. Engagements du Restaurant
+
+Fournir des informations claires et transparentes sur les plats et services
+
+Respecter les délais de livraison annoncés
+
+Assurer la confidentialité et la protection des données des utilisateurs
+
+4. Sanctions en cas de non-respect
+Toute violation de ces règles peut entraîner la suspension ou la suppression du compte utilisateur.
+
+En utilisant notre application, vous acceptez ces conditions et vous engagez à les respecter.
+
+Pour toute question, contactez notre service client à [coordonnées du support].</value>
+  </data>
 </root>

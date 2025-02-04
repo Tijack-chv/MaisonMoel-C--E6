@@ -200,7 +200,6 @@ namespace Maison_moel.Model
         }
         #endregion
 
-        /*
         #region getPersonneById
         public static Personne GetPersonneById(int id)
         {
@@ -217,8 +216,7 @@ namespace Maison_moel.Model
             return personne;
         }
         #endregion
-        */
-
+        
         #region ArchiverPersonne
         public static void ArchiverPersonne(int id)
         {
@@ -279,8 +277,5 @@ namespace Maison_moel.Model
             Model.MonModel.SaveChanges();
         }
         #endregion
-
-
-
     }
 }

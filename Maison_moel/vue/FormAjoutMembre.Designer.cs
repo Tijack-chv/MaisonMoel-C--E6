@@ -249,7 +249,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
-            ClientSize = new Size(1034, 525);
+            ClientSize = new Size(1024, 490);
             Controls.Add(comboBox_role);
             Controls.Add(label_role);
             Controls.Add(nud_salaire);

@@ -11,7 +11,7 @@ namespace Maison_moel.Model
     {
         public static List<Dechet> GetDechets()
         {
-            return Model.MonModel.Dechets.ToList();
+            return Model.MonModel.Dechets.OrderByDescending(x => x.DateSaisie).ToList();
         }
 
         public static void AddDechet(Dechet dechet)
@@ -20,16 +20,42 @@ namespace Maison_moel.Model
             Model.MonModel.SaveChanges();
         }
 
-        public static void UpdateDechet(Dechet dechet)
+        public static void UpdateDechet(int idDechet, float newPoids)
         {
-            Model.MonModel.Dechets.Update(dechet);
-            Model.MonModel.SaveChanges();
+            try
+            {
+                Dechet dechet = GetDechetById(idDechet);
+                dechet.Poids = newPoids;
+                Model.MonModel.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur lors de la modification du déchet : " + e.Message);
+            }
         }
 
-        public static void DeleteDechet(Dechet dechet)
+        public static void DeleteDechet(int idDechet)
         {
-            Model.MonModel.Dechets.Remove(dechet);
-            Model.MonModel.SaveChanges();
+            try
+            {
+                Dechet dechet = GetDechetById(idDechet);
+                Model.MonModel.Dechets.Remove(dechet);
+                Model.MonModel.SaveChanges();
+            } 
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur lors de la suppression du déchet : " + e.Message);
+            }
+        }
+
+        public static Dechet GetDechetById(int id)
+        {
+            return Model.MonModel.Dechets.FirstOrDefault(x => x.IdDechets == id);
+        }
+
+        public static bool getDechetbyDate(DateTime date)
+        {
+            return Model.MonModel.Dechets.Any(x => x.DateSaisie.Date == date.Date);
         }
     }
 }
