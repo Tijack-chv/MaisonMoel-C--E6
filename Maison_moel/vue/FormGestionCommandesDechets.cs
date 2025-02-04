@@ -1,4 +1,6 @@
-﻿using Maison_moel.Model;
+﻿using Maison_moel.controller;
+using Maison_moel.Entities;
+using Maison_moel.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -52,7 +54,7 @@ namespace Maison_moel.vue
             }).ToList();
 
             dataGridViewCommandes.DataSource = bindingSourceCommande;
-            dataGridViewCommandes.Columns["IdCommande"].Visible = false;
+            dataGridViewCommandes.Columns["IdCommande"].Visible = true;
             dataGridViewCommandes.Columns["IdPlat"].Visible = false;
             dataGridViewCommandes.Columns["IdEtat"].Visible = false;
         }
@@ -124,7 +126,35 @@ namespace Maison_moel.vue
 
         private void dataGridViewCommandes_DoubleClick(object sender, EventArgs e)
         {
+            string choix = ComponentMessageBox.ShowCustomMessageBox("Choix requis", "Veuillez sélectionner une option :");
+            if (choix != "Retour")
+            {
+                System.Type type = bindingSourceCommande.Current.GetType();
+                int idCommande = (int)type.GetProperty("IdCommande").GetValue(bindingSourceCommande.Current, null);
+                int idPlat = (int)type.GetProperty("IdPlat").GetValue(bindingSourceCommande.Current, null);
+                int idEtat = ModelCommande.returnIdEtat(choix);
+                ModelCommande.updateEtatComporter(idCommande,idPlat, idEtat);
 
+                if (choix == "Terminé" || choix == "Annulée")
+                {
+                    bool test = true;
+                    List<Comporter> comporters = ModelCommande.checkCommande(idCommande);
+                    foreach (Comporter comporter in comporters)
+                    {
+                        if (comporter.IdEtat != ModelCommande.returnIdEtat(choix))
+                        {
+                            test = false;
+                        }
+                    }
+
+                    if (test)
+                    {
+                        ModelCommande.updateEtatCommande(idCommande, idEtat);
+                        MessageBox.Show("La commande a été " + choix.ToLower(), "Commande n°" + idCommande, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            CommandesLoad();
         }
     }
 }
