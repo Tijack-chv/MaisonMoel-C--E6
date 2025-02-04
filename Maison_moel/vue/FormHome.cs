@@ -141,6 +141,7 @@ namespace Maison_moel.vue
         private void buttonPersonnel_Click(object sender, EventArgs e)
         {
             buttonAffiche(!buttonSettings.Visible);
+            sousF.openChildForm(new FormAdministration());
             panelVisible();
             panelPersonnel.Visible = true;
         }

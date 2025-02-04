@@ -15,7 +15,11 @@ public partial class Personne
 
     public string Password { get; set; } = null!;
 
-    public DateOnly? DateNaiss { get; set; }
+    public DateOnly DateNaiss { get; set; }
+
+    public string Token { get; set; } = null!;
+
+    public sbyte Archiver { get; set; }
 
     public string Token { get; set; } = null!;
 

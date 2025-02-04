@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Maison_moel.Model
 {
-    internal class Model
+    public static class Model
     {
         private static BddMaisonMoelContext monModel;
 
