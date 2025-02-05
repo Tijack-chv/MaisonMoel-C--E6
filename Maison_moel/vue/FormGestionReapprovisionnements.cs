@@ -127,8 +127,6 @@ namespace Maison_moel.vue
                 x.NomPlat,
                 x.Quantite,
             }).ToList();
-
-            dataGridView.ContextMenuStrip = contextMenuStripPlats;
         }
         #endregion
 
@@ -219,11 +217,6 @@ namespace Maison_moel.vue
             }
         }
 
-        private void modifierLePlatToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // voir ce qui peut être bien a modifié
-        }
-
         private void réapprovisionnerLePlatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Type type = bindingSource.Current.GetType();
@@ -259,12 +252,7 @@ namespace Maison_moel.vue
                 MessageBox.Show("Annulation du réapprovisionnement");
             }
         }
-
-        private void ajoutDunPlatÀLaCarteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // voir avec ce que le prof a dit
-        }
-
+       
         private void dataGridView_DoubleClick(object sender, EventArgs e)
         {
             // cela correpond à la datagridview des reaprovisionnements d'ouvertes

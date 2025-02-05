@@ -57,6 +57,20 @@ namespace Maison_moel.vue
             dataGridViewCommandes.Columns["IdCommande"].Visible = true;
             dataGridViewCommandes.Columns["IdPlat"].Visible = false;
             dataGridViewCommandes.Columns["IdEtat"].Visible = false;
+
+            bindingSourcePureCommandes.DataSource = ModelCommande.ListeCommande().Select(static x => new
+            {
+                x.IdCommande,
+                x.IdReservation,
+                x.IdReservationNavigation.IdTable,
+                x.IdEtat,
+                x.IdEtatNavigation.LibelleEtat,
+            }).ToList();
+
+            dataGridViewPureCommandes.DataSource = bindingSourcePureCommandes;
+            dataGridViewPureCommandes.Columns["IdCommande"].Visible = false;
+            dataGridViewPureCommandes.Columns["IdReservation"].Visible = false;
+            dataGridViewPureCommandes.Columns["IdEtat"].Visible = false;
         }
 
         private void AjouterToolStripMenuItem_Click(object sender, EventArgs e)

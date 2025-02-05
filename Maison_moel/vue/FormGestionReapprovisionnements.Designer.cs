@@ -46,10 +46,6 @@
             buttonPrec = new Button();
             buttonSuiv = new Button();
             panelPage = new Panel();
-            contextMenuStripPlats = new ContextMenuStrip(components);
-            modifierLePlatToolStripMenuItem = new ToolStripMenuItem();
-            réapprovisionnerLePlatToolStripMenuItem = new ToolStripMenuItem();
-            ajoutDunPlatÀLaCarteToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBoxNotification).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
@@ -57,7 +53,6 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDownReappro).BeginInit();
             panelButton.SuspendLayout();
             panelPage.SuspendLayout();
-            contextMenuStripPlats.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBoxNotification
@@ -266,48 +261,6 @@
             panelPage.Size = new Size(581, 30);
             panelPage.TabIndex = 8;
             // 
-            // contextMenuStripPlats
-            // 
-            contextMenuStripPlats.BackColor = Color.FromArgb(15, 20, 25);
-            contextMenuStripPlats.Font = new Font("Baskerville Old Face", 12F, FontStyle.Bold);
-            contextMenuStripPlats.Items.AddRange(new ToolStripItem[] { modifierLePlatToolStripMenuItem, réapprovisionnerLePlatToolStripMenuItem, ajoutDunPlatÀLaCarteToolStripMenuItem });
-            contextMenuStripPlats.Name = "contextMenuStripPlats";
-            contextMenuStripPlats.Size = new Size(255, 70);
-            // 
-            // modifierLePlatToolStripMenuItem
-            // 
-            modifierLePlatToolStripMenuItem.BackgroundImage = Properties.Resources.gradient_1920_1080V2;
-            modifierLePlatToolStripMenuItem.BackgroundImageLayout = ImageLayout.Stretch;
-            modifierLePlatToolStripMenuItem.ForeColor = Color.FromArgb(255, 235, 153);
-            modifierLePlatToolStripMenuItem.Image = Properties.Resources.Arrow_Right_I01_watermarked_2k;
-            modifierLePlatToolStripMenuItem.ImageTransparentColor = Color.FromArgb(255, 235, 153);
-            modifierLePlatToolStripMenuItem.Name = "modifierLePlatToolStripMenuItem";
-            modifierLePlatToolStripMenuItem.Size = new Size(254, 22);
-            modifierLePlatToolStripMenuItem.Text = "Modifier le plat";
-            modifierLePlatToolStripMenuItem.Click += modifierLePlatToolStripMenuItem_Click;
-            // 
-            // réapprovisionnerLePlatToolStripMenuItem
-            // 
-            réapprovisionnerLePlatToolStripMenuItem.BackgroundImage = Properties.Resources.gradient_1920_1080V2;
-            réapprovisionnerLePlatToolStripMenuItem.BackgroundImageLayout = ImageLayout.Stretch;
-            réapprovisionnerLePlatToolStripMenuItem.ForeColor = Color.FromArgb(255, 235, 153);
-            réapprovisionnerLePlatToolStripMenuItem.Image = Properties.Resources.Arrow_Right_I01_watermarked_2k;
-            réapprovisionnerLePlatToolStripMenuItem.Name = "réapprovisionnerLePlatToolStripMenuItem";
-            réapprovisionnerLePlatToolStripMenuItem.Size = new Size(254, 22);
-            réapprovisionnerLePlatToolStripMenuItem.Text = "Réapprovisionner le plat";
-            réapprovisionnerLePlatToolStripMenuItem.Click += réapprovisionnerLePlatToolStripMenuItem_Click;
-            // 
-            // ajoutDunPlatÀLaCarteToolStripMenuItem
-            // 
-            ajoutDunPlatÀLaCarteToolStripMenuItem.BackgroundImage = Properties.Resources.gradient_1920_1080V2;
-            ajoutDunPlatÀLaCarteToolStripMenuItem.BackgroundImageLayout = ImageLayout.Stretch;
-            ajoutDunPlatÀLaCarteToolStripMenuItem.ForeColor = Color.FromArgb(255, 235, 153);
-            ajoutDunPlatÀLaCarteToolStripMenuItem.Image = Properties.Resources.Arrow_Right_I01_watermarked_2k;
-            ajoutDunPlatÀLaCarteToolStripMenuItem.Name = "ajoutDunPlatÀLaCarteToolStripMenuItem";
-            ajoutDunPlatÀLaCarteToolStripMenuItem.Size = new Size(254, 22);
-            ajoutDunPlatÀLaCarteToolStripMenuItem.Text = "Ajout d'un plat à la carte";
-            ajoutDunPlatÀLaCarteToolStripMenuItem.Click += ajoutDunPlatÀLaCarteToolStripMenuItem_Click;
-            // 
             // FormGestionReapprovisionnements
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -335,7 +288,6 @@
             panelButton.ResumeLayout(false);
             panelPage.ResumeLayout(false);
             panelPage.PerformLayout();
-            contextMenuStripPlats.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -355,9 +307,5 @@
         private Button buttonSuiv;
         private Panel panelPage;
         private DataGridView dataGridView;
-        private ContextMenuStrip contextMenuStripPlats;
-        private ToolStripMenuItem modifierLePlatToolStripMenuItem;
-        private ToolStripMenuItem réapprovisionnerLePlatToolStripMenuItem;
-        private ToolStripMenuItem ajoutDunPlatÀLaCarteToolStripMenuItem;
     }
 }

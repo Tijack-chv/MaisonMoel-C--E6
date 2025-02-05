@@ -35,6 +35,9 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             dataGridViewDechets = new DataGridView();
             contextMenuStripDechets = new ContextMenuStrip(components);
             AjouterToolStripMenuItem = new ToolStripMenuItem();
@@ -46,6 +49,8 @@
             panel1 = new Panel();
             numericUpDownDechets = new NumericUpDown();
             label1 = new Label();
+            dataGridViewPureCommandes = new DataGridView();
+            bindingSourcePureCommandes = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewDechets).BeginInit();
             contextMenuStripDechets.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSourceDechets).BeginInit();
@@ -53,6 +58,8 @@
             ((System.ComponentModel.ISupportInitialize)bindingSourceCommande).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownDechets).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPureCommandes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourcePureCommandes).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewDechets
@@ -85,7 +92,7 @@
             dataGridViewDechets.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewDechets.EnableHeadersVisualStyles = false;
             dataGridViewDechets.GridColor = Color.Black;
-            dataGridViewDechets.Location = new Point(731, 12);
+            dataGridViewDechets.Location = new Point(731, 133);
             dataGridViewDechets.MultiSelect = false;
             dataGridViewDechets.Name = "dataGridViewDechets";
             dataGridViewDechets.ReadOnly = true;
@@ -100,7 +107,7 @@
             dataGridViewDechets.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewDechets.RowHeadersVisible = false;
             dataGridViewDechets.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewDechets.Size = new Size(281, 330);
+            dataGridViewDechets.Size = new Size(281, 209);
             dataGridViewDechets.TabIndex = 10;
             // 
             // contextMenuStripDechets
@@ -226,6 +233,53 @@
             label1.TabIndex = 0;
             label1.Text = "Poids des Déchets d'ajourd'hui";
             // 
+            // dataGridViewPureCommandes
+            // 
+            dataGridViewPureCommandes.AllowUserToAddRows = false;
+            dataGridViewPureCommandes.AllowUserToDeleteRows = false;
+            dataGridViewPureCommandes.AllowUserToOrderColumns = true;
+            dataGridViewPureCommandes.AllowUserToResizeRows = false;
+            dataGridViewPureCommandes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewPureCommandes.BackgroundColor = Color.FromArgb(80, 85, 90);
+            dataGridViewPureCommandes.BorderStyle = BorderStyle.None;
+            dataGridViewPureCommandes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(40, 45, 50);
+            dataGridViewCellStyle7.Font = new Font("Baskerville Old Face", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(10, 15, 20);
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridViewPureCommandes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewPureCommandes.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = Color.FromArgb(40, 45, 50);
+            dataGridViewCellStyle8.Font = new Font("Baskerville Old Face", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle8.ForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle8.SelectionBackColor = Color.FromArgb(10, 15, 20);
+            dataGridViewCellStyle8.SelectionForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dataGridViewPureCommandes.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewPureCommandes.EnableHeadersVisualStyles = false;
+            dataGridViewPureCommandes.GridColor = Color.Black;
+            dataGridViewPureCommandes.Location = new Point(731, 12);
+            dataGridViewPureCommandes.MultiSelect = false;
+            dataGridViewPureCommandes.Name = "dataGridViewPureCommandes";
+            dataGridViewPureCommandes.ReadOnly = true;
+            dataGridViewPureCommandes.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.FromArgb(40, 45, 50);
+            dataGridViewCellStyle9.Font = new Font("Baskerville Old Face", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle9.ForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(10, 15, 20);
+            dataGridViewCellStyle9.SelectionForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridViewPureCommandes.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewPureCommandes.RowHeadersVisible = false;
+            dataGridViewPureCommandes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewPureCommandes.Size = new Size(281, 115);
+            dataGridViewPureCommandes.TabIndex = 13;
+            // 
             // FormGestionCommandesDechets
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -233,6 +287,7 @@
             BackgroundImage = Properties.Resources.FOND_ACCUEIL;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1024, 460);
+            Controls.Add(dataGridViewPureCommandes);
             Controls.Add(panel1);
             Controls.Add(dataGridViewCommandes);
             Controls.Add(dataGridViewDechets);
@@ -249,6 +304,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownDechets).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPureCommandes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSourcePureCommandes).EndInit();
             ResumeLayout(false);
         }
 
@@ -265,5 +322,7 @@
         private Panel panel1;
         private NumericUpDown numericUpDownDechets;
         private Label label1;
+        private DataGridView dataGridViewPureCommandes;
+        private BindingSource bindingSourcePureCommandes;
     }
 }
