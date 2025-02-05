@@ -13,6 +13,8 @@ public partial class Evenement
 
     public string? ImageEvenement { get; set; }
 
+    public DateTime? DateEvenement { get; set; }
+
     public virtual TypeEvenement IdTypeEvenementNavigation { get; set; } = null!;
 
     public virtual ICollection<PromoPlat> PromoPlats { get; set; } = new List<PromoPlat>();

@@ -181,6 +181,7 @@ namespace Maison_moel.vue
             {
                 chargerMessages(ModelMessage.getUnreadMessages());
             }
+            afficheCountNotif();
             Cursor.Current = Cursors.Default;
             panelMessages.Visible = !panelMessages.Visible;
             timerCountNotif.Start();
@@ -193,7 +194,8 @@ namespace Maison_moel.vue
 
         private void chargerMessages(List<Entities.Message> messages)
         {
-             DateOnly dateAujourdhui = DateOnly.FromDateTime(DateTime.Now);
+            panelContenuMessages.VerticalScroll.Value = panelContenuMessages.VerticalScroll.Minimum;
+            DateOnly dateAujourdhui = DateOnly.FromDateTime(DateTime.Now);
              foreach (Entities.Message message in messages)
              {
                   #region InitialisationVariable
@@ -330,9 +332,6 @@ namespace Maison_moel.vue
                 string trimmedMessage = textBoxMessage.Text.Trim();
                 if (!string.IsNullOrWhiteSpace(trimmedMessage) && trimmedMessage != "Votre message ici...")
                 {
-                    // Scroll to the bottom before adding the new message
-                    panelContenuMessages.VerticalScroll.Value = panelContenuMessages.VerticalScroll.Minimum;
-
                     Entities.Message message = new();
                     message.IdPersonne = idPersonneConnecte;
                     message.Message1 = textBoxMessage.Text;

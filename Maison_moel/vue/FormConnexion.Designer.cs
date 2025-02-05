@@ -71,6 +71,7 @@
             textBoxPassword.Location = new Point(90, 192);
             textBoxPassword.Margin = new Padding(3, 2, 3, 2);
             textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.PasswordChar = '*';
             textBoxPassword.Size = new Size(223, 31);
             textBoxPassword.TabIndex = 3;
             textBoxPassword.Text = "Mot de passe";

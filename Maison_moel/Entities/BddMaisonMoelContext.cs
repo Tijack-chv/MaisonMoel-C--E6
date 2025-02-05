@@ -320,6 +320,9 @@ public partial class BddMaisonMoelContext : DbContext
             entity.HasIndex(e => e.IdTypeEvenement, "I_FK_evenement_type_evenement");
 
             entity.Property(e => e.IdEvenement).HasColumnName("idEvenement");
+            entity.Property(e => e.DateEvenement)
+                .HasColumnType("datetime")
+                .HasColumnName("dateEvenement");
             entity.Property(e => e.DescriptionEvenement)
                 .HasMaxLength(128)
                 .HasColumnName("descriptionEvenement");
