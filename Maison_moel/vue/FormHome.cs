@@ -51,8 +51,6 @@ namespace Maison_moel.vue
 
         private void FormHome_Load(object sender, EventArgs e)
         {
-            pictureBoxLogo.Load("http://192.168.143.9:8080/images/LOGO_TRANS.png");
-
             this.ControlBox = false;
 
             buttonAffiche(false);

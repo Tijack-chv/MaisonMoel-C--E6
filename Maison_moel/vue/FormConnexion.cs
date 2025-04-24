@@ -15,7 +15,6 @@ namespace Maison_moel
 
         private void FormConnexion_Load(object sender, EventArgs e)
         {
-            pictureBoxLogo.Load("http://192.168.143.9:8080/images/LOGO_TRANS.png");
             panelUnderComponent.BackColor = Color.FromArgb(120, 127, 127, 127);
             this.ControlBox = false;
         }

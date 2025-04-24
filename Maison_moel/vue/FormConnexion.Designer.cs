@@ -94,6 +94,7 @@
             // 
             pictureBoxLogo.BackColor = Color.Transparent;
             pictureBoxLogo.BackgroundImageLayout = ImageLayout.Center;
+            pictureBoxLogo.Image = Properties.Resources.LOGO_TRANS;
             pictureBoxLogo.Location = new Point(461, 26);
             pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
             pictureBoxLogo.Name = "pictureBoxLogo";

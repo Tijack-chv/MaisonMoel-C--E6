@@ -72,9 +72,11 @@ public partial class BddMaisonMoelContext : DbContext
 
     public virtual DbSet<TypeTable> TypeTables { get; set; }
 
+    // => optionsBuilder.UseMySql("server=192.168.143.12;port=3306;user=admin-ap4;password=P@ssw0rd;database=BDD_MaisonMoel", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.4.4-mysql"));
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=192.168.143.12;port=3306;user=admin-ap4;password=P@ssw0rd;database=BDD_MaisonMoel", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.4.4-mysql"));
+         => optionsBuilder.UseMySql("server=192.168.139.2;port=3306;user=pchauveau;password=Azerty123uiop@;database=bddMaisonMoel", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.4.4-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
