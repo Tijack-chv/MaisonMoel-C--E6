@@ -50,30 +50,43 @@
             // 
             // textBox_nom
             // 
-            textBox_nom.Location = new Point(40, 41);
+            textBox_nom.BackColor = Color.FromArgb(30, 35, 40);
+            textBox_nom.BorderStyle = BorderStyle.FixedSingle;
+            textBox_nom.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            textBox_nom.ForeColor = Color.FromArgb(255, 235, 153);
+            textBox_nom.Location = new Point(39, 41);
             textBox_nom.Name = "textBox_nom";
-            textBox_nom.Size = new Size(202, 23);
+            textBox_nom.Size = new Size(202, 27);
             textBox_nom.TabIndex = 0;
             // 
             // textBox_prenom
             // 
+            textBox_prenom.BackColor = Color.FromArgb(30, 35, 40);
+            textBox_prenom.BorderStyle = BorderStyle.FixedSingle;
+            textBox_prenom.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            textBox_prenom.ForeColor = Color.FromArgb(255, 235, 153);
             textBox_prenom.Location = new Point(39, 101);
             textBox_prenom.Name = "textBox_prenom";
-            textBox_prenom.Size = new Size(202, 23);
+            textBox_prenom.Size = new Size(202, 27);
             textBox_prenom.TabIndex = 1;
             // 
             // textBox_email
             // 
-            textBox_email.Location = new Point(40, 162);
+            textBox_email.BackColor = Color.FromArgb(30, 35, 40);
+            textBox_email.BorderStyle = BorderStyle.FixedSingle;
+            textBox_email.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            textBox_email.ForeColor = Color.FromArgb(255, 235, 153);
+            textBox_email.Location = new Point(39, 162);
             textBox_email.Name = "textBox_email";
-            textBox_email.Size = new Size(202, 23);
+            textBox_email.Size = new Size(202, 27);
             textBox_email.TabIndex = 2;
             // 
             // dtp_datenaissance
             // 
-            dtp_datenaissance.Location = new Point(39, 229);
+            dtp_datenaissance.Font = new Font("Baskerville Old Face", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dtp_datenaissance.Location = new Point(39, 231);
             dtp_datenaissance.Name = "dtp_datenaissance";
-            dtp_datenaissance.Size = new Size(202, 23);
+            dtp_datenaissance.Size = new Size(202, 22);
             dtp_datenaissance.TabIndex = 3;
             // 
             // label_dateNaiss
@@ -81,7 +94,8 @@
             label_dateNaiss.AutoSize = true;
             label_dateNaiss.BackColor = Color.Transparent;
             label_dateNaiss.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_dateNaiss.Location = new Point(39, 206);
+            label_dateNaiss.ForeColor = Color.FromArgb(255, 235, 153);
+            label_dateNaiss.Location = new Point(60, 206);
             label_dateNaiss.Name = "label_dateNaiss";
             label_dateNaiss.Size = new Size(161, 20);
             label_dateNaiss.TabIndex = 4;
@@ -92,7 +106,8 @@
             label_nom.AutoSize = true;
             label_nom.BackColor = Color.Transparent;
             label_nom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_nom.Location = new Point(40, 18);
+            label_nom.ForeColor = Color.FromArgb(255, 235, 153);
+            label_nom.Location = new Point(118, 18);
             label_nom.Name = "label_nom";
             label_nom.Size = new Size(45, 20);
             label_nom.TabIndex = 5;
@@ -103,7 +118,8 @@
             label_prenom.AutoSize = true;
             label_prenom.BackColor = Color.Transparent;
             label_prenom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_prenom.Location = new Point(39, 78);
+            label_prenom.ForeColor = Color.FromArgb(255, 235, 153);
+            label_prenom.Location = new Point(105, 78);
             label_prenom.Name = "label_prenom";
             label_prenom.Size = new Size(70, 20);
             label_prenom.TabIndex = 6;
@@ -114,7 +130,8 @@
             label_email.AutoSize = true;
             label_email.BackColor = Color.Transparent;
             label_email.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_email.Location = new Point(39, 139);
+            label_email.ForeColor = Color.FromArgb(255, 235, 153);
+            label_email.Location = new Point(114, 139);
             label_email.Name = "label_email";
             label_email.Size = new Size(53, 20);
             label_email.TabIndex = 7;
@@ -122,11 +139,15 @@
             // 
             // numericUpDown_salaire
             // 
+            numericUpDown_salaire.BackColor = Color.FromArgb(30, 35, 40);
+            numericUpDown_salaire.BorderStyle = BorderStyle.FixedSingle;
             numericUpDown_salaire.DecimalPlaces = 2;
+            numericUpDown_salaire.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            numericUpDown_salaire.ForeColor = Color.FromArgb(255, 235, 153);
             numericUpDown_salaire.Location = new Point(39, 299);
             numericUpDown_salaire.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericUpDown_salaire.Name = "numericUpDown_salaire";
-            numericUpDown_salaire.Size = new Size(202, 23);
+            numericUpDown_salaire.Size = new Size(202, 27);
             numericUpDown_salaire.TabIndex = 19;
             // 
             // label_salaire
@@ -134,7 +155,8 @@
             label_salaire.AutoSize = true;
             label_salaire.BackColor = Color.Transparent;
             label_salaire.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_salaire.Location = new Point(39, 276);
+            label_salaire.ForeColor = Color.FromArgb(255, 235, 153);
+            label_salaire.Location = new Point(108, 276);
             label_salaire.Name = "label_salaire";
             label_salaire.Size = new Size(65, 20);
             label_salaire.TabIndex = 18;
@@ -145,7 +167,8 @@
             label_role.AutoSize = true;
             label_role.BackColor = Color.Transparent;
             label_role.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_role.Location = new Point(39, 339);
+            label_role.ForeColor = Color.FromArgb(255, 235, 153);
+            label_role.Location = new Point(117, 339);
             label_role.Name = "label_role";
             label_role.Size = new Size(46, 20);
             label_role.TabIndex = 20;
@@ -153,38 +176,47 @@
             // 
             // comboBox_role
             // 
-            comboBox_role.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_role.BackColor = Color.FromArgb(30, 35, 40);
+            comboBox_role.FlatStyle = FlatStyle.Popup;
+            comboBox_role.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            comboBox_role.ForeColor = Color.FromArgb(255, 235, 153);
             comboBox_role.FormattingEnabled = true;
             comboBox_role.Location = new Point(39, 362);
             comboBox_role.Name = "comboBox_role";
-            comboBox_role.Size = new Size(202, 23);
+            comboBox_role.Size = new Size(202, 27);
             comboBox_role.TabIndex = 21;
             // 
             // button_valider
             // 
-            button_valider.Location = new Point(39, 404);
+            button_valider.BackColor = Color.FromArgb(255, 235, 153);
+            button_valider.FlatStyle = FlatStyle.Popup;
+            button_valider.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            button_valider.Location = new Point(39, 411);
             button_valider.Name = "button_valider";
-            button_valider.Size = new Size(95, 31);
+            button_valider.Size = new Size(108, 31);
             button_valider.TabIndex = 22;
             button_valider.Text = "VALIDER";
-            button_valider.UseVisualStyleBackColor = true;
+            button_valider.UseVisualStyleBackColor = false;
             button_valider.Click += button_valider_Click;
             // 
             // button_annuler
             // 
-            button_annuler.Location = new Point(146, 404);
+            button_annuler.BackColor = Color.FromArgb(255, 235, 153);
+            button_annuler.FlatStyle = FlatStyle.Popup;
+            button_annuler.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            button_annuler.Location = new Point(153, 411);
             button_annuler.Name = "button_annuler";
-            button_annuler.Size = new Size(95, 31);
+            button_annuler.Size = new Size(108, 31);
             button_annuler.TabIndex = 23;
             button_annuler.Text = "ANNULER";
-            button_annuler.UseVisualStyleBackColor = true;
+            button_annuler.UseVisualStyleBackColor = false;
             button_annuler.Click += button_annuler_Click;
             // 
             // FormModificationPersonnel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
+            BackgroundImage = Properties.Resources._131063946_abstrait_de_texture_de_pierre_ardoise_noire_gris_foncé;
             ClientSize = new Size(312, 468);
             Controls.Add(button_annuler);
             Controls.Add(button_valider);

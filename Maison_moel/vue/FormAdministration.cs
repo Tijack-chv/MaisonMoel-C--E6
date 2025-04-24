@@ -23,14 +23,12 @@ namespace Maison_moel.vue
         {
             InitializeComponent();
 
-
             comboBox_Metier.Items.Add("");
             comboBox_Metier.Items.Add("Serveurs");
             comboBox_Metier.Items.Add("Administrateurs");
             comboBox_Metier.Items.Add("Cuisiniers");
 
             radioButton_non.Checked = true;
-
         }
         #endregion
 
@@ -96,14 +94,12 @@ namespace Maison_moel.vue
                 List<Personne> query = new List<Personne>();
                 List<Personne> query1 = ModelPersonne.ListePersonneArchiver().ToList();
                 List<Personne> query2 = new List<Personne>();
-                button1.Text = "Désarchiver";
+                buttonArchiver.Text = "Désarchiver";
 
                 if (!string.IsNullOrEmpty(txtbx_filtreNom.Text))
                     query1 = query1.Where(x => x.Nom.Contains(txtbx_filtreNom.Text)).ToList();
                 if (!string.IsNullOrEmpty(txtbx_filtrePrenom.Text))
                     query1 = query1.Where(x => x.Prenom.Contains(txtbx_filtrePrenom.Text)).ToList();
-                if (dateTimePicker_DateNaissance.Value != dateTimePicker_DateNaissance.MinDate)
-                    query1 = query1.Where(x => x.DateNaiss >= DateOnly.FromDateTime(dateTimePicker_DateNaissance.Value)).ToList();
                 if (comboBox_Metier.SelectedIndex != 0)
                 {
                     if (comboBox_Metier.SelectedIndex == 1)
@@ -144,14 +140,12 @@ namespace Maison_moel.vue
                 List<Personne> query = new List<Personne>();
                 List<Personne> query1 = ModelPersonne.ListePersonne().ToList();
                 List<Personne> query2 = new List<Personne>();
-                button1.Text = "Archiver";
+                buttonArchiver.Text = "Archiver";
 
                 if (!string.IsNullOrEmpty(txtbx_filtreNom.Text))
                     query1 = query1.Where(x => x.Nom.Contains(txtbx_filtreNom.Text)).ToList();
                 if (!string.IsNullOrEmpty(txtbx_filtrePrenom.Text))
                     query1 = query1.Where(x => x.Prenom.Contains(txtbx_filtrePrenom.Text)).ToList();
-                if (dateTimePicker_DateNaissance.Value != dateTimePicker_DateNaissance.MinDate)
-                    query1 = query1.Where(x => x.DateNaiss >= DateOnly.FromDateTime(dateTimePicker_DateNaissance.Value)).ToList();
                 if (comboBox_Metier.SelectedIndex != 0)
                 {
                     if (comboBox_Metier.SelectedIndex == 1)
@@ -199,7 +193,6 @@ namespace Maison_moel.vue
             comboBox_Metier.SelectedIndex = 0;
             txtbx_filtreNom.Text = "";
             txtbx_filtrePrenom.Text = "";
-            dateTimePicker_DateNaissance.Value = Convert.ToDateTime("01/01/1975");
             radioButton_oui.Checked = false;
             radioButton_non.Checked = true;
         }
@@ -224,11 +217,6 @@ namespace Maison_moel.vue
             AppliquerFiltres();
         }
 
-        private void dateTimePicker_DateNaissance_ValueChanged(object sender, EventArgs e)
-        {
-            AppliquerFiltres();
-        }
-
         private void buttonRenitialiserFiltre_Click(object sender, EventArgs e)
         {
             reinitialiserFiltre();
@@ -238,7 +226,6 @@ namespace Maison_moel.vue
         {
             AppliquerFiltres();
         }
-        
 
         #endregion
 
@@ -246,83 +233,43 @@ namespace Maison_moel.vue
 
         private void ModifierPersonnelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dataGridPersonne.SelectedRows.Count > 0)
-            {
-                if (dataGridPersonne.SelectedRows.Count == 1)
-                {
-                    int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
-                    sousF = new(panel_admin);
-                    sousF.openChildForm(new FormModificationPersonnel(currentId));
-                }
-                else
-                {
-                    MessageBox.Show("Veuillez selectionner un seul et unique membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Veuillez selectionner un membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-
+            System.Type type = bindingSourcePersonnes.Current.GetType();
+            int idPersonne = (int)type.GetProperty("IdPersonne").GetValue(bindingSourcePersonnes.Current, null);
+            sousF = new(panel_admin);
+            sousF.openChildForm(new FormModificationPersonnel(idPersonne));
         }
 
-        private void archiverToolStripMenuItem_Click(object sender, EventArgs e)
+        private void modifierMdpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (dataGridPersonne.SelectedRows.Count > 0)
-            {
-                if (dataGridPersonne.SelectedRows.Count == 1)
-                {
-                    int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
-                    sousF = new(panel_admin);
-                    sousF.openChildForm(new FormModificationMDP(currentId));
-                }
-                else
-                {
-                    MessageBox.Show("Veuillez selectionner un seul et unique membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Veuillez selectionner un membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            System.Type type = bindingSourcePersonnes.Current.GetType();
+            int idPersonne = (int)type.GetProperty("IdPersonne").GetValue(bindingSourcePersonnes.Current, null);
+            sousF = new(panel_admin);
+            sousF.openChildForm(new FormModificationMDP(idPersonne));
         }
 
         #endregion
 
         #region ArchiverPersonne
-        private void button1_Click(object sender, EventArgs e)
+
+        private void buttonArchiver_Click(object sender, EventArgs e)
         {
-            if (dataGridPersonne.SelectedRows.Count > 0)
+            System.Type type = bindingSourcePersonnes.Current.GetType();
+            int idPersonne = (int)type.GetProperty("IdPersonne").GetValue(bindingSourcePersonnes.Current, null);
+
+            if (radioButton_non.Checked == true)
             {
-                if (dataGridPersonne.SelectedRows.Count == 1)
-                {   
-                    if(radioButton_non.Checked == true)
-                    {
-                        int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
-                        ModelPersonne.ArchiverPersonne(currentId);
-                        MessageBox.Show("La personne sélectionner vient d'être archivée", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Form_AdministrationFiltre_Load(ModelPersonne.ListePersonne().ToList());
-                    }
-                    if (radioButton_oui.Checked == true)
-                    {
-                        int currentId = Convert.ToInt32(dataGridPersonne.SelectedRows[0].Cells[0].Value.ToString());
-                        ModelPersonne.DesarchiverPersonne(currentId);
-                        MessageBox.Show("La personne sélectionner vient d'être désarchivée", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Form_AdministrationFiltre_Load(ModelPersonne.ListePersonneArchiver().ToList());
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Veuillez selectionner un seul et unique membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                ModelPersonne.ArchiverPersonne(idPersonne);
+                MessageBox.Show("La personne sélectionner vient d'être archivée", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form_AdministrationFiltre_Load(ModelPersonne.ListePersonne().ToList());
             }
-            else
+            if (radioButton_oui.Checked == true)
             {
-                MessageBox.Show("Veuillez selectionner un membre du personnel", "Erreur de selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ModelPersonne.DesarchiverPersonne(idPersonne);
+                MessageBox.Show("La personne sélectionner vient d'être désarchivée", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Form_AdministrationFiltre_Load(ModelPersonne.ListePersonneArchiver().ToList());
             }
-            
         }
+
         #endregion
     }
 }

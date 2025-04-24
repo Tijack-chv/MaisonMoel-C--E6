@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             dataGridPersonne = new DataGridView();
-            contextMenuStrip1 = new ContextMenuStrip(components);
+            contextMenuStripPersonne = new ContextMenuStrip(components);
             modifierLesInformationsToolStripMenuItem = new ToolStripMenuItem();
             archiverToolStripMenuItem = new ToolStripMenuItem();
             bindingSourcePersonnes = new BindingSource(components);
@@ -40,21 +43,19 @@
             panel3 = new Panel();
             txtbx_filtrePrenom = new TextBox();
             label_filtrePrenom = new Label();
-            label1 = new Label();
             txtbx_filtreNom = new TextBox();
-            dateTimePicker_DateNaissance = new DateTimePicker();
             label_filtreNom = new Label();
             buttonRenitialiserFiltre = new Button();
             comboBox_Metier = new ComboBox();
             label_filtreMetier = new Label();
-            button1 = new Button();
+            buttonArchiver = new Button();
             panel_admin = new Panel();
             groupBox = new GroupBox();
             radioButton_non = new RadioButton();
             radioButton_oui = new RadioButton();
             label_archiver = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).BeginInit();
-            contextMenuStrip1.SuspendLayout();
+            contextMenuStripPersonne.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).BeginInit();
             panel_admin.SuspendLayout();
             groupBox.SuspendLayout();
@@ -62,19 +63,56 @@
             // 
             // dataGridPersonne
             // 
-            dataGridPersonne.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridPersonne.ContextMenuStrip = contextMenuStrip1;
-            dataGridPersonne.GridColor = Color.FromArgb(255, 235, 153);
+            dataGridPersonne.AllowUserToAddRows = false;
+            dataGridPersonne.AllowUserToDeleteRows = false;
+            dataGridPersonne.AllowUserToOrderColumns = true;
+            dataGridPersonne.AllowUserToResizeRows = false;
+            dataGridPersonne.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridPersonne.BackgroundColor = Color.FromArgb(50, 55, 60);
+            dataGridPersonne.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(30, 35, 40);
+            dataGridViewCellStyle1.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(30, 35, 40);
+            dataGridViewCellStyle1.SelectionForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridPersonne.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridPersonne.ColumnHeadersHeight = 40;
+            dataGridPersonne.ContextMenuStrip = contextMenuStripPersonne;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(70, 75, 80);
+            dataGridViewCellStyle2.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGridPersonne.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridPersonne.EnableHeadersVisualStyles = false;
+            dataGridPersonne.GridColor = Color.Black;
             dataGridPersonne.Location = new Point(367, 63);
+            dataGridPersonne.MultiSelect = false;
             dataGridPersonne.Name = "dataGridPersonne";
+            dataGridPersonne.ReadOnly = true;
+            dataGridPersonne.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(70, 75, 80);
+            dataGridViewCellStyle3.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 235, 153);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridPersonne.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridPersonne.RowHeadersVisible = false;
+            dataGridPersonne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridPersonne.Size = new Size(571, 363);
             dataGridPersonne.TabIndex = 0;
             // 
-            // contextMenuStrip1
+            // contextMenuStripPersonne
             // 
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { modifierLesInformationsToolStripMenuItem, archiverToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(208, 48);
+            contextMenuStripPersonne.Items.AddRange(new ToolStripItem[] { modifierLesInformationsToolStripMenuItem, archiverToolStripMenuItem });
+            contextMenuStripPersonne.Name = "contextMenuStrip1";
+            contextMenuStripPersonne.Size = new Size(208, 48);
             // 
             // modifierLesInformationsToolStripMenuItem
             // 
@@ -88,7 +126,7 @@
             archiverToolStripMenuItem.Name = "archiverToolStripMenuItem";
             archiverToolStripMenuItem.Size = new Size(207, 22);
             archiverToolStripMenuItem.Text = "Modifier le MDP";
-            archiverToolStripMenuItem.Click += archiverToolStripMenuItem_Click;
+            archiverToolStripMenuItem.Click += modifierMdpToolStripMenuItem_Click;
             // 
             // panel5
             // 
@@ -128,9 +166,13 @@
             // 
             // txtbx_filtrePrenom
             // 
-            txtbx_filtrePrenom.Location = new Point(37, 237);
+            txtbx_filtrePrenom.BackColor = Color.FromArgb(30, 35, 40);
+            txtbx_filtrePrenom.BorderStyle = BorderStyle.None;
+            txtbx_filtrePrenom.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            txtbx_filtrePrenom.ForeColor = Color.FromArgb(255, 235, 153);
+            txtbx_filtrePrenom.Location = new Point(46, 274);
             txtbx_filtrePrenom.Name = "txtbx_filtrePrenom";
-            txtbx_filtrePrenom.Size = new Size(211, 23);
+            txtbx_filtrePrenom.Size = new Size(211, 20);
             txtbx_filtrePrenom.TabIndex = 66;
             txtbx_filtrePrenom.TextChanged += txtbx_filtrePrenom_TextChanged;
             // 
@@ -138,51 +180,35 @@
             // 
             label_filtrePrenom.AutoSize = true;
             label_filtrePrenom.BackColor = Color.Transparent;
-            label_filtrePrenom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtrePrenom.Location = new Point(35, 197);
+            label_filtrePrenom.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            label_filtrePrenom.ForeColor = Color.FromArgb(255, 235, 153);
+            label_filtrePrenom.Location = new Point(70, 234);
             label_filtrePrenom.Name = "label_filtrePrenom";
-            label_filtrePrenom.Size = new Size(162, 20);
+            label_filtrePrenom.Size = new Size(163, 19);
             label_filtrePrenom.TabIndex = 65;
             label_filtrePrenom.Text = "Filtrer par prénom :";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label1.Location = new Point(37, 286);
-            label1.Name = "label1";
-            label1.Size = new Size(254, 20);
-            label1.TabIndex = 67;
-            label1.Text = "Filtrer par Date de Naissance :";
-            // 
             // txtbx_filtreNom
             // 
-            txtbx_filtreNom.Location = new Point(37, 150);
+            txtbx_filtreNom.BackColor = Color.FromArgb(30, 35, 40);
+            txtbx_filtreNom.BorderStyle = BorderStyle.None;
+            txtbx_filtreNom.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            txtbx_filtreNom.ForeColor = Color.FromArgb(255, 235, 153);
+            txtbx_filtreNom.Location = new Point(46, 187);
             txtbx_filtreNom.Name = "txtbx_filtreNom";
-            txtbx_filtreNom.Size = new Size(211, 23);
+            txtbx_filtreNom.Size = new Size(211, 20);
             txtbx_filtreNom.TabIndex = 64;
             txtbx_filtreNom.TextChanged += txtbx_filtreNom_TextChanged;
-            // 
-            // dateTimePicker_DateNaissance
-            // 
-            dateTimePicker_DateNaissance.Location = new Point(37, 326);
-            dateTimePicker_DateNaissance.MaxDate = new DateTime(2025, 1, 17, 0, 0, 0, 0);
-            dateTimePicker_DateNaissance.MinDate = new DateTime(1950, 1, 1, 0, 0, 0, 0);
-            dateTimePicker_DateNaissance.Name = "dateTimePicker_DateNaissance";
-            dateTimePicker_DateNaissance.Size = new Size(211, 23);
-            dateTimePicker_DateNaissance.TabIndex = 68;
-            dateTimePicker_DateNaissance.Value = new DateTime(1975, 1, 1, 0, 0, 0, 0);
-            dateTimePicker_DateNaissance.ValueChanged += dateTimePicker_DateNaissance_ValueChanged;
             // 
             // label_filtreNom
             // 
             label_filtreNom.AutoSize = true;
             label_filtreNom.BackColor = Color.Transparent;
-            label_filtreNom.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtreNom.Location = new Point(35, 110);
+            label_filtreNom.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            label_filtreNom.ForeColor = Color.FromArgb(255, 235, 153);
+            label_filtreNom.Location = new Point(83, 147);
             label_filtreNom.Name = "label_filtreNom";
-            label_filtreNom.Size = new Size(136, 20);
+            label_filtreNom.Size = new Size(137, 19);
             label_filtreNom.TabIndex = 63;
             label_filtreNom.Text = "Filtrer par nom :";
             // 
@@ -190,23 +216,27 @@
             // 
             buttonRenitialiserFiltre.BackColor = Color.FromArgb(30, 35, 40);
             buttonRenitialiserFiltre.FlatStyle = FlatStyle.Popup;
-            buttonRenitialiserFiltre.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            buttonRenitialiserFiltre.ForeColor = Color.White;
-            buttonRenitialiserFiltre.Location = new Point(37, 428);
+            buttonRenitialiserFiltre.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            buttonRenitialiserFiltre.ForeColor = Color.FromArgb(255, 235, 153);
+            buttonRenitialiserFiltre.Location = new Point(86, 424);
             buttonRenitialiserFiltre.Name = "buttonRenitialiserFiltre";
             buttonRenitialiserFiltre.Size = new Size(138, 23);
             buttonRenitialiserFiltre.TabIndex = 69;
             buttonRenitialiserFiltre.Text = "Rénitialiser Filtre";
+            buttonRenitialiserFiltre.TextAlign = ContentAlignment.TopCenter;
             buttonRenitialiserFiltre.UseVisualStyleBackColor = false;
             buttonRenitialiserFiltre.Click += buttonRenitialiserFiltre_Click;
             // 
             // comboBox_Metier
             // 
-            comboBox_Metier.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_Metier.BackColor = Color.FromArgb(30, 35, 40);
+            comboBox_Metier.FlatStyle = FlatStyle.Popup;
+            comboBox_Metier.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            comboBox_Metier.ForeColor = Color.FromArgb(255, 235, 153);
             comboBox_Metier.FormattingEnabled = true;
-            comboBox_Metier.Location = new Point(35, 67);
+            comboBox_Metier.Location = new Point(45, 104);
             comboBox_Metier.Name = "comboBox_Metier";
-            comboBox_Metier.Size = new Size(213, 23);
+            comboBox_Metier.Size = new Size(213, 27);
             comboBox_Metier.TabIndex = 61;
             comboBox_Metier.SelectedIndexChanged += comboBox_Metier_SelectedIndexChanged;
             // 
@@ -214,23 +244,27 @@
             // 
             label_filtreMetier.AutoSize = true;
             label_filtreMetier.BackColor = Color.Transparent;
-            label_filtreMetier.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_filtreMetier.Location = new Point(37, 33);
+            label_filtreMetier.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            label_filtreMetier.ForeColor = Color.FromArgb(255, 235, 153);
+            label_filtreMetier.Location = new Point(75, 70);
             label_filtreMetier.Name = "label_filtreMetier";
-            label_filtreMetier.Size = new Size(152, 20);
+            label_filtreMetier.Size = new Size(152, 19);
             label_filtreMetier.TabIndex = 62;
             label_filtreMetier.Text = "Filtrer par métier :";
             // 
-            // button1
+            // buttonArchiver
             // 
-            button1.BackColor = Color.Tomato;
-            button1.Location = new Point(848, 454);
-            button1.Name = "button1";
-            button1.Size = new Size(90, 34);
-            button1.TabIndex = 70;
-            button1.Text = "ARCHIVER";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            buttonArchiver.BackColor = Color.FromArgb(30, 35, 40);
+            buttonArchiver.FlatStyle = FlatStyle.Popup;
+            buttonArchiver.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            buttonArchiver.ForeColor = Color.FromArgb(255, 235, 153);
+            buttonArchiver.Location = new Point(836, 454);
+            buttonArchiver.Name = "buttonArchiver";
+            buttonArchiver.Size = new Size(124, 34);
+            buttonArchiver.TabIndex = 70;
+            buttonArchiver.Text = "ARCHIVER";
+            buttonArchiver.UseVisualStyleBackColor = false;
+            buttonArchiver.Click += buttonArchiver_Click;
             // 
             // panel_admin
             // 
@@ -240,12 +274,10 @@
             panel_admin.Controls.Add(label_filtreMetier);
             panel_admin.Controls.Add(comboBox_Metier);
             panel_admin.Controls.Add(txtbx_filtrePrenom);
-            panel_admin.Controls.Add(label1);
             panel_admin.Controls.Add(label_filtreNom);
             panel_admin.Controls.Add(txtbx_filtreNom);
             panel_admin.Controls.Add(buttonRenitialiserFiltre);
             panel_admin.Controls.Add(label_filtrePrenom);
-            panel_admin.Controls.Add(dateTimePicker_DateNaissance);
             panel_admin.Location = new Point(12, 12);
             panel_admin.Name = "panel_admin";
             panel_admin.Size = new Size(312, 468);
@@ -255,18 +287,20 @@
             // 
             groupBox.Controls.Add(radioButton_non);
             groupBox.Controls.Add(radioButton_oui);
-            groupBox.Location = new Point(131, 365);
+            groupBox.Location = new Point(140, 312);
             groupBox.Name = "groupBox";
-            groupBox.Size = new Size(117, 39);
+            groupBox.Size = new Size(131, 39);
             groupBox.TabIndex = 73;
             groupBox.TabStop = false;
             // 
             // radioButton_non
             // 
             radioButton_non.AutoSize = true;
-            radioButton_non.Location = new Point(63, 13);
+            radioButton_non.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            radioButton_non.ForeColor = Color.FromArgb(255, 235, 153);
+            radioButton_non.Location = new Point(66, 12);
             radioButton_non.Name = "radioButton_non";
-            radioButton_non.Size = new Size(48, 19);
+            radioButton_non.Size = new Size(61, 23);
             radioButton_non.TabIndex = 71;
             radioButton_non.TabStop = true;
             radioButton_non.Text = "Non";
@@ -275,9 +309,11 @@
             // radioButton_oui
             // 
             radioButton_oui.AutoSize = true;
-            radioButton_oui.Location = new Point(8, 13);
+            radioButton_oui.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            radioButton_oui.ForeColor = Color.FromArgb(255, 235, 153);
+            radioButton_oui.Location = new Point(4, 12);
             radioButton_oui.Name = "radioButton_oui";
-            radioButton_oui.Size = new Size(44, 19);
+            radioButton_oui.Size = new Size(57, 23);
             radioButton_oui.TabIndex = 70;
             radioButton_oui.TabStop = true;
             radioButton_oui.Text = "Oui";
@@ -288,10 +324,11 @@
             // 
             label_archiver.AutoSize = true;
             label_archiver.BackColor = Color.Transparent;
-            label_archiver.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label_archiver.Location = new Point(36, 378);
+            label_archiver.Font = new Font("Baskerville Old Face", 12.75F, FontStyle.Bold);
+            label_archiver.ForeColor = Color.FromArgb(255, 235, 153);
+            label_archiver.Location = new Point(45, 325);
             label_archiver.Name = "label_archiver";
-            label_archiver.Size = new Size(89, 20);
+            label_archiver.Size = new Size(91, 19);
             label_archiver.TabIndex = 72;
             label_archiver.Text = "Archiver : ";
             // 
@@ -299,21 +336,23 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.gradient_1500_1500_1_;
+            BackgroundImage = Properties.Resources.FOND_ACCUEIL_modified1;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1024, 490);
             Controls.Add(panel_admin);
-            Controls.Add(button1);
+            Controls.Add(buttonArchiver);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel5);
             Controls.Add(dataGridPersonne);
             Controls.Add(panel2);
+            DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "FormAdministration";
             Text = "Form_Administration";
             Load += FormAdministration_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridPersonne).EndInit();
-            contextMenuStrip1.ResumeLayout(false);
+            contextMenuStripPersonne.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)bindingSourcePersonnes).EndInit();
             panel_admin.ResumeLayout(false);
             panel_admin.PerformLayout();
@@ -330,19 +369,17 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private ContextMenuStrip contextMenuStrip1;
+        private ContextMenuStrip contextMenuStripPersonne;
         private ToolStripMenuItem modifierLesInformationsToolStripMenuItem;
         private ToolStripMenuItem archiverToolStripMenuItem;
         private TextBox txtbx_filtrePrenom;
         private Label label_filtrePrenom;
-        private Label label1;
         private TextBox txtbx_filtreNom;
-        private DateTimePicker dateTimePicker_DateNaissance;
         private Label label_filtreNom;
         private Button buttonRenitialiserFiltre;
         private ComboBox comboBox_Metier;
         private Label label_filtreMetier;
-        private Button button1;
+        private Button buttonArchiver;
         private Panel panel_admin;
         private RadioButton radioButton_oui;
         private Label label_archiver;

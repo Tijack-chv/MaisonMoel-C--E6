@@ -139,6 +139,9 @@
   <data name="Gold Icon Texting.I02.watermarked.2k" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\Gold Icon Texting.I02.watermarked.2k.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LOGO_TRANS" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\LOGO_TRANS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="gradient_1920_1080" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\gradient_1920_1080.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,7 +166,7 @@
   <data name="emailW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\emailW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LOGO_TRANS" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\LOGO_TRANS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="131063946-abstrait-de-texture-de-pierre-ardoise-noire-gris-foncé" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\131063946-abstrait-de-texture-de-pierre-ardoise-noire-gris-foncé.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

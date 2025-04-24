@@ -1,5 +1,6 @@
 ﻿using ApplicationC.Controller;
 using Maison_moel.controller;
+using Maison_moel.Entities;
 using Maison_moel.Model;
 using Microsoft.VisualBasic.Devices;
 using System;
@@ -16,12 +17,14 @@ namespace Maison_moel.vue
 {
     public partial class FormHome : Form
     {
+        #region Variable
         SFormulaire sousF;
         public enum EtatDroit
         {
             Admin,
             Cuisinier
         }
+
         private EtatDroit etatDroit;
         private int idPersonneConnecte;
         private int tailleHauteurEnsembleMessage;
@@ -29,6 +32,7 @@ namespace Maison_moel.vue
         private int idPersonneDernierMessage;
         private DateOnly DateOnlyDernierMessage;
         private TimeOnly TimeOnlyDernierMessage;
+        #endregion
 
         public FormHome(bool est_admin, int id)
         {
@@ -47,6 +51,9 @@ namespace Maison_moel.vue
             idPersonneConnecte = id;
             etatDroit = est_admin ? EtatDroit.Admin : EtatDroit.Cuisinier;
             sousF = new(panelAffichage);
+
+            Personne personne = ModelPersonne.getPersonneById(idPersonneConnecte);
+            labelAdmin.Text = $"{personne.Nom} {personne.Prenom}";
         }
 
         private void FormHome_Load(object sender, EventArgs e)
@@ -163,6 +170,7 @@ namespace Maison_moel.vue
             this.Close();
         }
 
+        #region Message
         private void timerCountNotif_Tick(object sender, EventArgs e)
         {
             afficheCountNotif();
@@ -305,7 +313,7 @@ namespace Maison_moel.vue
              afficheCountNotif();
         }
 
-        #region TextBoxMessageEnterLeave
+        #region TextBoxMessageAction
         private void textBoxMessage_Enter(object sender, EventArgs e)
         {
             if (textBoxMessage.Text == "Votre message ici...")
@@ -321,7 +329,6 @@ namespace Maison_moel.vue
                 textBoxMessage.Text = "Votre message ici...";
             }
         }
-        #endregion
 
         private void textBoxMessage_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -344,5 +351,8 @@ namespace Maison_moel.vue
                 }
             }
         }
+        #endregion
+        
+        #endregion
     }
 }

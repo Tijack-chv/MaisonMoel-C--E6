@@ -63,6 +63,16 @@ namespace Maison_moel.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _131063946_abstrait_de_texture_de_pierre_ardoise_noire_gris_foncé {
+            get {
+                object obj = ResourceManager.GetObject("131063946-abstrait-de-texture-de-pierre-ardoise-noire-gris-foncé", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Arrow_Right_I01_watermarked_2k {
             get {
                 object obj = ResourceManager.GetObject("Arrow Right.I01.watermarked.2k", resourceCulture);

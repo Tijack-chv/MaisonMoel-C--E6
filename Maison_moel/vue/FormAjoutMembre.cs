@@ -39,9 +39,6 @@ namespace Maison_moel.vue
 
             textBox_mdp.UseSystemPasswordChar = true;
             textBox_confirmMdp.UseSystemPasswordChar = true;
-
-
-
         }
 
         private void button_annuler_Click(object sender, EventArgs e)
@@ -176,7 +173,7 @@ namespace Maison_moel.vue
         }
 
         private void comboBox_metier_SelectedIndexChanged(object sender, EventArgs e)
-        {   
+        {
             if (comboBox_metier.Text == "")
             {
                 label_role.Visible = false;
