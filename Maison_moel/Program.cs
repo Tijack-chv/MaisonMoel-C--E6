@@ -14,8 +14,7 @@ namespace Maison_moel
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Model.Model.init();
-            //Application.Run(new FormConnexion());
-            Application.Run(new FormHome(true,38));
+            Application.Run(new FormConnexion());
         }
     }
 }
